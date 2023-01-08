@@ -1,3 +1,7 @@
 .comments {
     list-style-type: none;
 }
+
+a{
+    font-weight: bold;
+}
