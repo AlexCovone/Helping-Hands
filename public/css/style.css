@@ -2,6 +2,27 @@
     list-style-type: none;
 }
 
-a{
+a, .display-3{
     font-weight: bold;
+}
+
+/* Solid Buttons */
+.btn-secondary, .btn-secondary:active, .btn-dark:visited {
+    background-color: #6A69C7 !important;
+}
+
+.btn-secondary:hover{
+    background-color: #8482db !important;
+    color: white;
+}
+
+/* Outline Buttons */
+
+.btn-outline-secondary{
+    color: #6A69C7 !important;
+}
+
+.btn-outline-secondary:hover{
+    background-color: #6A69C7 !important;
+    color: white !important;
 }
