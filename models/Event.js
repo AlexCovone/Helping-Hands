@@ -49,11 +49,10 @@ const EventSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    deleted: {
-        type: Boolean,
-        default: false,
-        required: false
-    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
     createdAt: {
         type: Date,
         default: Date.now
