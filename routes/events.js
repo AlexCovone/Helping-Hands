@@ -12,8 +12,12 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 router.get("/:id", ensureAuth, eventsController.getEvent);
 
 // @desc      Admin Create Event
-// @route     GET /event/createEvent
+// @route     POST /event/createEvent
 router.post("/createEvent", upload.single("file"), eventsController.createEvent);
+
+// @desc      Admin Delete Event
+// @route     GET /event/:id
+router.delete("/deleteEvent/:id", eventsController.deleteEvent);
 
 
 module.exports = router;

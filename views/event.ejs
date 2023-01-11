@@ -7,7 +7,7 @@
       <div class="row justify-content-between">
         <%if(event.user == user.id){ %>
         <form
-          action="/post/deletePost/<%= post.id %>?_method=DELETE"
+          action="/event/deleteEvent/<%= event.id %>?_method=DELETE"
           method="POST"
           class="col-3"
         >
