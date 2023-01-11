@@ -13,6 +13,10 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    cloudinaryId: {
+        type: String,
+        require: true,
+      },
     hours: {
         type: String,
         required: true
