@@ -12,6 +12,7 @@ const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const commentRoutes = require("./routes/comments");
 const eventRoutes = require("./routes/events");
+const adminRoute = require("./routes/admin")
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -59,7 +60,8 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/post", postRoutes);
 app.use('/comment', commentRoutes)
-app.use('/event', eventRoutes);
+app.use('/events', eventRoutes);
+app.use('/admin', adminRoute);
 
 //Server Running
 app.listen(process.env.PORT, () => {
