@@ -16,7 +16,7 @@ module.exports = {
   authRole: function (role){
     return (req, res, next) => {
       if(req.user.role !== role){
-        res.status(401)
+        res.status(403)
         return res.send('Not Allowed')
       }
 
