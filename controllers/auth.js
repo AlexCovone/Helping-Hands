@@ -88,7 +88,11 @@ exports.postSignup = (req, res, next) => {
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password,
+    occupation: req.body.occupation
   });
+
+  // req.body.occupation takes the checkbox name values from signup.ejs
+  console.log(req.body.occupation)
 
   User.findOne(
     { $or: [{ email: req.body.email }, { userName: req.body.userName }] },

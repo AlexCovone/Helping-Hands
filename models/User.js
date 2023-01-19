@@ -15,6 +15,11 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: 'Employee'
   },
+  occupation: {
+    type: Array,
+    required: true,
+    default: ['waitstaff']
+  },
   password: String,
 })
 
