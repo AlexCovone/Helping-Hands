@@ -18,7 +18,7 @@ router.get("/:id", ensureAuth, eventsController.getEvent);
 
 // @desc      Admin Create Event
 // @route     POST /events/createEvent
-// router.post("/createEvent", upload.single("file"), eventsController.createEvent);
+router.post("/createEvent", upload.single("file"), eventsController.createEvent);
 
 // @desc      Admin Delete Event
 // @route     GET /events/:id

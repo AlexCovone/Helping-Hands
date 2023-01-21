@@ -17,7 +17,11 @@ const EventSchema = new mongoose.Schema({
         type: String,
         require: true,
       },
-    hours: {
+    staffArrival: {
+        type: String,
+        required: true
+    },
+    estimatedEndTime: {
         type: String,
         required: true
     },
