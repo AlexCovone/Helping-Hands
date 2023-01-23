@@ -6,8 +6,8 @@ const Reservation = require("../models/Reservation")
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const event = await Event.find({ user: req.user.id });
-      res.render("profile.ejs", { event: event, user: req.user });
+      const reservation = await Reservation.find({ user: req.user.id }).populate('event');
+      res.render("profile.ejs", { reservation: reservation, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -36,7 +36,7 @@ module.exports = {
         role: req.body.occupationRole
       });
       console.log(`Reservation has been made for ${req.user.userName}.`);
-      res.redirect("/profile");
+      res.redirect(`/events/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }
