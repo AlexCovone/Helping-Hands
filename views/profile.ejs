@@ -10,10 +10,10 @@
       </div>
       <div class="col-6">
         <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
+        <% for(var i=0; i<event.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
+            <a href="/events/<%= event[i]._id%>">
+              <img class="img-fluid" src="<%= event[i].image%>">
             </a>
           </li>
         <% } %>

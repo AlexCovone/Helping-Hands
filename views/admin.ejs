@@ -11,11 +11,11 @@
             <h2>Add an Event</h2>
             <form action="/events/createEvent" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
-                  <label for="title" class="form-label">Event Name</label>
+                  <label for="eventName" class="form-label">Event Name</label>
                   <input type="text" class="form-control" id="eventName" name="eventName">
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label">Address</label>
+                <label for="address" class="form-label">Address</label>
                 <textarea class="form-control" id="Address" name="address"></textarea>
               </div>
               <div class="mb-3">
@@ -23,23 +23,23 @@
                 <input type="file" class="form-control" id="imageUpload" name="file">
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label">Staff Arrival</label>
+                <label for="staffArrival" class="form-label">Staff Arrival</label>
                 <input type="time" id="staffArrival" name="staffArrival" step="300" required>
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label">Estimated End Time</label>
+                <label for="endTime" class="form-label">Estimated End Time</label>
                 <input type="time" id="endTime" name="estimatedEndTime" step="300" required>
               </div>
               <div class="mb-3">
-                <label for="start-date" class="form-label" id="start-date">Date</label>
+                <label for="startDate" class="form-label" id="start-date">Date</label>
                 <input type="date" name="date" value="">
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label">Uniform</label>
+                <label for="uniform" class="form-label">Uniform</label>
                 <textarea class="form-control" id="Uniform" name="uniform"></textarea>
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label">Caterer</label>
+                <label for="caterer" class="form-label">Caterer</label>
                 <input class="form-control" id="Caterer" name="caterer"></input>
               </div>
               <div class="mb-3">
@@ -47,15 +47,15 @@
                 <input class="form-control" id="eventCaptain" name="eventCaptain"></input>
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label">Event Chef</label>
+                <label for="eventChef" class="form-label">Event Chef</label>
                 <input class="form-control" id="eventChef" name="eventChef"></input>
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label">Waitstaff Needed</label>
+                <label for="waitStaffNeeded" class="form-label">Waitstaff Needed</label>
                 <input type="number" class="form-control" id="waitStaffNeeded" name="waitStaffNeeded"></input>
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label">Bartender Needed</label>
+                <label for="bartenderNeeded" class="form-label">Bartender Needed</label>
                 <input type="number" class="form-control" id="bartenderNeeded" name="bartenderNeeded"></input>
               </div>
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>

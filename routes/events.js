@@ -18,11 +18,15 @@ router.get("/:id", ensureAuth, eventsController.getEvent);
 
 // @desc      Admin Create Event
 // @route     POST /events/createEvent
-router.post("/createEvent", upload.single("file"), eventsController.createEvent);
+router.post("/createEvent", ensureAuth, upload.single("file"), eventsController.createEvent);
+
+// @desc      User Reserve :id Event
+// @route     POST /events/reserveEvent/:id
+router.post("/reserveEvent/:id", ensureAuth, eventsController.reserveEvent)
 
 // @desc      Admin Delete Event
 // @route     GET /events/:id
-router.delete("/deleteEvent/:id", eventsController.deleteEvent);
+router.delete("/deleteEvent/:id", ensureAuth, eventsController.deleteEvent);
 
 
 module.exports = router;
