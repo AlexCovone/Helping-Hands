@@ -29,7 +29,7 @@
       <p>Bartenders Needed: <%= event.bartenderNeeded %></p>
     </div>
 
-    <form action="/events/reserveEvent/<%= event.id %>" method="POST">
+    <form action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
       <label for="occupationRole">Choose a Role:</label>
       <select name="occupationRole" id="occupationSelection">
         <option value="waitstaff">Waitstaff</option>

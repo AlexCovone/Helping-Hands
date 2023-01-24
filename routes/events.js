@@ -22,7 +22,9 @@ router.post("/createEvent", ensureAuth, upload.single("file"), eventsController.
 
 // @desc      User Reserve :id Event
 // @route     POST /events/reserveEvent/:id
-router.post("/reserveEvent/:id", ensureAuth, eventsController.reserveEvent)
+// router.post("/reserveEvent/:id", ensureAuth, eventsController.reserveEvent)
+
+router.put("/reserveEvent/:id", ensureAuth, eventsController.reserveEvent)
 
 // @desc      Admin Delete Event
 // @route     GET /events/:id

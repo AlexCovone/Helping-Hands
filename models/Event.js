@@ -53,6 +53,11 @@ const EventSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    staffReserved: {
+        type: Array,
+        required: true,
+        default: []
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
