@@ -31,7 +31,6 @@ module.exports = {
   },
   reserveEvent: async (req, res) => {
     try {
-      console.log(req.body)
 
       // Update User Model to include event ID in eventsReserved property
       await User.findOneAndUpdate(
@@ -46,9 +45,12 @@ module.exports = {
         {_id: req.params.id},
         {
           $push: {staffReserved: {$each: [[req.user.name, req.user.email, req.body.occupationRole]]}}
+        },
+        {
+          $cond: {if: req.body.occupationRole === 'Waitstaff', then: {$inc: {waitstaffNeeded: -1}} && console.log('Success!'), else: {$inc: {waitstaffNeeded: 0}}}
         }
-      )
-      console.log(req.body.occupationRole)
+      );
+      console.log(req.body)
       console.log(`Reservation has been made for ${req.user.name}.`);
       res.redirect(`/events/${req.params.id}`);
     } catch (err) {
@@ -73,7 +75,7 @@ module.exports = {
           caterer: req.body.caterer,
           eventCaptain: req.body.eventCaptain,
           eventChef: req.body.eventChef,
-          waitStaffNeeded: req.body.waitStaffNeeded,
+          waitstaffNeeded: req.body.waitstaffNeeded,
           bartenderNeeded: req.body.bartenderNeeded,
         });
         console.log("Event has been added!");

@@ -45,7 +45,7 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    waitStaffNeeded: {
+    waitstaffNeeded: {
         type: Number,
         required: true
     },
