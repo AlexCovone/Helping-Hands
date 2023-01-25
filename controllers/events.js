@@ -48,6 +48,7 @@ module.exports = {
           $push: {staffReserved: {$each: [[req.user.name, req.user.email, req.body.occupationRole]]}}
         }
       )
+      console.log(req.body.occupationRole)
       console.log(`Reservation has been made for ${req.user.name}.`);
       res.redirect(`/events/${req.params.id}`);
     } catch (err) {

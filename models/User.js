@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
   occupation: {
     type: Array,
     required: true,
-    default: ['waitstaff']
+    default: ['Waitstaff']
   },
   eventsReserved: {
     type: Array,

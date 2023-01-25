@@ -29,18 +29,42 @@
       <p>Bartenders Needed: <%= event.bartenderNeeded %></p>
     </div>
 
+    <!-- Optimize by adding switch statement -->
     <form action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
       <label for="occupationRole">Choose a Role:</label>
       <select name="occupationRole" id="occupationSelection">
-        <option value="waitstaff">Waitstaff</option>
-        <option value="bartender">Bartender</option>
-        <option value="chef">Chef</option>
+        <%if(user.occupation.includes('Waitstaff')){ %>
+        <option value="Waitstaff">Waitstaff</option>
+        <%}%>
+        <%if(user.occupation.includes('Bartender')){ %>
+        <option value="Bartender">Bartender</option>
+        <%}%>
+        <%if(user.occupation.includes('Chef')){ %>
+        <option value="Chef">Chef</option>
+        <%}%>
       </select>
       <button class="btn btn-primary" type="submit">Reserve Role</button>
     </form>
-    
 
-    <div class="col-6 mt-5">
+   <%if(user.role === 'Admin'){ %>
+    <table class="my-3 table table-striped table-bordered">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role Reserved</th>
+      </tr>
+     <% for(var i=0; i<event.staffReserved.length; i++) {%>
+          <tr>
+            <td><%= event.staffReserved[i][0] %></td>
+            <td><%= event.staffReserved[i][1] %></td>
+            <td><%= event.staffReserved[i][2] %></td>
+          </tr>
+     <% } %>
+   <%}%>
+    </table>
+</div>
+
+    <div class="col-6 my-5">
       <a class="btn btn-primary" href="/profile">Return to Profile</a>
       <a class="btn btn-primary" href="/events">Return to Feed</a>
     </div>

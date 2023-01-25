@@ -95,7 +95,7 @@ exports.postSignup = (req, res, next) => {
   console.log(req.body.occupation)
 
   User.findOne(
-    { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
+    { $or: [{ email: req.body.email }, { name: req.body.name }] },
     (err, existingUser) => {
       if (err) {
         return next(err);
