@@ -23,16 +23,19 @@ module.exports = {
             address: req.body.address,
             image: result.secure_url,
             cloudinaryId: result.public_id,
-            hours: req.body.hours,
+            staffArrival: req.body.staffArrival,
+            estimatedEndTime: req.body.estimatedEndTime,
             date: req.body.date,
             uniform: req.body.uniform,
             caterer: req.body.caterer,
             eventCaptain: req.body.eventCaptain,
             eventChef: req.body.eventChef,
-            waitStaffNeeded: req.body.waitStaffNeeded,
+            waitstaffNeeded: req.body.waitstaffNeeded,
             bartenderNeeded: req.body.bartenderNeeded,
+            chefNeeded: req.body.chefNeeded
           });
           console.log("Event has been added!");
+          console.log(req.body)
           res.redirect("/profile");
         } catch (err) {
           console.log(err);

@@ -45,45 +45,68 @@ module.exports = {
         {_id: req.params.id},
         {
           $push: {staffReserved: {$each: [[req.user.name, req.user.email, req.body.occupationRole]]}}
-        },
-        {
-          $cond: {if: req.body.occupationRole === 'Waitstaff', then: {$inc: {waitstaffNeeded: -1}} && console.log('Success!'), else: {$inc: {waitstaffNeeded: 0}}}
         }
       );
-      console.log(req.body)
+      
+      // Conditional: Decrement Waitstaff/Bartender/Chef property on Event Model based on reservation request value 
+      if(req.body.occupationRole === 'Waitstaff'){
+        await Event.findOneAndUpdate(
+          {_id: req.params.id},
+          {
+            $inc: { waitstaffNeeded: -1 }
+          }
+        )
+      }else if(req.body.occupationRole === 'Bartender'){
+        await Event.findOneAndUpdate(
+          {_id: req.params.id},
+          {
+            $inc: { bartenderNeeded: -1 }
+          }
+        )
+      }else if(req.body.occupationRole === 'Chef'){
+        await Event.findOneAndUpdate(
+          {_id: req.params.id},
+          {
+            $inc: { chefNeeded: -1 }
+          }
+        )
+      }
+
+      console.log(req.body.occupationRole)
       console.log(`Reservation has been made for ${req.user.name}.`);
       res.redirect(`/events/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }
   },
-  createEvent: async (req, res) => {
-      try {
-        // Upload image to cloudinary
-        const result = await cloudinary.uploader.upload(req.file.path);
+  // createEvent: async (req, res) => {
+  //     try {
+  //       // Upload image to cloudinary
+  //       const result = await cloudinary.uploader.upload(req.file.path);
   
-        await Event.create({
-          user: req.user.id,
-          eventName: req.body.eventName,
-          address: req.body.address,
-          image: result.secure_url,
-          cloudinaryId: result.public_id,
-          staffArrival: req.body.staffArrival,
-          estimatedEndTime: req.body.estimatedEndTime,
-          date: req.body.date,
-          uniform: req.body.uniform,
-          caterer: req.body.caterer,
-          eventCaptain: req.body.eventCaptain,
-          eventChef: req.body.eventChef,
-          waitstaffNeeded: req.body.waitstaffNeeded,
-          bartenderNeeded: req.body.bartenderNeeded,
-        });
-        console.log("Event has been added!");
-        res.redirect("/profile");
-      } catch (err) {
-        console.log(err);
-      }
-  },
+  //       await Event.create({
+  //         user: req.user.id,
+  //         eventName: req.body.eventName,
+  //         address: req.body.address,
+  //         image: result.secure_url,
+  //         cloudinaryId: result.public_id,
+  //         staffArrival: req.body.staffArrival,
+  //         estimatedEndTime: req.body.estimatedEndTime,
+  //         date: req.body.date,
+  //         uniform: req.body.uniform,
+  //         caterer: req.body.caterer,
+  //         eventCaptain: req.body.eventCaptain,
+  //         eventChef: req.body.eventChef,
+  //         waitstaffNeeded: req.body.waitstaffNeeded,
+  //         bartenderNeeded: req.body.bartenderNeeded,
+  //         chefNeeded: req.body.chefNeeded
+  //       });
+  //       console.log("Event has been added!");
+  //       res.redirect("/profile");
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  // },
   deleteEvent: async (req, res) => {
       try {
         // Find post by id - Make sure that the post exist (Caution using delete method)

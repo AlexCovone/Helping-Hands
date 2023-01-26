@@ -9,7 +9,7 @@
           </div>
           <div class="mt-5">
             <h2>Add an Event</h2>
-            <form action="/events/createEvent" enctype="multipart/form-data" method="POST">
+            <form action="/admin/createEvent" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
                   <label for="eventName" class="form-label">Event Name</label>
                   <input type="text" class="form-control" id="eventName" name="eventName">
@@ -57,6 +57,10 @@
               <div class="mb-3">
                 <label for="bartenderNeeded" class="form-label">Bartender Needed</label>
                 <input type="number" class="form-control" id="bartenderNeeded" name="bartenderNeeded"></input>
+              </div>
+              <div class="mb-3">
+                <label for="chefNeeded" class="form-label">Chef Needed</label>
+                <input type="number" class="form-control" id="chefNeeded" name="chefNeeded"></input>
               </div>
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
             </form>
