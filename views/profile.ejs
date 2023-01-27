@@ -10,11 +10,11 @@
       </div>
       <div class="col-6">
         <ul class="row list-unstyled">
-        <% for(var i=0; i<reservation.length; i++) {%>
+        <% for(var i=0; i<events.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
-            <a href="/events/<%= reservation[i].event._id%>">
-              <h2><%= reservation[i].event.eventName %></h2>
-              <img class="img-fluid" src="<%= reservation[i].event.image%>">
+            <a href="/events/<%= events[i]._id%>">
+              <h2><%= events[i].eventName %></h2>
+              <img class="img-fluid" src="<%= events[i].image%>">
             </a>
           </li>
         <% } %>

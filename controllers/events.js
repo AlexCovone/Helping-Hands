@@ -1,14 +1,22 @@
 const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
 const User = require("../models/User")
-const Reservation = require("../models/Reservation")
-
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const reservation = await Reservation.find({ user: req.user.id }).populate('event');
-      res.render("profile.ejs", { reservation: reservation, user: req.user });
+      // events is all documents in Events collection
+      const events = await Event.find({});
+
+      // Filter through Events collection and loop through staffReserved array property.
+      let matchedEvents = events.filter(event => {
+          for (let i = 0; i < event.staffReserved.length; i++) {
+              if (event.staffReserved[i][0] === req.user.id) {
+                  return event;
+              }
+          }
+      });
+      res.render("profile.ejs", { events: matchedEvents, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -44,7 +52,7 @@ module.exports = {
       await Event.findOneAndUpdate(
         {_id: req.params.id},
         {
-          $push: {staffReserved: {$each: [[req.user.name, req.user.email, req.body.occupationRole]]}}
+          $push: {staffReserved: {$each: [[req.user.id,req.user.name, req.user.email, req.body.occupationRole]]}}
         }
       );
       
