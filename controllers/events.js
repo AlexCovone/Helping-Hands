@@ -49,12 +49,24 @@ module.exports = {
       )
 
       // Update Event Model to include user name, email, and selected occupation role upon reservation request. Will be formatted inside an array.
-      await Event.findOneAndUpdate(
-        {_id: req.params.id},
-        {
-          $push: {staffReserved: {$each: [[req.user.id,req.user.name, req.user.email, req.body.occupationRole]]}}
-        }
-      );
+      const event = await Event.findOne({_id: req.params.id});
+      const staffReserved = event.staffReserved
+
+      // If req.user.id does not exist in a sub-array, push user's information into staffReserved array indicated user reserved event.
+      if(staffReserved.some(subArr => subArr.includes(req.user.id))){
+        console.log('User has already reserved this event.')
+      }else{
+        await Event.findOneAndUpdate(
+          {_id: req.params.id},
+          {
+            $push: {staffReserved: {$each: [[req.user.id,req.user.name, req.user.email, req.body.occupationRole]]}}
+          },
+          console.log(`Reservation has been made for ${req.user.name}.`)
+        );
+      }
+
+      // Console logs list of all reserved users for specified event
+      console.log(staffReserved)
       
       // Conditional: Decrement Waitstaff/Bartender/Chef property on Event Model based on reservation request value 
       if(req.body.occupationRole === 'Waitstaff'){
@@ -79,9 +91,7 @@ module.exports = {
           }
         )
       }
-
-      console.log(req.body.occupationRole)
-      console.log(`Reservation has been made for ${req.user.name}.`);
+      
       res.redirect(`/events/${req.params.id}`);
     } catch (err) {
       console.log(err);
