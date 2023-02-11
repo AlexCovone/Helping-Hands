@@ -1,6 +1,15 @@
 <%- include('partials/header') -%>
 <div class="container">
   <div class="row justify-content-center mt-5">
+    <% if (message.error) { %>
+      <div class="alert alert-danger">
+        <%= user.name %> has already reserved this event.
+      </div>
+    <% } else if(message.success) { %>
+      <div class="alert alert-success">
+        Reservation for <%= user.name %> has been successful.
+      </div>
+    <% } %>
     <div class="col-6">
       <h2><%= event.eventName %></h2>
       <img class="img-fluid" src="<%= event.image%>" />

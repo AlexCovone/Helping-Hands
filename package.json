@@ -28,7 +28,6 @@
     "passport-local": "^1.0.0",
     "validator": "^13.6.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexCovone/Helping-Hands.git"
