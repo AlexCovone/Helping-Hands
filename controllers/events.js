@@ -33,6 +33,7 @@ module.exports = {
       try {
       const event = await Event.findById(req.params.id);
       const message = req.flash()
+      console.log(message)
       res.render("event.ejs", { event: event, user: req.user, message: message });
       } catch (err) {
       console.log(err);
@@ -40,63 +41,74 @@ module.exports = {
   },
   reserveEvent: async (req, res) => {
     try {
-
-      // Update User Model to include event ID in eventsReserved property
-      await User.findOneAndUpdate(
-        {_id: req.user.id}, 
-        {
-          $push: {eventsReserved: req.params.id}
-        }
-      )
-
-      // Update Event Model to include user name, email, and selected occupation role upon reservation request. Will be formatted inside an array.
-      const event = await Event.findOne({_id: req.params.id});
-      const staffReserved = event.staffReserved
-
-      // If req.user.id does not exist in a sub-array, push user's information into staffReserved array indicated user reserved event.
-      if(staffReserved.some(subArr => subArr.includes(req.user.id))){
+      console.log(req.body)
+      const event = await Event.findOne({ _id: req.params.id });
+      const staffReserved = event.staffReserved;
+  
+      // Checks if user ID is included in staffReserved property in Events model.
+      if (staffReserved.some(subArr => subArr.includes(req.user.id))) {
         req.flash("error", `${req.user.name} has already reserved this event.`);
-      }else{
-        await Event.findOneAndUpdate(
-          {_id: req.params.id},
-          {
-            $push: {staffReserved: {$each: [[req.user.id,req.user.name, req.user.email, req.body.occupationRole]]}}
-          }
-        );
-
-        req.flash("success", `Reservation has been made for ${req.user.name}.`);
+        return res.redirect(`/events/${req.params.id}`);
       }
-      
-      // Conditional: Decrement Waitstaff/Bartender/Chef property on Event Model based on reservation request value 
-      if(req.body.occupationRole === 'Waitstaff'){
-        await Event.findOneAndUpdate(
-          {_id: req.params.id},
-          {
-            $inc: { waitstaffNeeded: -1 }
-          }
-        )
-      }else if(req.body.occupationRole === 'Bartender'){
-        await Event.findOneAndUpdate(
-          {_id: req.params.id},
-          {
-            $inc: { bartenderNeeded: -1 }
-          }
-        )
-      }else if(req.body.occupationRole === 'Chef'){
-        await Event.findOneAndUpdate(
-          {_id: req.params.id},
-          {
-            $inc: { chefNeeded: -1 }
-          }
-        )
+  
+      // Request role by user
+      const occupationRole = req.body.occupationRole;
+
+      // Define object that maps occupation roles to corresponding property in Event model
+      // req.body.occupationRole = 'Waitstaff' || 'Bartender' || 'Chef'
+      const neededRoles = {
+        "Waitstaff": "waitstaffNeeded",
+        "Bartender": "bartenderNeeded",
+        "Chef": "chefNeeded"
+      };
+
+      // Get corresponding object property name from req.body.occupationRole
+      // Ex: 'Waitstaff' => 'waitstaffNeeded'
+      const roleNeeded = neededRoles[occupationRole];
+
+      // Number of spots left for selected occupation role
+      const spotsLeft = event[roleNeeded];
+  
+      if (spotsLeft <= 0) {
+        req.flash("error", `${occupationRole}s for this event is full.`);
+        return res.redirect(`/events/${req.params.id}`);
       }
 
+      // If spotsLeft > 0, trigger below:
+
+      // Populate event into eventsReserved property in User model
+      await User.findOneAndUpdate(
+        { _id: req.user.id },
+        { $push: { eventsReserved: req.params.id } }
+      );
+  
+      // Decrement number of spots left for selected occupation role in Event model
+      await Event.findOneAndUpdate(
+        { _id: req.params.id },
+        { $inc: { [roleNeeded]: -1 } },
+        console.log(`${occupationRole} -1`)
+      );
+  
+      // Add user's id, name, email, and selected occupation role to staffReserved property in Events model
+      await Event.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $push: {
+            staffReserved: {
+              $each: [
+                [req.user.id, req.user.name, req.user.email, occupationRole]
+              ]
+            }
+          }
+        }
+      );
+  
+      req.flash("success", `Reservation has been made for ${req.user.name}.`);
       return res.redirect(`/events/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }
   },
-
   deleteEvent: async (req, res) => {
       try {
         // Find post by id - Make sure that the post exist (Caution using delete method)
