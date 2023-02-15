@@ -3,11 +3,11 @@
   <div class="row justify-content-center mt-5">
     <% if (message.error) { %>
       <div class="alert alert-danger">
-        <%= message.error[0] %>
+        <%= message.error %>
       </div>
     <% } else if(message.success) { %>
       <div class="alert alert-success">
-        Reservation for <%= user.name %> has been successful.
+        <%= message.success %>
       </div>
     <% } %>
     <div class="col-6">
