@@ -10,6 +10,13 @@
         <%= message.success %>
       </div>
     <% } %>
+
+    <% if (event.bartenderNeeded === 0 && event.waitstaffNeeded === 0 && event.chefNeeded === 0) { %>
+      <div class="alert alert-danger">
+        <h1>All requested staff positions have been occupied.</h1>
+      </div>
+    <% } %>
+ 
     <div class="col-6">
       <h2><%= event.eventName %></h2>
       <img class="img-fluid" src="<%= event.image%>" />

@@ -7,6 +7,18 @@
               <p><strong>Email</strong>: <%= user.email %></p>
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
+
+          <!-- NOTIFY USERS OF NEW EVENT BUTTON -->
+          <div class="mt-5">
+            <form action="/admin/textUsers" method="POST">
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary" value="Upload">Notify Users of New Event</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- ADD NEW EVENT FORM -->
+        </div>
           <div class="mt-5">
             <h2>Add an Event</h2>
             <form action="/admin/createEvent" enctype="multipart/form-data" method="POST">

@@ -93,12 +93,9 @@ module.exports = {
       await Event.findOneAndUpdate(
         { _id: req.params.id },
         {
-          $push: {
-            staffReserved: {
-              $each: [
-                [req.user.id, req.user.name, req.user.email, occupationRole]
-              ]
-            }
+          $push: 
+          {
+            staffReserved: {$each: [[req.user.id, req.user.name, req.user.email, occupationRole]]}
           }
         }
       );

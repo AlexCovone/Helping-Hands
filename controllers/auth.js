@@ -88,6 +88,7 @@ exports.postSignup = (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
+    phoneNumber: req.body.phoneNumber,
     occupation: req.body.occupation
   });
 

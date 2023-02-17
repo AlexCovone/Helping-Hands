@@ -2,6 +2,12 @@ const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
 const Comment = require("../models/Comment");
 
+// Twilio API
+require("dotenv").config({ path: "./config/.env" });
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const phoneNumber = process.env.TWILIO_PHONE_NUMBER;
+
 
 module.exports = {
     getAdminDash: async (req, res) => {
@@ -40,6 +46,22 @@ module.exports = {
         } catch (err) {
           console.log(err);
         }
+    },
+    textUsers: async (req, res) => {
+      try{
+        const client = require('twilio')(accountSid, authToken);
+
+        const message = await client.messages.create({
+            body: 'A new event has just been posted. Visit Helping-Hands to reserve your role.',
+            to: [+12345678987, +12345678986], // Text this number (Loop through user's phone number property to access all user's who registered their phone numbers with updates)
+            from: phoneNumber, // From a valid Twilio number
+        })
+        
+        console.log(message.sid)
+        res.redirect("/admin")
+      } catch (err) {
+        console.log(err)
+      }
     },
     deleteEvent: async (req, res) => {
         try {

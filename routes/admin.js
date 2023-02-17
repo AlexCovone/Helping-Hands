@@ -12,7 +12,11 @@ router.get('/', ensureAuth, authRole('Admin'), adminController.getAdminDash);
 // @desc      Create Event on Admin Dashboard
 // @route     POST /admin/createEvent
 
-router.post("/createEvent", upload.single("file"), adminController.createEvent);
+router.post("/createEvent", ensureAuth, upload.single("file"), adminController.createEvent);
+
+// @desc      Notify users with phone numbers via sms that a new event has been posted
+// @route     POST /admin/textUsers
+router.post("/textUsers", ensureAuth, adminController.textUsers);
 
 
 module.exports = router;
