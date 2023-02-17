@@ -1,8 +1,6 @@
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 
-const validator = require('validator');
-
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -12,15 +10,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     unique: true
   },
-  // Need to display error message to user
   phoneNumber: {
     type: String,
-    validate: {
-      validator: function(v) {
-        return v === null || v === '' || (validator.isMobilePhone(v, 'en-US') && v.match(/^\d{10}$/) !== null);
-      },
-      message: 'Invalid phone number format. Must be in the format 9141234567.'
-    }
+    unique: true,
+    default: ''
   },
   role: {
     type: String,
