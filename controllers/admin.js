@@ -50,21 +50,23 @@ module.exports = {
     },
     textUsers: async (req, res) => {
       try{
-        const client = require('twilio')(accountSid, authToken);
-
         const users = await User.find({})
         const phoneNumbers = users.map(user => user.phoneNumber)
 
         const validPhoneNumbers = phoneNumbers.filter(number => number.length === 12)
         const e164Format = validPhoneNumbers.map(element => '+1' + element.split('-').join(''))
 
+        const numberNewEvents = req.body.numberNewEvents
+
+        // Remove console.logs
         console.log(phoneNumbers)
         console.log(validPhoneNumbers)
         console.log(e164Format)
 
+        const client = require('twilio')(accountSid, authToken);
         const messages = await Promise.all(e164Format.map(number => {
           return client.messages.create({
-            body: 'A new event has just been posted. Visit Helping-Hands to reserve your role.',
+            body: `There are ${numberNewEvents} new events that have been posted. Please visit Helping-Hands to reserve your event.`,
             to: number, // Recipient
             from: twilioPhoneNumber, // From a valid Twilio number
           })
