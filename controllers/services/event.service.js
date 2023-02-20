@@ -32,11 +32,7 @@ module.exports = {
         await Event.findOneAndUpdate(
             { _id: eventId},
             {
-                $push: {
-                    staffReserved: {
-                        $each: [[userId, userName, userEmail, occupationRole]]
-                    }
-                }
+                $push: {staffReserved: {$each: [[userId, userName, userEmail, occupationRole]]}}
             }
         )
     }
