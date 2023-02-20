@@ -1,22 +1,12 @@
 const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
 const { checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
-const { addEventToUser } = require("../controllers/services/user.service")
+const { addEventToUser, userReservedEvents } = require("../controllers/services/user.service")
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      // events is all documents in Events collection
-      const events = await Event.find({});
-
-      // Filter through Events collection and loop through staffReserved array property.
-      let matchedEvents = events.filter(event => {
-          for (let i = 0; i < event.staffReserved.length; i++) {
-              if (event.staffReserved[i][0] === req.user.id) {
-                  return event;
-              }
-          }
-      });
+      const matchedEvents = await userReservedEvents(req.user.id)
       res.render("profile.ejs", { events: matchedEvents, user: req.user });
     } catch (err) {
       console.log(err);
