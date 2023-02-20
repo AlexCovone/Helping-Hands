@@ -32,9 +32,8 @@
                     </div>
                     <div class="mb-3">
                       <label for="phone" class="form-label">Phone Number</label>
-                      <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="###-###-####" pattern="\d{3}-\d{3}-\d{4}" title="###-###-####" maxlength="12">
+                      <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="###-###-####" pattern="\d{3}-\d{3}-\d{4}" title="###-###-####" maxlength="10" onblur="addDashes(this)">
                       <div id="phoneNumberHelp" class="form-text">Please fill this out if you would like to receive SMS updates when new events are made available.</div>
-                      <div id="phoneNumberHelp" class="form-text">Ex: ###-###-####</div>
                     </div>
 
                       <!-- Checkbox Roles -->
@@ -60,5 +59,15 @@
             </section>
         </div>
     </main>
+    <script>
+      function addDashes(f) {
+        if (f.value === '') {
+          return; // Exit the function if the input is empty
+        }
+
+        f.value = f.value.replace(/\D/g, '');
+        f.value = f.value.slice(0,3)+"-"+f.value.slice(3,6)+"-"+f.value.slice(6,15);
+      }
+    </script>
 
 <%- include('partials/footer') -%>
