@@ -1,7 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
 const User = require("../models/User");
-const Comment = require("../models/Comment");
+const { formatPhoneNumber } = require("../controllers/services/admin.service")
 
 // Twilio API
 require("dotenv").config({ path: "./config/.env" });
@@ -52,19 +52,12 @@ module.exports = {
       try{
         const users = await User.find({})
         const phoneNumbers = users.map(user => user.phoneNumber)
-
-        const validPhoneNumbers = phoneNumbers.filter(number => number.length === 12)
-        const e164Format = validPhoneNumbers.map(element => '+1' + element.split('-').join(''))
+        const validPhoneNumbers = formatPhoneNumber(phoneNumbers)
 
         const numberNewEvents = req.body.numberNewEvents
 
-        // Remove console.logs
-        console.log(phoneNumbers)
-        console.log(validPhoneNumbers)
-        console.log(e164Format)
-
         const client = require('twilio')(accountSid, authToken);
-        const messages = await Promise.all(e164Format.map(number => {
+        const messages = await Promise.all(validPhoneNumbers.map(number => {
           return client.messages.create({
             body: `There are ${numberNewEvents} new events that have been posted. Please visit Helping-Hands to reserve your event.`,
             to: number, // Recipient
@@ -73,7 +66,6 @@ module.exports = {
         }))
 
         messages.forEach(message => console.log(message.sid))
-
         res.redirect("/admin")
       } catch (err) {
         console.log(err)
