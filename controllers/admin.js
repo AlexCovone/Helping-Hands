@@ -54,18 +54,20 @@ module.exports = {
         const phoneNumbers = users.map(user => user.phoneNumber)
         const validPhoneNumbers = formatPhoneNumber(phoneNumbers)
 
-        const numberNewEvents = req.body.numberNewEvents
+        console.log(validPhoneNumbers)
 
-        const client = require('twilio')(accountSid, authToken);
-        const messages = await Promise.all(validPhoneNumbers.map(number => {
-          return client.messages.create({
-            body: `There are ${numberNewEvents} new events that have been posted. Please visit Helping-Hands to reserve your event.`,
-            to: number, // Recipient
-            from: twilioPhoneNumber, // From a valid Twilio number
-          })
-        }))
+        // const numberNewEvents = req.body.numberNewEvents
 
-        messages.forEach(message => console.log(message.sid))
+        // const client = require('twilio')(accountSid, authToken);
+        // const messages = await Promise.all(validPhoneNumbers.map(number => {
+        //   return client.messages.create({
+        //     body: `There are ${numberNewEvents} new events that have been posted. Please visit Helping-Hands to reserve your event.`,
+        //     to: number, // Recipient
+        //     from: twilioPhoneNumber, // From a valid Twilio number
+        //   })
+        // }))
+
+        // messages.forEach(message => console.log(message.sid))
         res.redirect("/admin")
       } catch (err) {
         console.log(err)
