@@ -78,19 +78,5 @@ module.exports = {
       } catch (err) {
         console.log(err)
       }
-    },
-    deleteEvent: async (req, res) => {
-        try {
-          // Find post by id - Make sure that the post exist (Caution using delete method)
-          let event = await Event.findById({ _id: req.params.id });
-          // Delete image from cloudinary
-          await cloudinary.uploader.destroy(event.cloudinaryId);
-          // Delete post from db
-          await Event.remove({ _id: req.params.id });
-          console.log("Deleted Event");
-          res.redirect("/profile");
-        } catch (err) {
-          res.redirect("/profile");
-        }
-      },
+    }
 }

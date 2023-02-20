@@ -6,13 +6,6 @@ module.exports = {
       res.redirect("/");
     }
   },
-  ensureGuest: function (req, res, next) {
-    if (!req.isAuthenticated()) {
-      return next();
-    } else {
-      res.redirect("/feed");
-    }
-  },
   authRole: function (role){
     return (req, res, next) => {
       if(req.user.role !== role){

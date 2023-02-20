@@ -1,55 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
-const User = require("../models/User");
-
-// Checks if userId is in staffReserved property
-const checkUserReserved = (staffReserved, userId) => {
-  return staffReserved.some(subArr => subArr.includes(userId))
-}
-
-// Define object that maps the occupation roles to corresponding property in Event model
-// Get corresponding object property name from occupationRole (req.body.occupationRole)
-// Ex: 'Waitstaff => 'waitstaffNeeded'
-const getRoleNeeded = (occupationRole) => {
-  const neededRoles = {
-    'Waitstaff': 'waitstaffNeeded',
-    'Bartender': 'bartenderNeeded',
-    'Chef': 'chefNeeded'
-  }
-  
-  return neededRoles[occupationRole]
-}
-
-// Find appropriate user and push eventId onto eventReserved property
-const addEventToUser = async (userId, eventId) => {
-  await User.findOneAndUpdate(
-    { _id: userId},
-    { $push: { eventReserved: eventId } }
-  )
-}
-
-// Decrement appropriate role upon request (-1)
-const decreaseSpotsLeft = async (eventId, roleNeeded) => {
-  await Event.findOneAndUpdate(
-    { _id: eventId },
-    { $inc: { [roleNeeded]: - 1} },
-    console.log(`${roleNeeded} -1.`)
-  )
-}
-
-// Push user information onto staffReserved property in Event model
-const addStaffReserved = async (eventId, userId, userName, userEmail, occupationRole) => {
-  await Event.findOneAndUpdate(
-    { _id: eventId },
-    {
-      $push: {
-        staffReserved: {
-          $each: [[userId, userName, userEmail, occupationRole]]
-        }
-      }
-    }
-  )
-}
+const { checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../services/event.service");
+const { addEventToUser } = require("../services/user.service")
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -90,7 +42,6 @@ module.exports = {
   },
   reserveEvent: async (req, res) => {
     try {
-      console.log(req.body)
       const event = await Event.findOne({ _id: req.params.id });
       const staffReserved = event.staffReserved;
 
@@ -116,9 +67,12 @@ module.exports = {
       }
 
       // If spotsLeft > 0, trigger below:
-      await addEventToUser(req.user.id, req.params.id);
-      await decreaseSpotsLeft(req.params.id, roleNeeded);
-      await addStaffReserved(req.params.id, req.user.id, req.user.name, req.user.email, occupationRole);
+      // Use Promise.all to allow all three async operations to be executed concurrently - want all to fail if one fails
+      await Promise.all([
+        await addEventToUser(req.user.id, req.params.id),
+        await decreaseSpotsLeft(req.params.id, roleNeeded),
+        await addStaffReserved(req.params.id, req.user.id, req.user.name, req.user.email, occupationRole)
+      ])
 
       req.flash("success", `Reservation has been made for ${req.user.name}.`)
       return res.redirect(`/events/${req.params.id}`);
