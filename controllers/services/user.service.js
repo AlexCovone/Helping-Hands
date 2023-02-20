@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require("../../models/User");
 
 module.exports = {
 // Find appropriate user and push eventId onto eventReserved property

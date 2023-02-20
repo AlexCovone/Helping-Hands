@@ -1,7 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
-const { checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../services/event.service");
-const { addEventToUser } = require("../services/user.service")
+const { checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
+const { addEventToUser } = require("../controllers/services/user.service")
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -87,7 +87,7 @@ module.exports = {
         // Delete image from cloudinary
         await cloudinary.uploader.destroy(event.cloudinaryId);
         // Delete post from db
-        await Event.remove({ _id: req.params.id });
+        await Event.deleteOne({ _id: req.params.id });
         console.log("Deleted Event");
         res.redirect("/profile");
       } catch (err) {
