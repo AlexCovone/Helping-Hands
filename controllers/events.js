@@ -1,12 +1,12 @@
 const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
 const { checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
-const { addEventToUser, userReservedEvents } = require("../controllers/services/user.service")
+const { addEventToUser, filterEventsByUser } = require("../controllers/services/user.service")
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const matchedEvents = await userReservedEvents(req.user.id)
+      const matchedEvents = await filterEventsByUser(req.user.id)
       res.render("profile.ejs", { events: matchedEvents, user: req.user });
     } catch (err) {
       console.log(err);

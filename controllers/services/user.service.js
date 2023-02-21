@@ -9,7 +9,7 @@ module.exports = {
             { $push: { eventReserved: eventId } }
         )
     },
-    userReservedEvents: async (userId) => {
+    filterEventsByUser: async (userId) => {
         const events = await Event.find();
 
         // Filter through Events collection and loop through staffReserved property
