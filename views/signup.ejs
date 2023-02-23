@@ -1,65 +1,4 @@
 <%- include('partials/indexHeader') -%>
-    <!-- <main class="container">
-        <div class="row justify-content-center">
-            <section class="col-6 mt-5">
-                <% if (locals.messages.errors) { %>
-                    <% messages.errors.forEach( el => { %>
-                        <div class="alert alert-danger"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
-                <% if (locals.messages.info) { %>
-                    <% messages.info.forEach( el => { %>
-                        <div class="alert alert-info"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
-                <form action="/signup" method="POST">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="name" name="name">
-                      </div>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="johndoe@gmail.com">
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                    </div>
-                    <div class="mb-3">
-                      <label for="phone" class="form-label">Phone Number</label>
-                      <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="###-###-####" pattern="\d{3}-\d{3}-\d{4}" title="###-###-####" maxlength="10" onblur="addDashes(this)">
-                      <div id="phoneNumberHelp" class="form-text">Please fill this out if you would like to receive SMS updates when new events are made available.</div>
-                    </div> -->
-
-                      <!-- Checkbox Roles -->
-                      <!-- <h3>Occupation</h3>
-                      <div id="occupationHelp" class="form-text">Please select the role(s) that apply to you.</div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="occupation" value="Waitstaff">
-                        <label class="form-check-label" for="inlineCheckbox1">Waitstaff</label>
-                      </div>
-
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="occupation" value="Bartender">
-                        <label class="form-check-label" for="inlineCheckbox2">Bartender</label>
-                      </div>
-
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="occupation" value="Chef">
-                        <label class="form-check-label" for="inlineCheckbox3">Chef</label>
-                      </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-            </section>
-        </div>
-    </main> -->
-
     <!-- NEED TO UPDATE ERROR MESSAGES FORMAT - Error color/spacing/margin -->
     <% if (locals.messages.errors) { %>
       <% messages.errors.forEach( el => { %>
@@ -143,7 +82,6 @@
       </div>
     </main>
 
-    
     <script>
       function addDashes(f) {
         if (f.value === '') {
