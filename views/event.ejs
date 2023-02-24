@@ -1,55 +1,69 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row justify-content-center mt-5">
+<div class="container mx-auto my-10">
+
+    <!-- RESERVATION ERROR/SUCCESS MESSAGE -->
+    <div class="border border-red-500 border-3">
     <% if (message.error) { %>
-      <div class="alert alert-danger">
-        <%= message.error %>
+      <div class="alert alert-error shadow-lg mb-5">
+        <div class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span><%= message.error %></span>
+        </div>
+
       </div>
     <% } else if(message.success) { %>
-      <div class="alert alert-success">
-        <%= message.success %>
+      <div class="alert alert-success shadow-lg mb-5">
+        <div class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span><%= message.success %></span>
+        </div>
       </div>
     <% } %>
 
     <% if (event.bartenderNeeded === 0 && event.waitstaffNeeded === 0 && event.chefNeeded === 0) { %>
-      <div class="alert alert-danger">
-        <h1>All requested staff positions have been occupied.</h1>
+      <div class="alert alert-info shadow-">
+        <div class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <h2>All required reservations for this event have been filled.</h2>
+        </div>
       </div>
     <% } %>
- 
-    <div class="col-6">
-      <h2><%= event.eventName %></h2>
-      <img class="img-fluid" src="<%= event.image%>" />
-      <div class="row justify-content-between">
-        <%if(user.role === 'Admin'){ %>
-        <form
-          action="/events/deleteEvent/<%= event.id %>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
-        </form>
-        <%}%>
-      </div>
     </div>
-    <div class="col-3 mt-5">
-      <p>Staff Arrival: <%= event.staffArrival %></p>
-      <p>Estimated End Time: <%= event.estimatedEndTime %></p>
-      <p>Address: <%= event.address %></p>
-      <p>Date: <%= event.date.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) %></p>
-      <p>Uniform: <%= event.uniform %></p>
+    <!-- END RESERVATION ERROR/SUCCESS MESSAGE -->
+    
+    <img class="img-fluid w-auto h-auto border border-red-500 border-3 mt-5" src="<%= event.image%>" alt="Event Map Image"/>
+
+    <div class="flex flex-wrap">
+
+      <div class="w-full md:w-1/2 my-5 border border-red-500 border-3"">
+        <h2 class="text-3xl font-semibold"><%= event.eventName %></h2>
+        <h3 class="text-xl mt-2">Address: <%= event.address %></h3>
+        <h3 class="text-xl mt-2">Date: <%= event.date.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) %></h3>
+        <h3 class="text-xl mt-2">Estimated Hours: <%= event.staffArrival %> - <%= event.estimatedEndTime %></h3>
+      </div>
+
+      <div class="w-full md:w-1/2 flex-auto my-5 border border-red-500 border-3"">
+        <h3 class="text-xl lg:ml-10 xl:ml-10 mt-2">Waitstaff Needed: <%= event.waitstaffNeeded %></h3>
+        <h3 class="text-xl lg:ml-10 xl:ml-10 mt-2">Bartenders Needed: <%= event.bartenderNeeded %></h3>
+        <h3 class="text-xl lg:ml-10 xl:ml-10 mt-2">Chef Needed: <%= event.chefNeeded %></h3>
+      </div>
+
+    </div>
+
+
+    <div class="mt-5 border border-red-500 border-3">
+      <h4 class="text-lg mt-2">Uniform: <%= event.uniform %></h4>
       <p>Caterer: <%= event.caterer %></p>
       <p>Captain: <%= event.eventCaptain %></p>
       <p>Executive Chef: <%= event.eventChef %></p>
-      <p>Waitstaff Needed: <%= event.waitstaffNeeded %></p>
-      <p>Bartenders Needed: <%= event.bartenderNeeded %></p>
-      <p>Chef Needed: <%= event.chefNeeded %></p>
+      <p></p>
+      <p></p>
     </div>
 
     <!-- Optimize by adding switch statement -->
-    <form action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
+    <form class="border border-red-500 border-3 mt-5" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
       <label for="occupationRole">Choose a Role:</label>
-      <select name="occupationRole" id="occupationSelection">
+      <select class="select select-primary max-w-xs" name="occupationRole" id="occupationSelection">
         <%if(user.occupation.includes('Waitstaff')){ %>
         <option value="Waitstaff">Waitstaff</option>
         <%}%>
@@ -62,9 +76,22 @@
       </select>
       <button class="btn btn-primary" type="submit">Reserve Role</button>
     </form>
+   
+
+    <div class="border border-red-500 border-3 mt-7">
+      <%if(user.role === 'Admin'){ %>
+      <form
+        action="/events/deleteEvent/<%= event.id %>?_method=DELETE"
+        method="POST"
+        class="col-3"
+      >
+        <button class="btn btn-error" type="submit">Delete Event</button>
+      </form>
+      <%}%>
+    </div>
 
    <%if(user.role === 'Admin'){ %>
-    <table class="my-3 table table-striped table-bordered">
+    <table class="my-3 table table-striped table-bordered border border-red-500 border-3">
       <tr>
         <th>Name</th>
         <th>Email</th>
@@ -79,9 +106,9 @@
      <% } %>
    <%}%>
     </table>
-</div>
 
-    <div class="col-6 my-5">
+
+    <div class="border border-red-500 border-3 my-5">
       <a class="btn btn-primary" href="/profile">Return to Profile</a>
       <a class="btn btn-primary" href="/events">Return to Feed</a>
     </div>
