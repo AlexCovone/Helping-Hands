@@ -37,14 +37,6 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    eventCaptain: {
-        type: String,
-        required: false
-    },
-    eventChef: {
-        type: String,
-        required: false
-    },
     waitstaffNeeded: {
         type: Number,
         required: true

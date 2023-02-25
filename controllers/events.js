@@ -1,6 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
-const { checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
+const { convertTo12HourFormat, checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
 const { addEventToUser, filterEventsByUser } = require("../controllers/services/user.service")
 
 module.exports = {
@@ -24,8 +24,11 @@ module.exports = {
       try {
       const event = await Event.findById(req.params.id);
       const message = req.flash()
+      const time12StaffArrival = convertTo12HourFormat(event.staffArrival);
+      const time12EstimatedEndTime = convertTo12HourFormat(event.estimatedEndTime);
+    
       console.log(message)
-      res.render("event.ejs", { event: event, user: req.user, message: message });
+      res.render("event.ejs", { event: event, user: req.user, message: message, staffArrival: time12StaffArrival, estimatedEndTime: time12EstimatedEndTime });
       } catch (err) {
       console.log(err);
       }

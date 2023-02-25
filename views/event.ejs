@@ -39,7 +39,7 @@
         <h1 class="text-4xl font-semibold mt-2 mx-3 mb-0"><%= event.eventName %></h1>
         <h3 class="sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Location: <%= event.address %></h3>
         <h2 class="sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Date: <%= event.date.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) %></h2>
-        <h2 class="sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Estimated Hours: <%= event.staffArrival %> - <%= event.estimatedEndTime %></h2>
+        <h2 class="sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Estimated Hours: <%= staffArrival %> - <%= estimatedEndTime %></h2>
         <h3 class="sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Hosted by: <%= event.caterer %></h3>
         <h4 class="sm:text-lg md:text-lg lg:text-sm xl:text-xl mx-3">Uniform: <%= event.uniform %></h4>
       </div> 
@@ -54,7 +54,7 @@
             <th class="text-center text-2xl">Staff Needed</th>
           </tr>
           <tr>
-            <td class="text-center text-2xl">WaitStaff</td>
+            <td class="text-center text-2xl">Waitstaff</td>
             <td class="text-center text-2xl"><%= event.waitstaffNeeded %></td>
           </tr>
           <tr>
@@ -68,7 +68,7 @@
 
         </table>
 
-        <div class="grid flex-grow h-20 card bg-base-300 rounded-box sm:place-items-stretch lg:place-items-stretch sm:mt-3 md:mt-0 sm:mx-0 md:mx-0 lg:mx-0 lg:mt-3">
+        <div class="grid flex-grow h-20 card bg-base-300 rounded-box sm:place-items-stretch lg:place-items-stretch mt-3 sm:mx-0 md:mx-0 lg:mx-0">
           <form class="sm:my-auto mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
             <label class="sm:text-xl lg:text-lg" for="occupationRole">Choose a Role: </label>
             <select class="select select-primary max-w-xs text-lg" name="occupationRole" id="occupationSelection">

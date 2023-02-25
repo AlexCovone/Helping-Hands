@@ -2055,14 +2055,6 @@ html {
   margin-top: 1.5rem;
 }
 
-.mt-7 {
-  margin-top: 1.75rem;
-}
-
-.mr-0 {
-  margin-right: 0px;
-}
-
 .flex {
   display: flex;
 }
@@ -2290,20 +2282,12 @@ html {
     margin-bottom: auto;
   }
 
-  .sm\:mt-3 {
-    margin-top: 0.75rem;
-  }
-
   .sm\:max-w-screen-sm {
     max-width: 480px;
   }
 
   .sm\:flex-col {
     flex-direction: column;
-  }
-
-  .sm\:place-content-center {
-    place-content: center;
   }
 
   .sm\:place-content-evenly {
@@ -2336,35 +2320,12 @@ html {
     margin-right: 0px;
   }
 
-  .md\:mx-5 {
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
-  }
-
-  .md\:mx-10 {
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
-  }
-
-  .md\:mx-16 {
-    margin-left: 4rem;
-    margin-right: 4rem;
-  }
-
-  .md\:mt-0 {
-    margin-top: 0px;
-  }
-
   .md\:w-full {
     width: 100%;
   }
 
   .md\:max-w-screen-md {
     max-width: 768px;
-  }
-
-  .md\:place-content-center {
-    place-content: center;
   }
 
   .md\:text-3xl {
@@ -2387,30 +2348,6 @@ html {
   .lg\:mx-auto {
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .lg\:mx-3 {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
-  }
-
-  .lg\:mx-5 {
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
-  }
-
-  .lg\:mx-7 {
-    margin-left: 1.75rem;
-    margin-right: 1.75rem;
-  }
-
-  .lg\:mx-6 {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-  }
-
-  .lg\:mt-3 {
-    margin-top: 0.75rem;
   }
 
   .lg\:ml-6 {

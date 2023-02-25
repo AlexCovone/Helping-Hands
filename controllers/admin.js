@@ -35,8 +35,6 @@ module.exports = {
             date: req.body.date,
             uniform: req.body.uniform,
             caterer: req.body.caterer,
-            eventCaptain: req.body.eventCaptain,
-            eventChef: req.body.eventChef,
             waitstaffNeeded: req.body.waitstaffNeeded,
             bartenderNeeded: req.body.bartenderNeeded,
             chefNeeded: req.body.chefNeeded
