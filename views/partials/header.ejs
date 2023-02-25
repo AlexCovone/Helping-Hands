@@ -14,36 +14,28 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark pb-3 mb-3" style="background-color:rgb(105, 105, 199)">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/events">Helping Hands</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarToggler">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a id="feedlink" class="nav-link" aria-current="page" href="/events">Events</a>
-            </li>
-            <li class="nav-item">
-              <a id="profilelink" class="nav-link" href="/profile">Profile</a>
-            </li>
+    <div class="navbar fixed bg-base-100 top-0 z-50 border border-red-500 border-3">
+      <div class="flex-1">
+        <a class="btn btn-ghost normal-case xs:text-3xl md:text-4xl" href="/events">Helping Hands</a>
+      </div>
+      <div class="flex-none gap-2">
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M18 9.318v1.364c0 .245-.21.445-.47.445H2.47a.444.444 0 0 1-.47-.445v-1.364c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445zm0-4.318v1.363c0 .246-.21.446-.47.446H2.47a.444.444 0 0 1-.47-.446V5c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445zm0 8.635v1.363c0 .245-.21.445-.47.445H2.47a.444.444 0 0 1-.47-.445v-1.363c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445z" clip-rule="evenodd" />
+            </svg>
+          </label>
+          <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <li><a href="/profile" class="text-xl">Profile</a></li>
+            <li><a href="/events" class="text-xl">Events</a></li>
             <%if(user.role === 'Admin'){ %>
-              <li class="nav-item">
-                <a id="adminlink" class="nav-link" href="/admin">Admin</a>
-              </li>
+              <li><a href="/admin" class="text-xl">Admin</a></li>
               <%}%>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-            </li>
+            <li><a href="/logout" class="text-xl">Logout</a></li>
           </ul>
-            <span class="navbar-text">
-              <em>Prioritizing Flexibility and Availability</em>
-            </span>
         </div>
       </div>
-    </nav> -->
+    </div>
   </body>
+
 </html>

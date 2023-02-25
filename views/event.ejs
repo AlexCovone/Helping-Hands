@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<div class="container mx-auto my-10">
+<div class="container mx-auto mt-20 mb-10">
 
     <!-- RESERVATION ERROR/SUCCESS MESSAGE -->
     <div class="border border-red-500 border-3">
@@ -31,11 +31,40 @@
     </div>
     <!-- END RESERVATION ERROR/SUCCESS MESSAGE -->
     
+    <!-- The button to open modal -->
+    <%if(user.role === 'Admin'){ %>
+    <div class="flex justify-end">
+      <label for="my-modal-6" class="btn mt-5 border-red-500 border-3 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <circle cx="10" cy="10" r="2" />
+          <circle cx="4" cy="10" r="2" />
+          <circle cx="16" cy="10" r="2" />
+        </svg>
+      </label>
+      <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+      <div class="modal modal-bottom sm:modal-middle border border-red-500 border-3">
+        <div class="modal-box">
+          <h3 class="font-bold text-lg">Are you certain you want to delete this event?</h3>
+          <p class="py-4">By clicking 'Delete Event', all associated data for this event will be permanently lost and cannot be recovered.</p>
+          <div class="modal-action">
+            <form
+            action="/events/deleteEvent/<%= event.id %>?_method=DELETE"
+            method="POST"
+            class=""
+          >
+            <button class="btn btn-error" type="submit">Delete Event</button>
+          </form>
+            <label for="my-modal-6" class="btn">Close</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%}%>
     
     <img class="img-fluid w-auto h-auto border border-red-500 border-3 mt-5" src="<%= event.image%>" alt="Event Map Image"/>
 
-    <div class="flex flex-col w-full lg:flex-row mt-5">
-      <div class="grid flex-grow h-96 card bg-base-300 rounded-box lg:w-6/12 xl:w-8/12">
+    <div class="flex flex-col w-full lg:flex-row mt-5 z-40">
+      <div class="grid flex-grow h-96 lg:h-auto card bg-base-300 rounded-box lg:w-6/12 xl:w-8/12">
         <h1 class="text-4xl font-semibold mt-2 mx-3 mb-0"><%= event.eventName %></h1>
         <h3 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Location: <%= event.address %></h3>
         <h2 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Date: <%= event.date.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) %></h2>
@@ -68,8 +97,8 @@
 
         </table>
 
-        <div class="grid flex-grow h-24 card bg-base-300 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch mt-3">
-          <form class="xs:my-auto mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
+        <div class="grid flex-grow h-24 sm:h-28 card bg-base-300 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch mt-3">
+          <form class="xs:my-auto sm:mt-3 sm:mb-5 mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
             <label class="xs:hidden sm:block xs:text-sm sm:text-xl lg:text-lg md:ml-1 lg:ml-2" for="occupationRole">Choose a Role </label>
             <select class="select select-primary max-w-xs text-lg" name="occupationRole" id="occupationSelection">
               <%if(user.occupation.includes('Waitstaff')){ %>
@@ -90,23 +119,6 @@
       
     </div>
 
-    <!-- Optimize by adding switch statement -->
-
-    <div class="border border-red-500 border-3 my-5">
-      <div class="flex xs:place-content-between md:place-content-evenly lg:place-content-end w-full xs:flex-wrap sm:flex-nowrap border border-red-500 border-3 my-5">
-        <a class="btn btn-primary sm:w-32" href="/profile">Profile</a>
-        <a class="btn btn-primary sm:w-32 lg:ml-6" href="/events">Events</a>
-        <%if(user.role === 'Admin'){ %>
-        <form
-          action="/events/deleteEvent/<%= event.id %>?_method=DELETE"
-          method="POST"
-          class=""
-        >
-          <button class="btn btn-error sm:mt-0 lg:ml-6" type="submit">Delete Event</button>
-        </form>
-        <%}%>
-      </div>
-    </div>
 
    <%if(user.role === 'Admin'){ %>
     <div class="border border-red-500 border-3 overflow-auto ">
