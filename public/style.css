@@ -565,6 +565,12 @@ html {
   width: 100%;
 }
 
+@media (min-width: 330px) {
+  .container {
+    max-width: 330px;
+  }
+}
+
 @media (min-width: 480px) {
   .container {
     max-width: 480px;
@@ -1977,6 +1983,34 @@ html {
   visibility: collapse;
 }
 
+.static {
+  position: static;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.m-auto {
+  margin: auto;
+}
+
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -2005,6 +2039,11 @@ html {
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }
 
 .mb-0 {
@@ -2055,6 +2094,14 @@ html {
   margin-top: 1.5rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -2065,6 +2112,10 @@ html {
 
 .grid {
   display: grid;
+}
+
+.hidden {
+  display: none;
 }
 
 .h-20 {
@@ -2081,6 +2132,14 @@ html {
 
 .h-auto {
   height: auto;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
+.h-28 {
+  height: 7rem;
 }
 
 .min-h-screen {
@@ -2103,6 +2162,10 @@ html {
   max-width: 28rem;
 }
 
+.max-w-screen-xs {
+  max-width: 330px;
+}
+
 .max-w-sm {
   max-width: 24rem;
 }
@@ -2117,6 +2180,14 @@ html {
 
 .flex-grow {
   flex-grow: 1;
+}
+
+.table-auto {
+  table-layout: auto;
+}
+
+.table-fixed {
+  table-layout: fixed;
 }
 
 .flex-col {
@@ -2135,6 +2206,14 @@ html {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
 }
 
 .border {
@@ -2165,6 +2244,11 @@ html {
   background-color: hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity));
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .stroke-current {
   stroke: currentColor;
 }
@@ -2176,6 +2260,16 @@ html {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .pb-3 {
@@ -2271,6 +2365,75 @@ html {
   color: hsl(var(--pc) / var(--tw-text-opacity));
 }
 
+@media (min-width: 330px) {
+  .xs\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .xs\:my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .xs\:mt-3 {
+    margin-top: 0.75rem;
+  }
+
+  .xs\:block {
+    display: block;
+  }
+
+  .xs\:flex {
+    display: flex;
+  }
+
+  .xs\:hidden {
+    display: none;
+  }
+
+  .xs\:appearance-none {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+  }
+
+  .xs\:flex-col {
+    flex-direction: column;
+  }
+
+  .xs\:flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .xs\:place-content-between {
+    place-content: space-between;
+  }
+
+  .xs\:place-content-evenly {
+    place-content: space-evenly;
+  }
+
+  .xs\:place-content-stretch {
+    place-content: stretch;
+  }
+
+  .xs\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .xs\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .xs\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
 @media (min-width: 480px) {
   .sm\:mx-0 {
     margin-left: 0px;
@@ -2282,12 +2445,40 @@ html {
     margin-bottom: auto;
   }
 
+  .sm\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .sm\:ml-2 {
+    margin-left: 0.5rem;
+  }
+
+  .sm\:block {
+    display: block;
+  }
+
+  .sm\:w-auto {
+    width: auto;
+  }
+
+  .sm\:w-24 {
+    width: 6rem;
+  }
+
+  .sm\:w-32 {
+    width: 8rem;
+  }
+
   .sm\:max-w-screen-sm {
     max-width: 480px;
   }
 
   .sm\:flex-col {
     flex-direction: column;
+  }
+
+  .sm\:flex-nowrap {
+    flex-wrap: nowrap;
   }
 
   .sm\:place-content-evenly {
@@ -2320,12 +2511,20 @@ html {
     margin-right: 0px;
   }
 
+  .md\:ml-1 {
+    margin-left: 0.25rem;
+  }
+
   .md\:w-full {
     width: 100%;
   }
 
   .md\:max-w-screen-md {
     max-width: 768px;
+  }
+
+  .md\:place-content-evenly {
+    place-content: space-evenly;
   }
 
   .md\:text-3xl {
@@ -2352,6 +2551,10 @@ html {
 
   .lg\:ml-6 {
     margin-left: 1.5rem;
+  }
+
+  .lg\:ml-2 {
+    margin-left: 0.5rem;
   }
 
   .lg\:w-6\/12 {

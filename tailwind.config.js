@@ -3,6 +3,7 @@ module.exports = {
   content: ["./views/**/*.ejs"],
   theme: {
     screens: {
+      xs: '330px',
       sm: '480px',
       md: '768px',
       lg: '976px',

@@ -21,7 +21,7 @@
     <% } %>
 
     <% if (event.bartenderNeeded === 0 && event.waitstaffNeeded === 0 && event.chefNeeded === 0) { %>
-      <div class="alert alert-info shadow-lg">
+      <div class="alert alert-info shadow-lg mt-2">
         <div class="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           <h2>All required reservations for this event have been filled.</h2>
@@ -37,40 +37,40 @@
     <div class="flex flex-col w-full lg:flex-row mt-5">
       <div class="grid flex-grow h-96 card bg-base-300 rounded-box lg:w-6/12 xl:w-8/12">
         <h1 class="text-4xl font-semibold mt-2 mx-3 mb-0"><%= event.eventName %></h1>
-        <h3 class="sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Location: <%= event.address %></h3>
-        <h2 class="sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Date: <%= event.date.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) %></h2>
-        <h2 class="sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Estimated Hours: <%= staffArrival %> - <%= estimatedEndTime %></h2>
-        <h3 class="sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Hosted by: <%= event.caterer %></h3>
-        <h4 class="sm:text-lg md:text-lg lg:text-sm xl:text-xl mx-3">Uniform: <%= event.uniform %></h4>
+        <h3 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Location: <%= event.address %></h3>
+        <h2 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Date: <%= event.date.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) %></h2>
+        <h2 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Estimated Hours: <%= staffArrival %> - <%= estimatedEndTime %></h2>
+        <h3 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Hosted by: <%= event.caterer %></h3>
+        <h4 class="xs:text-sm sm:text-lg md:text-lg lg:text-sm xl:text-xl mx-3">Uniform: <%= event.uniform %></h4>
       </div> 
 
       <div class="divider lg:divider-horizontal"></div>
 
-      <div class="flex sm:flex-col lg:flex-col xl:flex-col md:w-full lg:w-6/12 xl:w-4/12">
+      <div class="flex xs:flex-col sm:flex-col lg:flex-col xl:flex-col md:w-full lg:w-6/12 xl:w-4/12">
 
         <table class="mb-3 table table-zebra table-bordered border border-red-500 border-3">
           <tr>
-            <th class="text-center text-2xl">Role</th>
-            <th class="text-center text-2xl">Staff Needed</th>
+            <th class="text-center xs:text-xl sm:text-2xl">Role</th>
+            <th class="text-center xs:text-xl sm:text-2xl">Staff Needed</th>
           </tr>
           <tr>
-            <td class="text-center text-2xl">Waitstaff</td>
-            <td class="text-center text-2xl"><%= event.waitstaffNeeded %></td>
+            <td class="text-center xs:text-xl sm:text-2xl">Waitstaff</td>
+            <td class="text-center xs:text-xl sm:text-2xl"><%= event.waitstaffNeeded %></td>
           </tr>
           <tr>
-            <td class="text-center text-2xl">Bartender</td>
-            <td class="text-center text-2xl"><%= event.bartenderNeeded %></td>
+            <td class="text-center xs:text-xl sm:text-2xl">Bartender</td>
+            <td class="text-center xs:text-xl sm:text-2xl"><%= event.bartenderNeeded %></td>
           </tr>
           <tr>
-            <td class="text-center text-2xl">Chef</td>
-            <td class="text-center text-2xl"><%= event.chefNeeded %></td>
+            <td class="text-center xs:text-xl sm:text-2xl">Chef</td>
+            <td class="text-center xs:text-xl sm:text-2xl"><%= event.chefNeeded %></td>
           </tr>
 
         </table>
 
-        <div class="grid flex-grow h-20 card bg-base-300 rounded-box sm:place-items-stretch lg:place-items-stretch mt-3 sm:mx-0 md:mx-0 lg:mx-0">
-          <form class="sm:my-auto mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
-            <label class="sm:text-xl lg:text-lg" for="occupationRole">Choose a Role: </label>
+        <div class="grid flex-grow h-24 card bg-base-300 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch mt-3">
+          <form class="xs:my-auto mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
+            <label class="xs:hidden sm:block xs:text-sm sm:text-xl lg:text-lg md:ml-1 lg:ml-2" for="occupationRole">Choose a Role </label>
             <select class="select select-primary max-w-xs text-lg" name="occupationRole" id="occupationSelection">
               <%if(user.occupation.includes('Waitstaff')){ %>
               <option value="Waitstaff">Waitstaff</option>
@@ -93,30 +93,30 @@
     <!-- Optimize by adding switch statement -->
 
     <div class="border border-red-500 border-3 my-5">
-      <div class="flex sm:place-content-evenly lg:place-content-end w-full border border-red-500 border-3 my-5">
-        <a class="btn btn-primary" href="/profile">Return to Profile</a>
-        <a class="btn btn-primary lg:ml-6" href="/events">Return to Feed</a>
+      <div class="flex xs:place-content-between md:place-content-evenly lg:place-content-end w-full xs:flex-wrap sm:flex-nowrap border border-red-500 border-3 my-5">
+        <a class="btn btn-primary sm:w-32" href="/profile">Profile</a>
+        <a class="btn btn-primary sm:w-32 lg:ml-6" href="/events">Events</a>
         <%if(user.role === 'Admin'){ %>
         <form
           action="/events/deleteEvent/<%= event.id %>?_method=DELETE"
           method="POST"
-          class="col-3"
+          class=""
         >
-          <button class="btn btn-error lg:ml-6" type="submit">Delete Event</button>
+          <button class="btn btn-error sm:mt-0 lg:ml-6" type="submit">Delete Event</button>
         </form>
         <%}%>
       </div>
     </div>
 
    <%if(user.role === 'Admin'){ %>
-    <div class="border border-red-500 border-3">
-      <table class="my-3 table table-striped table-bordered border border-red-500 border-3">
+    <div class="border border-red-500 border-3 overflow-auto ">
+      <table class="my-3 table table-striped table-bordered border border-red-500 border-3 mx-auto">
         <tr>
           <th>Name</th>
           <th>Email</th>
           <th>Role Reserved</th>
         </tr>
-       <% for(var i=0; i<event.staffReserved.length; i++) {%>
+       <% for(var i = 0; i < event.staffReserved.length; i++) {%>
             <tr>
               <td><%= event.staffReserved[i][1] %></td>
               <td><%= event.staffReserved[i][2] %></td>
