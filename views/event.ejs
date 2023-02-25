@@ -93,53 +93,20 @@
     <!-- Optimize by adding switch statement -->
 
     <div class="border border-red-500 border-3 my-5">
-
-
-      <div class="flex justify-end w-full border border-red-500 border-3 my-5">
-        <a class="btn btn-primary mx-3" href="/profile">Return to Profile</a>
-        <a class="btn btn-primary mx-3" href="/events">Return to Feed</a>
-        
+      <div class="flex sm:place-content-evenly lg:place-content-end w-full border border-red-500 border-3 my-5">
+        <a class="btn btn-primary" href="/profile">Return to Profile</a>
+        <a class="btn btn-primary lg:ml-6" href="/events">Return to Feed</a>
         <%if(user.role === 'Admin'){ %>
         <form
           action="/events/deleteEvent/<%= event.id %>?_method=DELETE"
           method="POST"
           class="col-3"
         >
-          <button class="btn btn-error ml-3" type="submit">Delete Event</button>
+          <button class="btn btn-error lg:ml-6" type="submit">Delete Event</button>
         </form>
         <%}%>
       </div>
     </div>
-      
-
-    <!-- <form class="border border-red-500 border-3 mt-5" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
-      <label for="occupationRole">Choose a Role:</label>
-      <select class="select select-primary max-w-xs" name="occupationRole" id="occupationSelection">
-        <%if(user.occupation.includes('Waitstaff')){ %>
-        <option value="Waitstaff">Waitstaff</option>
-        <%}%>
-        <%if(user.occupation.includes('Bartender')){ %>
-        <option value="Bartender">Bartender</option>
-        <%}%>
-        <%if(user.occupation.includes('Chef')){ %>
-        <option value="Chef">Chef</option>
-        <%}%>
-      </select>
-      <button class="btn btn-primary" type="submit">Reserve Role</button>
-    </form>
-   
-
-    <div class="border border-red-500 border-3 mt-7">
-      <%if(user.role === 'Admin'){ %>
-      <form
-        action="/events/deleteEvent/<%= event.id %>?_method=DELETE"
-        method="POST"
-        class="col-3"
-      >
-        <button class="btn btn-error" type="submit">Delete Event</button>
-      </form>
-      <%}%>
-    </div> -->
 
    <%if(user.role === 'Admin'){ %>
     <div class="border border-red-500 border-3">
@@ -159,8 +126,6 @@
      <%}%>
       </table>
     </div>
-
-
   </div>
 </div>
 
