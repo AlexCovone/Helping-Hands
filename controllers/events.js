@@ -14,8 +14,11 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const events = await Event.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { events: events, user: req.user });
+      const events = await Event.find().sort({ date: "asc" }).lean();
+      const staffArrivalArr = events.map(event => convertTo12HourFormat(event.staffArrival))
+      const estimatedEndTimeArr = events.map(event => convertTo12HourFormat(event.estimatedEndTime))
+
+      res.render("feed.ejs", { events, user: req.user, staffArrivalArr, estimatedEndTimeArr});
     } catch (err) {
       console.log(err);
     }
@@ -28,7 +31,7 @@ module.exports = {
       const time12EstimatedEndTime = convertTo12HourFormat(event.estimatedEndTime);
     
       console.log(message)
-      res.render("event.ejs", { event: event, user: req.user, message: message, staffArrival: time12StaffArrival, estimatedEndTime: time12EstimatedEndTime });
+      res.render("event.ejs", { event, user: req.user, message, staffArrival: time12StaffArrival, estimatedEndTime: time12EstimatedEndTime });
       } catch (err) {
       console.log(err);
       }
