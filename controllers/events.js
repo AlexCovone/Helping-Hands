@@ -24,6 +24,7 @@ module.exports = {
 
       const upcomingEventDetails = (getEventDetails(upcomingEvents))
       const previousEventDetails = (getEventDetails(previousEvents))
+      console.log(previousEventDetails)
 
       res.render("feed.ejs", { events, user: req.user, upcomingEvents: upcomingEventDetails, previousEvents: previousEventDetails });
     } catch (err) {

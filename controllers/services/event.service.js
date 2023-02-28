@@ -19,7 +19,7 @@ module.exports = {
             ]),
             Event.aggregate([
                 { $match: { date: { $lte: new Date()} } },
-                { $sort: { date: 1 } }
+                { $sort: { date: -1 } }
             ])
         ])
         return [upcomingEvents, previousEvents]
