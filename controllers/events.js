@@ -1,7 +1,8 @@
 const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
-const { convertTo12HourFormat, checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
+const { getEventDetails, filterPreviousAndUpcomingEvents, checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
 const { addEventToUser, filterEventsByUser } = require("../controllers/services/user.service")
+const { convertDateToEnUs, convertTo12HourFormat } = require("../controllers/services/helperFunctions")
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -14,11 +15,17 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const events = await Event.find().sort({ date: "asc" }).lean();
-      const staffArrivalArr = events.map(event => convertTo12HourFormat(event.staffArrival))
-      const estimatedEndTimeArr = events.map(event => convertTo12HourFormat(event.estimatedEndTime))
+      // Find all events in Event collection, select only 'date', 'staffArrival', and 'estimatedEndTime' properties 
+      const events = await Event.find().sort({ date: "asc" }).select("_id date staffArrival estimatedEndTime").lean();
+  
+      // Using aggregation pipeline to filter events that have occurred vs events that have not occurred
+      // ! NEED TO SORT PREVIOUS EVENTS ARRAY REVERSE AND RENDER APPROPRIATE DATE AND BUTTON LINK
+      const [upcomingEvents, previousEvents] = await filterPreviousAndUpcomingEvents();
 
-      res.render("feed.ejs", { events, user: req.user, staffArrivalArr, estimatedEndTimeArr});
+      const upcomingEventDetails = (getEventDetails(upcomingEvents))
+      const previousEventDetails = (getEventDetails(previousEvents))
+
+      res.render("feed.ejs", { events, user: req.user, upcomingEvents: upcomingEventDetails, previousEvents: previousEventDetails });
     } catch (err) {
       console.log(err);
     }
@@ -29,9 +36,10 @@ module.exports = {
       const message = req.flash()
       const time12StaffArrival = convertTo12HourFormat(event.staffArrival);
       const time12EstimatedEndTime = convertTo12HourFormat(event.estimatedEndTime);
+      const dateConversion = convertDateToEnUs(event.date)
     
       console.log(message)
-      res.render("event.ejs", { event, user: req.user, message, staffArrival: time12StaffArrival, estimatedEndTime: time12EstimatedEndTime });
+      res.render("event.ejs", { event, user: req.user, message, staffArrival: time12StaffArrival, estimatedEndTime: time12EstimatedEndTime, date: dateConversion });
       } catch (err) {
       console.log(err);
       }

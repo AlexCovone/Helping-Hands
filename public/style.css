@@ -2785,10 +2785,6 @@ html {
   margin-top: 1.5rem;
 }
 
-.inline-block {
-  display: inline-block;
-}
-
 .flex {
   display: flex;
 }
@@ -2821,10 +2817,6 @@ html {
   height: auto;
 }
 
-.h-4 {
-  height: 1rem;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -2851,10 +2843,6 @@ html {
 
 .w-full {
   width: 100%;
-}
-
-.w-4 {
-  width: 1rem;
 }
 
 .max-w-md {
@@ -2908,10 +2896,6 @@ html {
 
 .items-center {
   align-items: center;
-}
-
-.justify-start {
-  justify-content: flex-start;
 }
 
 .justify-end {
@@ -3177,10 +3161,6 @@ html {
     display: block;
   }
 
-  .sm\:flex {
-    display: flex;
-  }
-
   .sm\:h-28 {
     height: 7rem;
   }
@@ -3199,10 +3179,6 @@ html {
 
   .sm\:place-items-stretch {
     place-items: stretch;
-  }
-
-  .sm\:justify-between {
-    justify-content: space-between;
   }
 
   .sm\:text-2xl {

@@ -1,11 +1,28 @@
 const Event = require("../../models/Event");
+const { convertDateToEnUs, convertTo12HourFormat } = require("../services/helperFunctions")
 
 module.exports = {
-    convertTo12HourFormat: (time24) => {
-        const [hours, minutes] = time24.split(':')
-        const date = new Date(0, 0, 0, hours, minutes)
-        const time12 = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-        return time12
+    getEventDetails: (events) => {
+        return events.map(event => {
+            const staffArrival = convertTo12HourFormat(event.staffArrival)
+            const estimatedEndTime = convertTo12HourFormat(event.estimatedEndTime)
+            const date = convertDateToEnUs(event.date)
+            return {...event, staffArrival, estimatedEndTime, date}
+        })
+    },
+
+    filterPreviousAndUpcomingEvents: async () => {
+        const [upcomingEvents, previousEvents] = await Promise.all([
+            Event.aggregate([
+                { $match: { date: { $gte: new Date()} } },
+                { $sort: { date: 1 } }
+            ]),
+            Event.aggregate([
+                { $match: { date: { $lte: new Date()} } },
+                { $sort: { date: 1 } }
+            ])
+        ])
+        return [upcomingEvents, previousEvents]
     },
     
     // Checks if userId is in staffReserved property

@@ -1,50 +1,30 @@
 <%- include('partials/header') -%>
   <div class="container mt-20 mx-auto">
-    <h2 class="text-3xl font-bold mb-4">Hello <%= user.name %>,</h2>
-    <span class="text-xl">Find an Event that fits your Schedule</span>
-
-    <div class="flex flex-wrap mt-5">
-
-        <% for(var i=0; i < events.length; i++) {%>
-          <div class="card w-96 glass m-5">
-            <figure><img src="<%= events[i].image%>" alt="Event Photo"/></figure>
-            <div class="card-body">
-              <h2 class="card-title"><%= events[i].eventName %></h2>
-              <h3><%= events[i].date.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) %></h3>
-
-              <h3><%= staffArrivalArr[i]%> - <%= estimatedEndTimeArr[i] %> </h3>
-              <div class="card-actions justify-end mt-2">
-                <a href="/events/<%= events[i]._id%>" class="btn btn-primary">Learn More</a>
-              </div>
-            </div>
-          </div>
-
-
-        <% } %>
-      </div>
+    <h2 class="text-3xl font-bold mb-4">Hello <%= user.name.split(' ')[0] %>,</h2>
+    <span class="text-xl">Find an event that fits your schedule</span>
 
       <!-- SNAP TO CENTER -->
-      <div class="border-red-500 border-3 flex justify-between">
+      <div class="border-red-500 border-3 flex justify-between mt-10">
         <h1 class="text-3xl font-bold">Upcoming Events</h1>
         <h4 class="font-bold"><a href="#" class="link link-hover">See All</a></h4>
       </div>
 
       <div class="carousel carousel-center rounded-box mt-3">
-        <% for(var i=0; i < events.length; i++) {%>
+        <% for(var i=0; i < upcomingEvents.length; i++) {%>
           <div class="card carousel-item xs:w-80 sm:w-96 glass m-5">
-            <figure><img src="<%= events[i].image%>" alt="Event Photo"/></figure>
+            <figure><img src="<%= upcomingEvents[i].image%>" alt="Event Photo"/></figure>
             <div class="card-body">
-              <% if(events[i].waitstaffNeeded === 0 && events[i].bartenderNeeded === 0 && events[i].chefNeeded === 0) { %>
+              <% if(upcomingEvents[i].waitstaffNeeded === 0 && upcomingEvents[i].bartenderNeeded === 0 && upcomingEvents[i].chefNeeded === 0) { %>
                 <div class="badge badge-error gap-2">
                   Event Full
                 </div>
               <% } %>
-              <h2 class="card-title"><%= events[i].eventName %></h2>
-              <h3><%= events[i].date.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) %></h3>
+              <h2 class="card-title"><%= upcomingEvents[i].eventName %></h2>
+              <h3><%= upcomingEvents[i].date %></h3>
               <div class="flex justify-between">
-                <h3><%= staffArrivalArr[i]%> - <%= estimatedEndTimeArr[i] %> </h3>
+                <h3><%= upcomingEvents[i].staffArrival%> - <%= upcomingEvents[i].estimatedEndTime%> </h3>
                 <div class="card-actions justify-end mt-2">
-                  <a href="/events/<%= events[i]._id%>" class="btn btn-primary">Learn More</a>
+                  <a href="/events/<%= upcomingEvents[i]._id%>" class="btn btn-primary">Learn More</a>
                 </div>
               </div>
 
@@ -58,21 +38,25 @@
       <br>
 
       <!-- SNAP TO CENTER -->
-      <h1 class="text-3xl font-bold">Events</h1>
-      <div class="carousel carousel-center rounded-box">
-        <% for(var i=0; i < events.length; i++) {%>
+      <div class="border-red-500 border-3 flex justify-between">
+        <h1 class="text-3xl font-bold">Previous Events</h1>
+        <h4 class="font-bold"><a href="#" class="link link-hover">See All</a></h4>
+      </div>
+
+      <div class="carousel carousel-center rounded-box mt-3">
+        <% for(var i=0; i < previousEvents.length; i++) {%>
           <div class="card carousel-item xs:w-80 sm:w-96 glass m-5">
-            <figure><img src="<%= events[i].image%>" alt="Event Photo"/></figure>
+            <figure><img src="<%= previousEvents[i].image%>" alt="Event Photo"/></figure>
             <div class="card-body">
-              <% if(events[i].waitstaffNeeded === 0 && events[i].bartenderNeeded === 0 && events[i].chefNeeded === 0) { %>
+              <% if(previousEvents[i].waitstaffNeeded === 0 && previousEvents[i].bartenderNeeded === 0 && previousEvents[i].chefNeeded === 0) { %>
                 <div class="badge badge-error gap-2">
                   Event Full
                 </div>
               <% } %>
-              <h2 class="card-title"><%= events[i].eventName %></h2>
-              <h3><%= events[i].date.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) %></h3>
+              <h2 class="card-title"><%= previousEvents[i].eventName %></h2>
+              <h3><%= previousEvents[i].date %></h3>
 
-              <h3><%= staffArrivalArr[i]%> - <%= estimatedEndTimeArr[i] %> </h3>
+              <h3><%= previousEvents[i].staffArrival %> - <%= previousEvents[i].estimatedEndTime %> </h3>
               <div class="card-actions justify-end mt-2">
                 <a href="/events/<%= events[i]._id%>" class="btn btn-primary">Learn More</a>
               </div>

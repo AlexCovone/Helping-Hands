@@ -67,7 +67,7 @@
       <div class="grid flex-grow h-96 lg:h-auto card bg-base-300 rounded-box lg:w-6/12 xl:w-8/12">
         <h1 class="text-4xl font-semibold mt-2 mx-3 mb-0"><%= event.eventName %></h1>
         <h3 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Location: <%= event.address %></h3>
-        <h2 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Date: <%= event.date.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) %></h2>
+        <h2 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Date: <%= date %></h2>
         <h2 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Estimated Hours: <%= staffArrival %> - <%= estimatedEndTime %></h2>
         <h3 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Hosted by: <%= event.caterer %></h3>
         <h4 class="xs:text-sm sm:text-lg md:text-lg lg:text-sm xl:text-xl mx-3">Uniform: <%= event.uniform %></h4>
