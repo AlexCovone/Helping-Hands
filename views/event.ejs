@@ -25,7 +25,7 @@
       <div class="alert alert-info shadow-lg mt-2">
         <div class="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <h2>All required reservations for this event have been filled.</h2>
+          <h2 class="">All required reservations for this event have been filled.</h2>
         </div>
       </div>
     <% } %>
@@ -36,11 +36,8 @@
     <%if(user.role === 'Admin'){ %>
     <div class="flex justify-end">
       <label for="my-modal-6" class="btn mt-5 border-red-500 border-3 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <circle cx="10" cy="10" r="2" />
-          <circle cx="4" cy="10" r="2" />
-          <circle cx="16" cy="10" r="2" />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
       </label>
       <input type="checkbox" id="my-modal-6" class="modal-toggle" />
       <div class="modal modal-bottom sm:modal-middle border border-red-500 border-3">
@@ -111,7 +108,14 @@
               <option value="Chef">Chef</option>
               <%}%>
             </select>
-            <button class="btn btn-primary" type="submit">Reserve Role</button>
+
+            <% if (Date.now() > event.date) { %>
+              <div class="tooltip" data-tip="Event is Closed">
+                <button class="btn btn-primary" disabled="disabled" type="submit">Reserve Role</button>
+              </div>
+            <% } else { %>
+              <button class="btn btn-primary disabled" type="submit">Reserve Role</button>
+            <% } %>
           </form>
         </div>
 

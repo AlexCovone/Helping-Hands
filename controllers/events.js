@@ -19,12 +19,10 @@ module.exports = {
       const events = await Event.find().sort({ date: "asc" }).select("_id date staffArrival estimatedEndTime").lean();
   
       // Using aggregation pipeline to filter events that have occurred vs events that have not occurred
-      // ! NEED TO SORT PREVIOUS EVENTS ARRAY REVERSE AND RENDER APPROPRIATE DATE AND BUTTON LINK
       const [upcomingEvents, previousEvents] = await filterPreviousAndUpcomingEvents();
 
       const upcomingEventDetails = (getEventDetails(upcomingEvents))
       const previousEventDetails = (getEventDetails(previousEvents))
-      console.log(previousEventDetails)
 
       res.render("feed.ejs", { events, user: req.user, upcomingEvents: upcomingEventDetails, previousEvents: previousEventDetails });
     } catch (err) {
