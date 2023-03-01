@@ -6,10 +6,10 @@
       <!-- SNAP TO CENTER -->
       <div class="border-red-500 border-3 flex justify-between mt-10">
         <h1 class="xs:text-2xl sm:text-3xl font-bold">Upcoming Events</h1>
-        <h4 class="font-bold"><a href="#" class="link link-hover">See All</a></h4>
+        <h4 class="font-bold"><a href="/events/upcomingEvents" class="link link-hover">See All</a></h4>
       </div>
 
-      <div class="carousel carousel-center rounded-box mt-3">
+      <div class="carousel carousel-center rounded-box bg-base-300 -mx-3 mt-5">
         <% for(var i=0; i < upcomingEvents.length; i++) {%>
           <div class="card carousel-item xs:w-80 sm:w-96 glass m-5">
             <figure><img src="<%= upcomingEvents[i].image%>" alt="Event Photo"/></figure>
@@ -43,7 +43,7 @@
         <h4 class="font-bold"><a href="#" class="link link-hover">See All</a></h4>
       </div>
 
-      <div class="carousel carousel-center rounded-box mt-3">
+      <div class="carousel carousel-center rounded-box bg-base-300 -mx-3 mt-5">
         <% for(var i=0; i < previousEvents.length; i++) {%>
           <div class="card carousel-item xs:w-80 sm:w-96 glass m-5">
             <figure><img src="<%= previousEvents[i].image%>" alt="Event Photo"/></figure>
@@ -55,15 +55,12 @@
               <% } %>
               <h2 class="card-title"><%= previousEvents[i].eventName %></h2>
               <h3><%= previousEvents[i].date %></h3>
-
               <h3><%= previousEvents[i].staffArrival %> - <%= previousEvents[i].estimatedEndTime %> </h3>
               <div class="card-actions justify-end mt-2">
                 <a href="/events/<%= previousEvents[i]._id%>" class="btn btn-primary">Learn More</a>
               </div>
             </div>
           </div>
-
-
         <% } %>
       </div>
 
