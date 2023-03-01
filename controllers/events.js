@@ -14,10 +14,7 @@ module.exports = {
     }
   },
   getFeed: async (req, res) => {
-    try {
-      // Find all events in Event collection, select only '_id', 'date', 'staffArrival', and 'estimatedEndTime' properties 
-      const events = await Event.find().sort({ date: "asc" }).select("_id date staffArrival estimatedEndTime").lean();
-  
+    try {  
       // Using aggregation pipeline to filter events that have occurred vs events that have not occurred
 
       const upcomingEvents = await getUpcomingEvents()
@@ -26,7 +23,7 @@ module.exports = {
       const upcomingEventDetails = getEventDetails(upcomingEvents)
       const previousEventDetails = getEventDetails(previousEvents)
 
-      res.render("feed.ejs", { events, user: req.user, upcomingEvents: upcomingEventDetails, previousEvents: previousEventDetails });
+      res.render("feed.ejs", { user: req.user, upcomingEvents: upcomingEventDetails, previousEvents: previousEventDetails });
     } catch (err) {
       console.log(err);
     }
@@ -38,7 +35,7 @@ module.exports = {
       const time12StaffArrival = convertTo12HourFormat(event.staffArrival);
       const time12EstimatedEndTime = convertTo12HourFormat(event.estimatedEndTime);
       const dateConversion = convertDateToEnUs(event.date)
-    
+      
       console.log(message)
       res.render("event.ejs", { event, user: req.user, message, staffArrival: time12StaffArrival, estimatedEndTime: time12EstimatedEndTime, date: dateConversion });
     } catch (err) {
@@ -47,13 +44,13 @@ module.exports = {
   },
   getAllUpcomingEvents: async (req, res) => {
     try {
-      const events = await Event.find().sort({ date: "asc" }).lean();
+      // DO NOT NEED - REMOVE events and events from render
+      // const events = await Event.find().sort({ date: "asc" }).lean();
 
       const allUpcomingEvents = getUpcomingEvents()
       const formattedUpcomingEvents = getEventDetails(allUpcomingEvents)
 
-
-      res.render("allUpcomingEvents.ejs", { events, user: req.user, upcomingEvents: formattedUpcomingEvents });
+      res.render("allUpcomingEvents.ejs", { user: req.user, upcomingEvents: formattedUpcomingEvents });
     } catch (err) {
       console.log(err);
     }
