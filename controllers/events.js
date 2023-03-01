@@ -1,6 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
-const { getEventDetails, filterPreviousAndUpcomingEvents, checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
+const { getUpcomingEvents, getPreviousEvents, getEventDetails, checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
 const { addEventToUser, filterEventsByUser } = require("../controllers/services/user.service")
 const { convertDateToEnUs, convertTo12HourFormat } = require("../controllers/services/helperFunctions")
 
@@ -15,14 +15,16 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      // Find all events in Event collection, select only 'date', 'staffArrival', and 'estimatedEndTime' properties 
+      // Find all events in Event collection, select only '_id', 'date', 'staffArrival', and 'estimatedEndTime' properties 
       const events = await Event.find().sort({ date: "asc" }).select("_id date staffArrival estimatedEndTime").lean();
   
       // Using aggregation pipeline to filter events that have occurred vs events that have not occurred
-      const [upcomingEvents, previousEvents] = await filterPreviousAndUpcomingEvents();
 
-      const upcomingEventDetails = (getEventDetails(upcomingEvents))
-      const previousEventDetails = (getEventDetails(previousEvents))
+      const upcomingEvents = await getUpcomingEvents()
+      const previousEvents = await getPreviousEvents()
+
+      const upcomingEventDetails = getEventDetails(upcomingEvents)
+      const previousEventDetails = getEventDetails(previousEvents)
 
       res.render("feed.ejs", { events, user: req.user, upcomingEvents: upcomingEventDetails, previousEvents: previousEventDetails });
     } catch (err) {
@@ -30,7 +32,7 @@ module.exports = {
     }
   },
   getEvent: async (req, res) => {
-      try {
+    try {
       const event = await Event.findById(req.params.id);
       const message = req.flash()
       const time12StaffArrival = convertTo12HourFormat(event.staffArrival);
@@ -39,9 +41,22 @@ module.exports = {
     
       console.log(message)
       res.render("event.ejs", { event, user: req.user, message, staffArrival: time12StaffArrival, estimatedEndTime: time12EstimatedEndTime, date: dateConversion });
-      } catch (err) {
+    } catch (err) {
       console.log(err);
-      }
+    }
+  },
+  getAllUpcomingEvents: async (req, res) => {
+    try {
+      const events = await Event.find().sort({ date: "asc" }).lean();
+
+      const allUpcomingEvents = getUpcomingEvents()
+      const formattedUpcomingEvents = getEventDetails(allUpcomingEvents)
+
+
+      res.render("allUpcomingEvents.ejs", { events, user: req.user, upcomingEvents: formattedUpcomingEvents });
+    } catch (err) {
+      console.log(err);
+    }
   },
   reserveEvent: async (req, res) => {
     try {
