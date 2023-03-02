@@ -1,81 +1,85 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row my-5">
-      <div class="col-6">
-          <div>
-              <p><strong>User Name</strong>: <%= user.name %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          </div>
+<div class="container mt-20 mx-auto">
+    <!-- SNAP TO CENTER -->
+    <div>
+      <h1 class="xs:text-2xl sm:text-3xl font-bold mt-10 ml-3">Admin Dashboard</h1>
+    </div>
 
-          <!-- NOTIFY USERS OF NEW EVENT BUTTON -->
-          <div class="mt-5">
-            <form action="/admin/textUsers" method="POST">
-              <div class="mb-3">
-                <label for="newEvents">Notify Staff of New Events</label>
-                <input type="number" class="form-control mb-3" id="numberNewEvents" name="numberNewEvents">
-                <button type="submit" class="btn btn-primary" value="Upload">Send Text</button>
-              </div>
-            </form>
-          </div>
 
-          <!-- ADD NEW EVENT FORM -->
+    <div class="card xs:w-80 sm:w-96 bg-neutral text-neutral-content  xs:mx-auto md:mx-0 my-5">
+      <div class="card-body items-center text-center">
+        <h2 class="card-title">Notify Staff of New Events</h2>
+        <form action="/admin/textUsers" method="POST">
+          <div class="mt-5 sm:inline-flex">
+            <input type="number" class="form-control input input-bordered input-primary xs:w-52 sm:w-56 md:w-auto" placeholder="Number of New Events" id="numberNewEvents" name="numberNewEvents">
+            <button type="submit" class="btn btn-primary xs:mt-3 sm:mt-0 sm:ml-2" value="Upload">Send Text</button>
+          </div>
+        </form>
+        <div class="card-actions justify-end">
         </div>
-          <div class="mt-5">
-            <h2>Add an Event</h2>
-            <form action="/admin/createEvent" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="eventName" class="form-label">Event Name</label>
-                  <input type="text" class="form-control" id="eventName" name="eventName">
-              </div>
-              <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <textarea class="form-control" id="Address" name="address"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-              </div>
-              <div class="mb-3">
-                <label for="staffArrival" class="form-label">Staff Arrival</label>
-                <input type="time" id="staffArrival" name="staffArrival" step="300" required>
-              </div>
-              <div class="mb-3">
-                <label for="endTime" class="form-label">Estimated End Time</label>
-                <input type="time" id="endTime" name="estimatedEndTime" step="300" required>
-              </div>
-              <div class="mb-3">
-                <label for="startDate" class="form-label" id="start-date">Date</label>
-                <input type="date" name="date" value="">
-              </div>
-              <div class="mb-3">
-                <label for="uniform" class="form-label">Uniform</label>
-                <textarea class="form-control" id="Uniform" name="uniform"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="caterer" class="form-label">Caterer</label>
-                <input class="form-control" id="Caterer" name="caterer"></input>
-              </div>
-              <div class="mb-3">
-                <label for="waitStaffNeeded" class="form-label">Waitstaff Needed</label>
-                <input type="number" class="form-control" id="waitstaffNeeded" name="waitstaffNeeded"></input>
-              </div>
-              <div class="mb-3">
-                <label for="bartenderNeeded" class="form-label">Bartender Needed</label>
-                <input type="number" class="form-control" id="bartenderNeeded" name="bartenderNeeded"></input>
-              </div>
-              <div class="mb-3">
-                <label for="chefNeeded" class="form-label">Chef Needed</label>
-                <input type="number" class="form-control" id="chefNeeded" name="chefNeeded"></input>
-              </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-            </form>
-          </div>
       </div>
+    </div>
+
+
+    <div class="card xs:w-80 sm:w-96 bg-neutral text-neutral-content xs:mx-auto md:mx-0 my-5">
+      <div class="card-body items-center text-center">
+        <h2 class="card-title">Create New Event</h2>
+        <form action="/admin/createEvent" enctype="multipart/form-data" method="POST">
+          <div class="mb-3">
+              <label for="eventName" class="form-label">Event Name</label>
+              <input type="text" class="form-control input input-bordered input-primary" id="eventName" name="eventName">
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input class="form-control input input-bordered input-primary" id="Address" name="address"></input>
+          </div>
+          <div class="mb-3">
+            <label for="imgUpload" class="form-label">Image</label>
+            <input type="file" class="file-input file-input-bordered file-input-primary file-input-sm w-full max-w-xs" id="imageUpload" name="file">
+          </div>
+          <div class="mb-3">
+            <label for="staffArrival" class="form-label">Staff Arrival</label>
+            <input type="time" id="staffArrival" name="staffArrival" step="300" required>
+          </div>
+          <div class="mb-3">
+            <label for="endTime" class="form-label">Estimated End Time</label>
+            <input type="time" id="endTime" name="estimatedEndTime" step="300" required>
+          </div>
+          <div class="mb-3">
+            <label for="startDate" class="form-label" id="start-date">Date</label>
+            <input type="date" name="date" value="">
+          </div>
+          <div class="mb-3">
+            <label for="uniform" class="form-label">Uniform</label>
+            <textarea class="textarea textarea-bordered textarea-xs w-full max-w-xs textarea-primary" id="Uniform" name="uniform"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="caterer" class="form-label">Caterer</label>
+            <input class="form-control input input-bordered input-primary" id="Caterer" name="caterer"></input>
+          </div>
+          <div class="mb-3">
+            <label for="waitStaffNeeded" class="form-label">Waitstaff Needed</label>
+            <input type="number" class="form-control input input-bordered input-primary" id="waitstaffNeeded" name="waitstaffNeeded"></input>
+          </div>
+          <div class="mb-3">
+            <label for="bartenderNeeded" class="form-label">Bartender Needed</label>
+            <input type="number" class="form-control input input-bordered input-primary" id="bartenderNeeded" name="bartenderNeeded"></input>
+          </div>
+          <div class="mb-3">
+            <label for="chefNeeded" class="form-label">Chef Needed</label>
+            <input type="number" class="form-control input input-bordered input-primary" id="chefNeeded" name="chefNeeded"></input>
+          </div>
+          <button type="submit" class="btn btn-primary" value="Upload">Create Event</button>
+        </form>
+        <div class="card-actions justify-end">
+        </div>
+      </div>
+    </div>
+
+
+</div>
 
 <script>
-  let adminLink = document.querySelector('#adminlink');
-  adminLink.classList.add('active'); 
 </script>
 
 <%- include('partials/footer') -%>
