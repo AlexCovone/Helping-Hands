@@ -7,7 +7,6 @@ module.exports = {
             { $match: { date: { $gte: new Date()} } },
             { $sort: { date: 1 } }
         ])
-        console.log(upcomingEvents)
         return upcomingEvents
     },
 

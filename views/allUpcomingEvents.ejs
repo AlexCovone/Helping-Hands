@@ -1,15 +1,14 @@
 <%- include('partials/header') -%>
   <div class="container mt-20 mx-auto">
-    <h2 class="text-3xl font-bold mb-4">Hello <%= user.name.split(' ')[0] %>,</h2>
+    <h2 class="text-3xl font-bold mb-4">All Upcoming Events,</h2>
     <span class="text-xl">Find an event that fits your schedule</span>
 
       <!-- SNAP TO CENTER -->
       <div class="border-red-500 border-3 flex justify-between mt-10">
         <h1 class="xs:text-2xl sm:text-3xl font-bold">Upcoming Events</h1>
-        <h4 class="font-bold"><a href="/events/upcomingEvents" class="link link-hover">See All</a></h4>
       </div>
 
-      <div class="carousel carousel-center rounded-box bg-base-300 -mx-3 mt-5">
+      <div class="carousel carousel-center rounded-box bg-base-300 -mx-3 my-5">
         <% for(var i=0; i < upcomingEvents.length; i++) {%>
           <div class="card carousel-item xs:w-80 sm:w-96 glass m-5">
             <figure><img src="<%= upcomingEvents[i].image%>" alt="Event Photo"/></figure>

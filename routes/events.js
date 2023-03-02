@@ -11,10 +11,6 @@ router.get("/", ensureAuth, eventsController.getFeed)
 // @route     GET /events/:id
 router.get("/:id", ensureAuth, eventsController.getEvent);
 
-// @desc      See All Upcoming Events
-// @route     GET /events/upcomingEvents
-router.get("/upcomingEvents", ensureAuth, eventsController.getAllUpcomingEvents)
-
 // @desc      User Reserve :id Event
 // @route     POST /events/reserveEvent/:id
 router.put("/reserveEvent/:id", ensureAuth, eventsController.reserveEvent)

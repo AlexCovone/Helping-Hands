@@ -44,13 +44,20 @@ module.exports = {
   },
   getAllUpcomingEvents: async (req, res) => {
     try {
-      // DO NOT NEED - REMOVE events and events from render
-      // const events = await Event.find().sort({ date: "asc" }).lean();
-
-      const allUpcomingEvents = getUpcomingEvents()
+      const allUpcomingEvents = await getUpcomingEvents()
       const formattedUpcomingEvents = getEventDetails(allUpcomingEvents)
 
       res.render("allUpcomingEvents.ejs", { user: req.user, upcomingEvents: formattedUpcomingEvents });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getAllPreviousEvents: async (req, res) => {
+    try {
+      const allPreviousEvents = await getPreviousEvents()
+      const formattedPreviousEvents = getEventDetails(allPreviousEvents)
+
+      res.render("allPreviousEvents.ejs", { user: req.user, previousEvents: formattedPreviousEvents });
     } catch (err) {
       console.log(err);
     }
