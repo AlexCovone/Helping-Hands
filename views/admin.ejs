@@ -1,17 +1,104 @@
 <%- include('partials/header') -%>
-<div class="container mt-20 mx-auto">
-    <!-- SNAP TO CENTER -->
-    <div>
-      <h1 class="xs:text-2xl sm:text-3xl font-bold mt-10 ml-3">Admin Dashboard</h1>
+
+<div class="mt-20 mx-auto">
+  <h1 class="xs:text-2xl sm:text-3xl font-bold mt-10 ml-3 ">Admin Dashboard</h1>
+</div>
+
+<!-- DIV CONTAINING ALL CONTENT -->
+<div class="container flex xs:flex-wrap xl:flex-nowrap mx-auto mb-5">
+
+  <!-- CREATE AN EVENT FORM -->
+  <main class="flex justify-center mx-auto lg:w-full">
+    <div class="card flex-shrink-0 xl:w-full max-w-screen-xs sm:max-w-screen-sm md:max-w-screen-md shadow-2xl bg-base-100">
+      <!-- <img src="" alt=""> ADD LOGO HERE -->
+      <div class="card-body">
+        <h1 class="text-2xl font-bold mb-3">Create a New Event</h1>
+        <form action="/admin/createEvent" enctype="multipart/form-data" method="POST">
+            <div class="form-control mb-2">
+              <label for="eventName" class="form-label mb-2">Event Name</label>
+              <input type="text" class="form-control input input-bordered input-primary" id="eventName" aria-describedby="eventName" name="eventName"/>
+            </div>
+            
+            <div class="form-control mb-2">
+              <label for="address" class="form-label mb-2">Location</label>
+              <input type="text" class="form-control input input-bordered input-primary" id="address" placeholder="" aria-describedby="address" name="address"/>
+              <div id="privateEmail" class="form-text text-sm text-gray-500 mt-1">City, State</div> 
+              <!-- Make #privateEmail smaller font, lighter text? -->
+            </div>
+  
+            <div class="form-control mb-2">
+              <label for="imgUpload" class="form-label mb-2">Image</label>
+              <input type="file" class="form-control file-input input-bordered input-primary" name="file"/>
+            </div>
+  
+            <div class="form-control mb-2">
+              <label for="caterer" class="form-label mb-2">Caterer</label>
+              <input type="text" class="form-control input input-bordered input-primary" id="caterer" aria-describedby="caterer" name="caterer"/>
+            </div>
+  
+            <div class="form-control mb-2">
+              <label for="uniform" class="form-label mb-2">Uniform</label>
+              <textarea type="text" class="form-control input input-bordered input-primary" id="uniform" aria-describedby="uniform" name="uniform"></textarea>
+            </div>
+  
+            <div class="sm:grid sm:grid-cols-2 sm:gap-4">
+              <div class="form-control xs:order-1 sm:order-1 mb-3 xs:w-full">
+                <label for="date" class="form-label mb-2">Date</label>
+                <input type="date" class="form-control input input-bordered input-primary" id="date" name="date">
+              </div>
+    
+              <div class="form-control xs:order-none sm:order-3 mb-3">
+                <label for="staffArrival" class="form-label mb-2">Staff Arrival</label>
+                <input type="time" class="form-control input input-bordered input-primary" id="staffArrival" name="staffArrival" step="300">
+              </div>
+    
+              <div class="form-control xs:order-none sm:order-5 mb-3">
+                <label for="estimatedEndTime" class="form-label mb-2">Estimated End Time</label>
+                <input type="time" class="form-control input input-bordered input-primary" id="estimatedEndTime" name="estimatedEndTime" step="300">
+              </div>
+    
+    
+              <div class="form-control xs:order-none sm:order-2 mb-2">
+                <label for="waitstaffNeeded" class="form-label mb-2">Waitstaff Needed</label>
+                <input type="number" class="form-control input input-bordered input-primary" id="waitstaffNeeded" placeholder="# of Waitstaff" aria-describedby="waitstaffNeeded" name="waitstaffNeeded"/>
+              </div>
+    
+              <div class="form-control xs:order-none sm:order-4 mb-2">
+                <label for="bartenderNeeded" class="form-label mb-2">Bartenders Needed</label>
+                <input type="number" class="form-control input input-bordered input-primary" id="bartenderNeeded" placeholder="# of Bartenders" aria-describedby="bartenderNeeded" name="bartenderNeeded"/>
+              </div>
+    
+              <div class="form-control xs:order-none sm:order-6 mb-2">
+                <label for="chefNeeded" class="form-label mb-2">Chefs Needed</label>
+                <input type="number" class="form-control input input-bordered input-primary" id="chefNeeded" placeholder="# of Chefs" aria-describedby="chefNeeded" name="chefNeeded"/>
+              </div>
+            </div>
+  
+  
+            <hr class="border-b border-gray-600 mt-6 mb-5">
+  
+  
+            <div class="form-control mt-6">
+              <button type="submit" class="btn btn-primary">Create Event</button>
+            </div>
+          </form>
+      </div>
     </div>
+  </main>
 
+  <!-- END CREATE AN EVENT FORM -->
 
-    <div class="card xs:w-80 sm:w-96 bg-neutral text-neutral-content  xs:mx-auto md:mx-0 my-5">
+  <!-- DIV GROUPS BOTH TEXT DIV AND TABLE DIV -->
+
+  <div class="flex flex-col mx-auto w-full justify-center">
+
+    <!-- NOTIFY STAFF DIV -->
+    <div class="card bg-base-200 shadow-xl text-neutral-content mx-auto xs:mt-10 xl:-mt-5">
       <div class="card-body items-center text-center">
         <h2 class="card-title">Notify Staff of New Events</h2>
         <form action="/admin/textUsers" method="POST">
           <div class="mt-5 sm:inline-flex">
-            <input type="number" class="form-control input input-bordered input-primary xs:w-52 sm:w-56 md:w-auto" placeholder="Number of New Events" id="numberNewEvents" name="numberNewEvents">
+            <input type="number" class="form-control input input-bordered input-primary xs:w-52 sm:w-56 md:w-auto" placeholder="Number of New Events" id="numberNewEvents" name="numberNewEvents" min="1" required>
             <button type="submit" class="btn btn-primary xs:mt-3 sm:mt-0 sm:ml-2" value="Upload">Send Text</button>
           </div>
         </form>
@@ -20,66 +107,40 @@
       </div>
     </div>
 
+    <!-- END NOTIFY STAFF DIV -->
 
-    <div class="card xs:w-80 sm:w-96 bg-neutral text-neutral-content xs:mx-auto md:mx-0 my-5">
-      <div class="card-body items-center text-center">
-        <h2 class="card-title">Create New Event</h2>
-        <form action="/admin/createEvent" enctype="multipart/form-data" method="POST">
-          <div class="mb-3">
-              <label for="eventName" class="form-label">Event Name</label>
-              <input type="text" class="form-control input input-bordered input-primary" id="eventName" name="eventName">
-          </div>
-          <div class="mb-3">
-            <label for="address" class="form-label">Address</label>
-            <input class="form-control input input-bordered input-primary" id="Address" name="address"></input>
-          </div>
-          <div class="mb-3">
-            <label for="imgUpload" class="form-label">Image</label>
-            <input type="file" class="file-input file-input-bordered file-input-primary file-input-sm w-full max-w-xs" id="imageUpload" name="file">
-          </div>
-          <div class="mb-3">
-            <label for="staffArrival" class="form-label">Staff Arrival</label>
-            <input type="time" id="staffArrival" name="staffArrival" step="300" required>
-          </div>
-          <div class="mb-3">
-            <label for="endTime" class="form-label">Estimated End Time</label>
-            <input type="time" id="endTime" name="estimatedEndTime" step="300" required>
-          </div>
-          <div class="mb-3">
-            <label for="startDate" class="form-label" id="start-date">Date</label>
-            <input type="date" name="date" value="">
-          </div>
-          <div class="mb-3">
-            <label for="uniform" class="form-label">Uniform</label>
-            <textarea class="textarea textarea-bordered textarea-xs w-full max-w-xs textarea-primary" id="Uniform" name="uniform"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="caterer" class="form-label">Caterer</label>
-            <input class="form-control input input-bordered input-primary" id="Caterer" name="caterer"></input>
-          </div>
-          <div class="mb-3">
-            <label for="waitStaffNeeded" class="form-label">Waitstaff Needed</label>
-            <input type="number" class="form-control input input-bordered input-primary" id="waitstaffNeeded" name="waitstaffNeeded"></input>
-          </div>
-          <div class="mb-3">
-            <label for="bartenderNeeded" class="form-label">Bartender Needed</label>
-            <input type="number" class="form-control input input-bordered input-primary" id="bartenderNeeded" name="bartenderNeeded"></input>
-          </div>
-          <div class="mb-3">
-            <label for="chefNeeded" class="form-label">Chef Needed</label>
-            <input type="number" class="form-control input input-bordered input-primary" id="chefNeeded" name="chefNeeded"></input>
-          </div>
-          <button type="submit" class="btn btn-primary" value="Upload">Create Event</button>
-        </form>
-        <div class="card-actions justify-end">
-        </div>
-      </div>
+    <!-- TABLE DIV -->
+
+    <div class="mx-auto xs:mt-10 xl:mt-12 mb-5 h-[690px] w-full overflow-x-auto">
+      <table class="table table-zebra table-compact mx-auto shadow-2xl">
+        <thead class="sticky top-0 bg-gray-100">
+          <tr>
+            <th class="px-4"></th> 
+            <th class="px-4">Name</th> 
+            <th class="px-4">Email</th> 
+            <th class="px-4">Phone Number</th> 
+          </tr>
+        </thead> 
+        <tbody>
+          <% for(var i=0; i < allUsers.length; i++) {%>
+          <tr>
+            <th class="px-4"><%= [i + 1] %></th> 
+            <td class="px-4"><%= allUsers[i].name %></td> 
+            <td class="px-4"><%= allUsers[i].email %></td> 
+            <td class="px-4"><%= allUsers[i].phoneNumber %></td> 
+          </tr>
+          <% } %>
+        </tfoot>
+      </table>
     </div>
+
+    <!-- END TABLE DIV -->
+
+  </div>
+  <!-- END DIV GROUPS BOTH TEXT DIV AND TABLE DIV  -->
 
 
 </div>
-
-<script>
-</script>
+<!-- DIV ENDING ALL CONTENT DIV -->
 
 <%- include('partials/footer') -%>

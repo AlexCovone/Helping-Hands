@@ -14,7 +14,8 @@ module.exports = {
     getAdminDash: async (req, res) => {
         try {
         const event = await Event.findById(req.params.id);
-        res.render("admin.ejs", { event: event, user: req.user });
+        const allUsers = await User.find()
+        res.render("admin.ejs", { event, allUsers, user: req.user });
         } catch (err) {
         console.log(err);
         }
