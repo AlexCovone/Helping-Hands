@@ -16,67 +16,63 @@
         <form action="/admin/createEvent" enctype="multipart/form-data" method="POST">
             <div class="form-control mb-2">
               <label for="eventName" class="form-label mb-2">Event Name</label>
-              <input type="text" class="form-control input input-bordered input-primary" id="eventName" aria-describedby="eventName" name="eventName"/>
+              <input type="text" class="form-control input input-bordered input-primary" id="eventName" aria-describedby="eventName" name="eventName" required/>
             </div>
             
             <div class="form-control mb-2">
               <label for="address" class="form-label mb-2">Location</label>
-              <input type="text" class="form-control input input-bordered input-primary" id="address" placeholder="" aria-describedby="address" name="address"/>
+              <input type="text" class="form-control input input-bordered input-primary" id="address" placeholder="" aria-describedby="address" name="address" required/>
               <div id="privateEmail" class="form-text text-sm text-gray-500 mt-1">City, State</div> 
               <!-- Make #privateEmail smaller font, lighter text? -->
             </div>
   
             <div class="form-control mb-2">
               <label for="imgUpload" class="form-label mb-2">Image</label>
-              <input type="file" class="form-control file-input input-bordered input-primary" name="file"/>
+              <input type="file" class="form-control file-input input-bordered input-primary" name="file" required/>
             </div>
   
             <div class="form-control mb-2">
               <label for="caterer" class="form-label mb-2">Caterer</label>
-              <input type="text" class="form-control input input-bordered input-primary" id="caterer" aria-describedby="caterer" name="caterer"/>
+              <input type="text" class="form-control input input-bordered input-primary" id="caterer" aria-describedby="caterer" name="caterer" required/>
             </div>
   
             <div class="form-control mb-2">
               <label for="uniform" class="form-label mb-2">Uniform</label>
-              <textarea type="text" class="form-control input input-bordered input-primary" id="uniform" aria-describedby="uniform" name="uniform"></textarea>
+              <textarea type="text" class="form-control input input-bordered input-primary" id="uniform" aria-describedby="uniform" name="uniform" required></textarea>
             </div>
   
             <div class="sm:grid sm:grid-cols-2 sm:gap-4">
               <div class="form-control xs:order-1 sm:order-1 mb-3 xs:w-full">
                 <label for="date" class="form-label mb-2">Date</label>
-                <input type="date" class="form-control input input-bordered input-primary" id="date" name="date">
+                <input type="date" class="form-control input input-bordered input-primary" id="date" name="date" required>
               </div>
     
               <div class="form-control xs:order-none sm:order-3 mb-3">
                 <label for="staffArrival" class="form-label mb-2">Staff Arrival</label>
-                <input type="time" class="form-control input input-bordered input-primary" id="staffArrival" name="staffArrival" step="300">
+                <input type="time" class="form-control input input-bordered input-primary" id="staffArrival" name="staffArrival" step="300" required>
               </div>
     
               <div class="form-control xs:order-none sm:order-5 mb-3">
                 <label for="estimatedEndTime" class="form-label mb-2">Estimated End Time</label>
-                <input type="time" class="form-control input input-bordered input-primary" id="estimatedEndTime" name="estimatedEndTime" step="300">
+                <input type="time" class="form-control input input-bordered input-primary" id="estimatedEndTime" name="estimatedEndTime" step="300" required>
               </div>
     
     
               <div class="form-control xs:order-none sm:order-2 mb-2">
                 <label for="waitstaffNeeded" class="form-label mb-2">Waitstaff Needed</label>
-                <input type="number" class="form-control input input-bordered input-primary" id="waitstaffNeeded" placeholder="# of Waitstaff" aria-describedby="waitstaffNeeded" name="waitstaffNeeded"/>
+                <input type="number" class="form-control input input-bordered input-primary" id="waitstaffNeeded" placeholder="# of Waitstaff" aria-describedby="waitstaffNeeded" name="waitstaffNeeded" required/>
               </div>
     
               <div class="form-control xs:order-none sm:order-4 mb-2">
                 <label for="bartenderNeeded" class="form-label mb-2">Bartenders Needed</label>
-                <input type="number" class="form-control input input-bordered input-primary" id="bartenderNeeded" placeholder="# of Bartenders" aria-describedby="bartenderNeeded" name="bartenderNeeded"/>
+                <input type="number" class="form-control input input-bordered input-primary" id="bartenderNeeded" placeholder="# of Bartenders" aria-describedby="bartenderNeeded" name="bartenderNeeded" required/>
               </div>
     
               <div class="form-control xs:order-none sm:order-6 mb-2">
                 <label for="chefNeeded" class="form-label mb-2">Chefs Needed</label>
-                <input type="number" class="form-control input input-bordered input-primary" id="chefNeeded" placeholder="# of Chefs" aria-describedby="chefNeeded" name="chefNeeded"/>
+                <input type="number" class="form-control input input-bordered input-primary" id="chefNeeded" placeholder="# of Chefs" aria-describedby="chefNeeded" name="chefNeeded" required/>
               </div>
             </div>
-  
-  
-            <hr class="border-b border-gray-600 mt-6 mb-5">
-  
   
             <div class="form-control mt-6">
               <button type="submit" class="btn btn-primary">Create Event</button>

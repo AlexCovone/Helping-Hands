@@ -13,9 +13,8 @@ const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 module.exports = {
     getAdminDash: async (req, res) => {
         try {
-        const event = await Event.findById(req.params.id);
         const allUsers = await User.find()
-        res.render("admin.ejs", { event, allUsers, user: req.user });
+        res.render("admin.ejs", {allUsers, user: req.user });
         } catch (err) {
         console.log(err);
         }
@@ -41,7 +40,6 @@ module.exports = {
             chefNeeded: req.body.chefNeeded
           });
           console.log("Event has been added!");
-          console.log(req.body)
           res.redirect("/profile");
         } catch (err) {
           console.log(err);
