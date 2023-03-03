@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const eventsController = require("../controllers/events");
-const { ensureAuth } = require("../middleware/auth");
+const { ensureAuth, authRole } = require("../middleware/auth");
 
 // @desc      Events Feed Page
 // @route     GET /events/
@@ -17,6 +17,6 @@ router.put("/reserveEvent/:id", ensureAuth, eventsController.reserveEvent)
 
 // @desc      Admin Delete Event
 // @route     GET /events/:id
-router.delete("/deleteEvent/:id", ensureAuth, eventsController.deleteEvent);
+router.delete("/deleteEvent/:id", ensureAuth, authRole('Admin'), eventsController.deleteEvent);
 
 module.exports = router;
