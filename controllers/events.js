@@ -7,8 +7,21 @@ const { convertDateToEnUs, convertTo12HourFormat } = require("../controllers/ser
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const matchedEvents = await filterEventsByUser(req.user.id)
-      res.render("profile.ejs", { events: matchedEvents, user: req.user });
+      // Arr of events sorted by eventReserved property on User model
+      const allUserEvents = await filterEventsByUser(req.user.id)
+
+      console.log(allUserEvents)
+
+      const upcomingUserEvents = await getUpcomingEvents(allUserEvents)
+
+      console.log(upcomingUserEvents)
+
+      const previousUserEvents = await getPreviousEvents(allUserEvents)
+
+      const upcomingUserEventsFormatted = getEventDetails(upcomingUserEvents)
+      const previousUserEventsFormatted = getEventDetails(previousUserEvents)
+
+      res.render("profile.ejs", {upcomingUserEvents: upcomingUserEventsFormatted, previousUserEvents: previousUserEventsFormatted, user: req.user });
     } catch (err) {
       console.log(err);
     }
