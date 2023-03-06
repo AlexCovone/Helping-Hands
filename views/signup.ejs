@@ -27,28 +27,28 @@
             <form action="/signup" method="POST">
               <div class="form-control mb-2">
                 <label for="name" class="form-label mb-2">Full Name</label>
-                <input type="text" class="form-control input input-bordered input-primary" id="name" placeholder="Name" aria-describedby="name" name="name"/>
+                <input type="text" class="form-control input input-bordered focus:outline-primary" id="name" placeholder="Name" aria-describedby="name" name="name"/>
               </div>
               <div class="form-control mb-2">
                 <label for="exampleInputEmail1" class="form-label mb-2">Email Address</label>
-                <input type="email" class="form-control input input-bordered input-primary" id="exampleInputEmail1" placeholder="Email" aria-describedby="emailHelp" name="email"/>
+                <input type="email" class="form-control input input-bordered focus:outline-primary" id="exampleInputEmail1" placeholder="Email" aria-describedby="emailHelp" name="email"/>
                 <div id="privateEmail" class="form-text text-sm text-gray-500 mt-1">We'll never share your email with anyone.</div> 
                 <!-- Make #privateEmail smaller font, lighter text? -->
               </div>
               <div class="form-control mb-2">
                 <label for="password" class="form-label mb-2">Password</label>
-                <input type="password" class="form-control input input-bordered input-primary" id="password" placeholder="Password" name="password"/>
+                <input type="password" class="form-control input input-bordered focus:outline-primary" id="password" placeholder="Password" name="password"/>
               </div>
 
               <div class="form-control mb-3">
                 <label for="confirmPassword" class="form-label mb-2">Confirm Password</label>
-                <input type="password" class="form-control input input-bordered input-primary" id="confirmPassword" placeholder="Confirm" name="confirmPassword">
+                <input type="password" class="form-control input input-bordered focus:outline-primary" id="confirmPassword" placeholder="Confirm" name="confirmPassword">
               </div>
 
               <div class="form-control mb-3">
                 <label for="phone" class="form-label">Phone Number</label>
                 <p class="text-sm text-gray-500 mb-2">Optional</p>
-                <input type="tel" class="form-control input input-bordered input-primary" id="phoneNumber" name="phoneNumber" placeholder="###-###-####" pattern="\d{3}-\d{3}-\d{4}" title="###-###-####" maxlength="10" onblur="addDashes(this)">
+                <input type="tel" class="form-control input input-bordered focus:outline-primary" id="phoneNumber" name="phoneNumber" placeholder="###-###-####" pattern="\d{3}-\d{3}-\d{4}" title="###-###-####" maxlength="10" onblur="addDashes(this)">
                 <div id="phoneNumberHelp" class="form-text text-sm text-gray-500 mt-1">Please fill this out if you would like to receive SMS updates when new events are made available.</div>
               </div>
 
