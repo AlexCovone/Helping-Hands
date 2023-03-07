@@ -10,12 +10,7 @@ module.exports = {
       // Arr of events sorted by eventReserved property on User model
       const allUserEvents = await filterEventsByUser(req.user.id)
 
-      console.log(allUserEvents)
-
       const upcomingUserEvents = await getUpcomingEvents(allUserEvents)
-
-      console.log(upcomingUserEvents)
-
       const previousUserEvents = await getPreviousEvents(allUserEvents)
 
       const upcomingUserEventsFormatted = getEventDetails(upcomingUserEvents)
@@ -29,7 +24,6 @@ module.exports = {
   getFeed: async (req, res) => {
     try {  
       // Using aggregation pipeline to filter events that have occurred vs events that have not occurred
-
       const upcomingEvents = await getUpcomingEvents()
       const previousEvents = await getPreviousEvents()
 

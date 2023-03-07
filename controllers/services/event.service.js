@@ -2,25 +2,32 @@ const Event = require("../../models/Event");
 const { convertDateToEnUs, convertTo12HourFormat } = require("../services/helperFunctions")
 
 module.exports = {
-    getUpcomingEvents: async (ids) => {
-        const filter = { date: { $gte: new Date() } };
+    getUpcomingEvents: async (events) => {
+        const filter =  { date: { $gte: new Date()} }
       
-        if (ids !== undefined) {
-             // TODO: Add an id filter to `filter` to only select the given ids
+        if(events){
+          const eventIds = events.map(event => event._id);
+          filter._id = { $in: eventIds };
         }
-      
-        const upcomingEvents = await Event.aggregate([
-          { $match: filter },
-          { $sort: { date: 1 } }
-        ]);
-      
-        return upcomingEvents;
-      },
 
-    getPreviousEvents: async () => {
+        const upcomingEvents = await Event.aggregate([
+            { $match: filter },
+            { $sort: {date: 1} }
+        ])      
+        return upcomingEvents;
+    },
+
+    getPreviousEvents: async (events) => {
+        const filter = { date: { $lte: new Date() } }
+
+        if(events){
+            const eventIds = events.map(event => event._id);
+            filter._id = {$in: eventIds }
+        }
+
         const previousEvents = await Event.aggregate([
-            { $match: { date: { $lte: new Date()} } },
-            { $sort: { date: -1 } }
+            { $match: filter },
+            { $sort: {date: -1} }
         ])
         return previousEvents
     },
