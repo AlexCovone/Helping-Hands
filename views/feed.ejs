@@ -1,33 +1,36 @@
 <%- include('partials/header') -%>
-  <div class="container mt-20 mx-auto">
+  <div class="xl:container mt-20 mx-auto">
     <h2 class="text-3xl font-bold mb-4">Hello <%= user.name.split(' ')[0] %>,</h2>
     <span class="text-xl">Find an event that fits your schedule</span>
     
 
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid xs:grid-cols-1 lg:grid-cols-2 gap-6  mx-10 my-5">
       <% for(var i=0; i < upcomingEvents.length; i++) {%>
-        <a href="/events/<%= upcomingEvents[i]._id%>" class="block w-full">
-          <div class="stats shadow border border-red-500 w-full hover:text-primary">
-            <div class="stat">
-              <div class="stat-title"><%= upcomingEvents[i].date %></div>
-              <div class="stat-value truncate"><%= upcomingEvents[i].eventName %></div>
-              <div class="stat-title mt-2"><%= upcomingEvents[i].staffArrival%> - <%= upcomingEvents[i].estimatedEndTime%></div>
-            </div>
-            
-
-            <!-- WORK ON WIDTH FOR SECOND DIV TO MAKE UNIFORM ACROSS EACH EVENT BEING RENDERED -->
-            <div class="stat">
-              <div class="stat-title text-white font-bold">Requested Staff</div>
-              <div class="stat-title">Waitstaff: 4</div>
-              <div class="stat-title">Bartender: 2</div>
-              <div class="flex">
-                <div class="stat-title">Chef: 0</div>
+        <a href="/events/<%= upcomingEvents[i]._id%>">
+          <div class="stats shadow border border-red-500 hover:text-primary w-full grid xs:grid-cols-12 sm:grid-cols-8">
+            <div class="stat xs:col-span-7 sm:col-span-5 md:col-span-6">
+              <div class="flex flex-col-reverse md:flex-row">
+                <div class="stat-title sm:mr-4"><%= upcomingEvents[i].date %></div>
                 <% if(upcomingEvents[i].waitstaffNeeded === 0 && upcomingEvents[i].bartenderNeeded === 0 && upcomingEvents[i].chefNeeded === 0) { %>
-                  <div class="badge badge-error gap-2 ml-auto">
+                  <div class="badge badge-error gap-2 sm:mt-0">
                     Event Full
                   </div>
                 <% } %>
               </div>
+              <div class="stat-title"><%= upcomingEvents[i].staffArrival%> - <%= upcomingEvents[i].estimatedEndTime%> </div>
+              <div class="md:stat-value truncate"><%= upcomingEvents[i].eventName %></div>
+              <div class="stat-title md:mt-2"><%= upcomingEvents[i].address %></div>
+            </div>
+            
+          
+            <div class="stat xs:col-span-5 sm:col-span-3 md:col-span-2">
+              <div class="staff stat-title text-white font-bold">
+                <span class="hidden sm:block">Staff Required</span>
+                <span class="block sm:hidden">Staff</span>
+              </div>
+              <div class="stat-title">Waitstaff: <%= upcomingEvents[i].waitstaffNeeded %></div>
+              <div class="stat-title">Bartender: <%= upcomingEvents[i].bartenderNeeded %></div>
+              <div class="stat-title">Chef: <%= upcomingEvents[i].chefNeeded %></div>
             </div>
           </div>
         </a>
@@ -35,18 +38,16 @@
     </div>
     
     
-    
-
-
+    <!-- <div> -->
 
       <!-- SNAP TO CENTER -->
-      <div class="border-red-500 border-3 flex justify-between mt-10">
+      <!-- <div class="border-red-500 border-3 flex justify-between mt-10">
         <h1 class="xs:text-2xl sm:text-3xl font-bold">Upcoming Events</h1>
         <h4 class="font-bold"><a href="/upcoming-events" class="btn btn-secondary btn-sm">See All</a></h4>
-      </div>
+      </div> -->
 
       <!-- DECIDE ON BASE-200 VS Base-300 / W or W/O shadow -->
-      <div class="carousel carousel-center rounded-box shadow-2xl bg-base-200 -mx-4 my-5 sm:py-3">
+      <!-- <div class="carousel carousel-center rounded-box shadow-2xl bg-base-200 -mx-4 my-5 sm:py-3">
         <% for(var i=0; i < upcomingEvents.length; i++) {%>
           <div class="card carousel-item xs:w-80 sm:w-96 glass m-5">
             <figure><img src="<%= upcomingEvents[i].image%>" alt="Event Photo"/></figure>
@@ -72,10 +73,10 @@
         <% } %>
       </div>
 
-      <br>
+      <br> -->
 
       <!-- SNAP TO CENTER -->
-      <div class="border-red-500 border-3 flex justify-between">
+      <!-- <div class="border-red-500 border-3 flex justify-between">
         <h1 class="xs:text-2xl sm:text-3xl font-bold">Previous Events</h1>
         <h4 class="font-bold"><a href="/previous-events" class="btn btn-secondary btn-sm">See All</a></h4>
       </div>
@@ -101,7 +102,7 @@
         <% } %>
       </div>
 
-    </div>  
+    </div>   -->
   </div>
 
 
