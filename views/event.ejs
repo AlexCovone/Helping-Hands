@@ -5,15 +5,14 @@
     <!-- RESERVATION ERROR/SUCCESS MESSAGE -->
     <div class="toast toast-end z-40">
     <% if (message.error) { %>
-      <div class="alert alert-error shadow-lg">
+      <div class="notification alert alert-error shadow-lg">
         <div class="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           <span><%= message.error %></span>
         </div>
-
       </div>
     <% } else if(message.success) { %>
-      <div class="alert alert-success shadow-lg">
+      <div class="notification alert alert-success shadow-lg">
         <div class="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           <span><%= message.success %></span>
@@ -59,7 +58,6 @@
     <%}%>
     
     <img class="img-fluid w-auto h-auto border border-red-500 border-3 mt-5 mx-auto" src="<%= event.image%>" alt="Event Map Image"/>
-
     <div class="flex flex-col w-full lg:flex-row mt-5 z-40">
       <div class="grid flex-grow h-96 lg:h-auto card bg-base-300 rounded-box lg:w-6/12 xl:w-8/12">
         <h1 class="text-4xl font-semibold mt-2 mx-3 mb-0"><%= event.eventName %></h1>
@@ -69,11 +67,8 @@
         <h3 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Hosted by: <%= event.caterer %></h3>
         <h4 class="xs:text-sm sm:text-lg md:text-lg lg:text-sm xl:text-xl mx-3">Uniform: <%= event.uniform %></h4>
       </div> 
-
       <div class="divider lg:divider-horizontal"></div>
-
       <div class="flex xs:flex-col sm:flex-col lg:flex-col xl:flex-col md:w-full lg:w-6/12 xl:w-4/12">
-
         <table class="mb-3 table table-zebra table-bordered border border-red-500 border-3">
           <tr>
             <th class="text-center xs:text-xl sm:text-2xl">Role</th>
@@ -91,9 +86,7 @@
             <td class="text-center xs:text-xl sm:text-2xl">Chef</td>
             <td class="text-center xs:text-xl sm:text-2xl"><%= event.chefNeeded %></td>
           </tr>
-
         </table>
-
         <div class="grid flex-grow h-24 sm:h-28 card bg-base-300 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch mt-3">
           <form class="xs:my-auto sm:mt-3 sm:mb-5 mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
             <label class="xs:hidden sm:block xs:text-sm sm:text-xl lg:text-lg md:ml-1 lg:ml-2" for="occupationRole">Choose a Role </label>
@@ -108,7 +101,6 @@
               <option value="Chef">Chef</option>
               <%}%>
             </select>
-
             <% if (Date.now() > event.date) { %>
               <div class="tooltip" data-tip="Event is Closed">
                 <button class="btn btn-primary" disabled="disabled" type="submit">Reserve Role</button>
@@ -118,12 +110,9 @@
             <% } %>
           </form>
         </div>
-
       </div>
       
     </div>
-
-
    <%if(user.role === 'Admin'){ %>
     <div class="border border-red-500 border-3 overflow-auto ">
       <table class="my-3 table table-striped table-bordered border border-red-500 border-3 mx-auto">
@@ -144,9 +133,12 @@
     </div>
   </div>
 </div>
-
 <script>
-
+  setTimeout(() => {
+    const notification = document.querySelector('.notification');
+    if (notification) {
+      notification.remove();
+    }
+  }, 5000); 
 </script>
-
 <%- include('partials/footer') -%>
