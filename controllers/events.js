@@ -103,6 +103,7 @@ module.exports = {
         await addStaffReserved(req.params.id, req.user.id, req.user.name, req.user.email, occupationRole)
       ])
 
+      
       req.flash("success", `Reservation has been made for ${req.user.name}.`)
       return res.redirect(`/events/${req.params.id}`);
     } catch (err) {

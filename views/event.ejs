@@ -1,6 +1,6 @@
 <%- include('partials/header') -%>
 
-<div class="container mx-auto mt-20 mb-10">
+<div class="container mx-auto mt-16 mb-5">
 
     <!-- RESERVATION ERROR/SUCCESS MESSAGE -->
     <div class="toast toast-end z-40">
@@ -34,12 +34,12 @@
     <!-- The button to open modal -->
     <%if(user.role === 'Admin'){ %>
     <div class="flex justify-end">
-      <label for="my-modal-6" class="btn btn-sm mt-5 border-red-500 border-3 flex items-center justify-center">
+      <label for="my-modal-6" class="btn btn-sm mt-5 flex items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
       </label>
       <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle border border-red-500 border-3">
+      <div class="modal modal-bottom sm:modal-middle">
         <div class="modal-box">
           <h3 class="font-bold xs:text-lg sm:text-xl lg:text-2xl xl:text-3xl">Are you certain you want to delete this event?</h3>
           <p class="py-4">By clicking 'Delete Event', all associated data for this event will be permanently lost and cannot be recovered.</p>
@@ -57,22 +57,48 @@
     </div>
     <%}%>
     
-    <img class="img-fluid w-auto h-auto border border-red-500 border-3 mt-5 mx-auto" src="<%= event.image%>" alt="Event Map Image"/>
+    <img class="img-fluid w-auto h-auto mt-5 mx-auto" src="<%= event.image%>" alt="Event Map Image"/>
+
     <div class="flex flex-col w-full lg:flex-row mt-5 z-40">
-      <div class="grid flex-grow h-96 lg:h-auto card bg-base-300 rounded-box lg:w-6/12 xl:w-8/12">
-        <h1 class="text-4xl font-semibold mt-2 mx-3 mb-0"><%= event.eventName %></h1>
-        <h3 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Location: <%= event.address %></h3>
-        <h2 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Date: <%= date %></h2>
-        <h2 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Estimated Hours: <%= staffArrival %> - <%= estimatedEndTime %></h2>
-        <h3 class="xs:text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl ml-3">Hosted by: <%= event.caterer %></h3>
-        <h4 class="xs:text-sm sm:text-lg md:text-lg lg:text-sm xl:text-xl mx-3">Uniform: <%= event.uniform %></h4>
+      <div class="grid flex-grow h-fit lg:w-6/12 xl:w-8/12">
+        <table class="table max-w-full border-collapse">
+          <tbody>
+            <!-- row 1 -->
+            <tr>
+              <td class="text-right tracking-wider">LOCATION</td>
+              <td class="xs:text-xl xl:text-2xl"><%= event.address %></td>
+            </tr>
+            <!-- row 2 -->
+            <tr>
+              <td class="text-right tracking-wider">DATE</td>
+              <td class="xs:text-xl xl:text-2xl"><%= date %></td>
+            </tr>
+            <!-- row 3 -->
+            <tr>
+              <td class="text-right tracking-wider">HOURS</td>
+              <td class="xs:text-xl xl:text-2xl"><%= staffArrival %> - <%= estimatedEndTime %></td>
+            </tr>
+            <!-- Row 4 -->
+            <tr>
+              <td class="text-right tracking-wider">HOSTED BY</td>
+              <td class="xs:text-xl xl:text-2xl"><%= event.caterer %></td>
+            </tr>
+            <!-- Row 5 -->
+            <tr class="uniform">
+              <td class="text-right tracking-wider">UNIFORM</td>
+              <td class="xs:text-sm md:text-xl lg:text-base xl:text-2xl whitespace-normal break-words"><%= event.uniform %></td>
+            </tr>
+          </tbody>
+        </table>
       </div> 
+    
       <div class="divider lg:divider-horizontal"></div>
+    
       <div class="flex xs:flex-col sm:flex-col lg:flex-col xl:flex-col md:w-full lg:w-6/12 xl:w-4/12">
-        <table class="mb-3 table table-zebra table-bordered border border-red-500 border-3">
+        <table class="table table-zebra table-bordered">
           <tr>
             <th class="text-center xs:text-xl sm:text-2xl">Role</th>
-            <th class="text-center xs:text-xl sm:text-2xl">Staff Needed</th>
+            <th class="text-center xs:text-xl sm:text-2xl">Staff Required</th>
           </tr>
           <tr>
             <td class="text-center xs:text-xl sm:text-2xl">Waitstaff</td>
@@ -87,7 +113,7 @@
             <td class="text-center xs:text-xl sm:text-2xl"><%= event.chefNeeded %></td>
           </tr>
         </table>
-        <div class="grid flex-grow h-24 sm:h-28 card bg-base-300 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch mt-3">
+        <div class="grid flex-grow h-20 sm:h-28 card bg-base-200 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch my-3">
           <form class="xs:my-auto sm:mt-3 sm:mb-5 mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
             <label class="xs:hidden sm:block xs:text-sm sm:text-xl lg:text-lg md:ml-1 lg:ml-2" for="occupationRole">Choose a Role </label>
             <select class="select select-primary max-w-xs text-lg" name="occupationRole" id="occupationSelection">
@@ -114,8 +140,8 @@
       
     </div>
    <%if(user.role === 'Admin'){ %>
-    <div class="border border-red-500 border-3 overflow-auto ">
-      <table class="my-3 table table-striped table-bordered border border-red-500 border-3 mx-auto">
+    <div class="overflow-auto">
+      <table class="table table-striped table-bordered mx-auto">
         <tr>
           <th>Name</th>
           <th>Email</th>

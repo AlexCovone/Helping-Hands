@@ -41,13 +41,28 @@ const EventSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    numOfWaitstaff: {
+        type: Number,
+        required: true,
+        default: 0
+    },
     bartenderNeeded: {
         type: Number,
         required: true
     },
+    numOfbartenders: {
+        type: Number,
+        required: true,
+        default: 0
+    },
     chefNeeded: {
         type: Number,
         required: true
+    },
+    numOfchefs: {
+        type: Number,
+        required: true,
+        default: 0
     },
     staffReserved: {
         type: Array,
