@@ -1,6 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
-const { getUpcomingEvents, getPreviousEvents, getEventDetails, checkUserReserved, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
+const { getUpcomingEvents, getPreviousEvents, getEventDetails, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
 const { addEventToUser, filterEventsByUser } = require("../controllers/services/user.service")
 const { convertDateToEnUs, convertTo12HourFormat } = require("../controllers/services/helperFunctions")
 
@@ -71,12 +71,15 @@ module.exports = {
   },
   reserveEvent: async (req, res) => {
     try {
-      const event = await Event.findOne({ _id: req.params.id });
-      const staffReserved = event.staffReserved;
+      const event = await Event.findOne({ _id: req.params.id })
+      const allUserEvents = await filterEventsByUser(req.user.id)
+      const upcomingUserEvents = await getUpcomingEvents(allUserEvents)
 
-      // Checks if userId is included in staffReserved property in the Event model
-      if(checkUserReserved(staffReserved, req.user.id)){
-        req.flash("error", `${req.user.name} has already reserved this event.`)
+      // Create set of all dates (in ms) on upcoming User events
+      const userEventDates = new Set(upcomingUserEvents.map(event => event.date.getTime()))
+
+      if(userEventDates.has(event.date.getTime())){
+        req.flash("error", `Oops! You already have an event scheduled on this date.`)
         return res.redirect(`/events/${req.params.id}`)
       }
 
@@ -103,7 +106,6 @@ module.exports = {
         await addStaffReserved(req.params.id, req.user.id, req.user.name, req.user.email, occupationRole)
       ])
 
-      
       req.flash("success", `Reservation has been made for ${req.user.name}.`)
       return res.redirect(`/events/${req.params.id}`);
     } catch (err) {

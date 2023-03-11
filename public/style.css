@@ -3088,11 +3088,6 @@ html {
   margin-bottom: 2.5rem;
 }
 
-.my-3 {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -3133,10 +3128,6 @@ html {
 
 .mt-10 {
   margin-top: 2.5rem;
-}
-
-.mt-16 {
-  margin-top: 4rem;
 }
 
 .mt-2 {
@@ -3362,11 +3353,6 @@ html {
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
-.border-yellow-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(250 204 21 / var(--tw-border-opacity));
-}
-
 .bg-base-100 {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b1) / var(--tw-bg-opacity));
@@ -3476,6 +3462,10 @@ html {
 
 .tracking-wider {
   letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
 }
 
 .text-base-content {
@@ -3995,14 +3985,14 @@ html {
   }
 }
 
-.hover\:text-primary:hover {
-  --tw-text-opacity: 1;
-  color: hsl(var(--p) / var(--tw-text-opacity));
-}
-
 .hover\:text-primary-content:hover {
   --tw-text-opacity: 1;
   color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+
+.hover\:text-primary:hover {
+  --tw-text-opacity: 1;
+  color: hsl(var(--p) / var(--tw-text-opacity));
 }
 
 .focus\:outline-primary:focus {
@@ -4044,6 +4034,10 @@ html {
     margin-top: 2.5rem;
   }
 
+  .xs\:mt-20 {
+    margin-top: 5rem;
+  }
+
   .xs\:mt-3 {
     margin-top: 0.75rem;
   }
@@ -4078,6 +4072,10 @@ html {
 
   .xs\:flex-wrap {
     flex-wrap: wrap;
+  }
+
+  .xs\:text-center {
+    text-align: center;
   }
 
   .xs\:text-2xl {
@@ -4155,6 +4153,10 @@ html {
     margin-top: 0px;
   }
 
+  .sm\:mt-16 {
+    margin-top: 4rem;
+  }
+
   .sm\:mt-3 {
     margin-top: 0.75rem;
   }
@@ -4214,6 +4216,10 @@ html {
   .sm\:py-3 {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+  }
+
+  .sm\:text-right {
+    text-align: right;
   }
 
   .sm\:text-2xl {

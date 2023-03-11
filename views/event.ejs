@@ -1,6 +1,6 @@
 <%- include('partials/header') -%>
 
-<div class="container mx-auto mt-16 mb-5">
+<div class="container mx-auto xs:mt-20 sm:mt-16 mb-5">
 
     <!-- RESERVATION ERROR/SUCCESS MESSAGE -->
     <div class="toast toast-end z-40">
@@ -66,22 +66,22 @@
             <!-- row 1 -->
             <tr>
               <td class="text-right tracking-wider">LOCATION</td>
-              <td class="xs:text-xl xl:text-2xl"><%= event.address %></td>
+              <td class="text-2xl xl:text-3xl"><%= event.address %></td>
             </tr>
             <!-- row 2 -->
             <tr>
               <td class="text-right tracking-wider">DATE</td>
-              <td class="xs:text-xl xl:text-2xl"><%= date %></td>
+              <td class="text-2xl xl:text-3xl"><%= date %></td>
             </tr>
             <!-- row 3 -->
             <tr>
               <td class="text-right tracking-wider">HOURS</td>
-              <td class="xs:text-xl xl:text-2xl"><%= staffArrival %> - <%= estimatedEndTime %></td>
+              <td class="text-2xl xl:text-3xl"><%= staffArrival %> - <%= estimatedEndTime %></td>
             </tr>
             <!-- Row 4 -->
             <tr>
               <td class="text-right tracking-wider">HOSTED BY</td>
-              <td class="xs:text-xl xl:text-2xl"><%= event.caterer %></td>
+              <td class="text-2xl xl:text-3xl"><%= event.caterer %></td>
             </tr>
             <!-- Row 5 -->
             <tr class="uniform">
@@ -97,42 +97,46 @@
       <div class="flex xs:flex-col sm:flex-col lg:flex-col xl:flex-col md:w-full lg:w-6/12 xl:w-4/12">
         <table class="table table-zebra table-bordered">
           <tr>
-            <th class="text-center xs:text-xl sm:text-2xl">Role</th>
-            <th class="text-center xs:text-xl sm:text-2xl">Staff Required</th>
+            <th class="xs:text-center sm:text-right tracking-wider xs:text-xl sm:text-2xl">ROLE</th>
+            <th class="text-center xs:text-xl sm:text-2xl whitespace-normal break-words tracking-wider">STAFF REQUIRED</th>
           </tr>
           <tr>
-            <td class="text-center xs:text-xl sm:text-2xl">Waitstaff</td>
+            <td class="text-right tracking-wider text-2xl">WAITSTAFF</td>
             <td class="text-center xs:text-xl sm:text-2xl"><%= event.waitstaffNeeded %></td>
           </tr>
           <tr>
-            <td class="text-center xs:text-xl sm:text-2xl">Bartender</td>
+            <td class="text-right tracking-wider text-2xl">BARETENDER</td>
             <td class="text-center xs:text-xl sm:text-2xl"><%= event.bartenderNeeded %></td>
           </tr>
           <tr>
-            <td class="text-center xs:text-xl sm:text-2xl">Chef</td>
+            <td class="text-right tracking-wider text-2xl">CHEF</td>
             <td class="text-center xs:text-xl sm:text-2xl"><%= event.chefNeeded %></td>
           </tr>
         </table>
-        <div class="grid flex-grow h-20 sm:h-28 card bg-base-200 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch my-3">
+        <div class="grid flex-grow h-20 sm:h-28 card bg-base-200 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch mb-3 mt-5">
           <form class="xs:my-auto sm:mt-3 sm:mb-5 mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
             <label class="xs:hidden sm:block xs:text-sm sm:text-xl lg:text-lg md:ml-1 lg:ml-2" for="occupationRole">Choose a Role </label>
             <select class="select select-primary max-w-xs text-lg" name="occupationRole" id="occupationSelection">
               <%if(user.occupation.includes('Waitstaff')){ %>
-              <option value="Waitstaff">Waitstaff</option>
+              <option class="tracking-widest" value="Waitstaff">WAITSTAFF</option>
               <%}%>
               <%if(user.occupation.includes('Bartender')){ %>
-              <option value="Bartender">Bartender</option>
+              <option class="tracking-widest" value="Bartender">BARTENDER</option>
               <%}%>
               <%if(user.occupation.includes('Chef')){ %>
-              <option value="Chef">Chef</option>
+              <option class="tracking-widest" value="Chef">CHEF</option>
               <%}%>
             </select>
             <% if (Date.now() > event.date) { %>
               <div class="tooltip" data-tip="Event is Closed">
                 <button class="btn btn-primary cursor-not-allowed" disabled="disabled" type="submit">Reserve Role</button>
               </div>
+            <% } else if(user.eventsReserved.includes(event.id)) { %>
+                <div class="tooltip" data-tip="You have reserved this event.">
+                  <button class="btn btn-primary cursor-not-allowed" disabled="disabled" type="submit">Reserve Role</button>
+                </div>
             <% } else { %>
-              <button class="btn btn-primary" type="submit">Reserve Role</button>
+              <button class="btn btn-primary tracking-wider" type="submit">Reserve Role</button>
             <% } %>
           </form>
         </div>

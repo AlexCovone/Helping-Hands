@@ -41,11 +41,6 @@ module.exports = {
             return {...event, staffArrival, estimatedEndTime, date}
         })
     },
-    
-    // Checks if userId is in staffReserved property
-    checkUserReserved: (staffReserved, userId) => {
-        return staffReserved.some(subArr => subArr.includes(userId))
-    },
 
     // Define object that maps the occupation roles to corresponding property in Event model
     // Get corresponding object property name from occupationRole (req.body.occupationRole)
