@@ -30,7 +30,11 @@ module.exports = {
       const upcomingEventDetails = getEventDetails(upcomingEvents)
       const previousEventDetails = getEventDetails(previousEvents)
 
-      res.render("feed.ejs", { user: req.user, upcomingEvents: upcomingEventDetails, previousEvents: previousEventDetails });
+      const date = new Date(Date.now())
+      const options = { month: 'long', day: 'numeric', year: 'numeric' }
+      const formattedDate = date.toLocaleDateString('en-US', options)
+
+      res.render("feed.ejs", { user: req.user, date: formattedDate, upcomingEvents: upcomingEventDetails, previousEvents: previousEventDetails });
     } catch (err) {
       console.log(err);
     }
