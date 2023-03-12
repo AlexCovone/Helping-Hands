@@ -1,54 +1,82 @@
 <%- include('partials/header') -%>
-  <div class="container mt-20 mx-auto">
-    <h2 class="text-3xl font-bold mb-4">Hello <%= user.name.split(' ')[0] %>,</h2>
-    <h3><%= date %></h3>
-    <span class="text-xl">Find an event that fits your schedule</span>
+  <div class="container flex flex-col min-h-screen mt-5 mb-10 mx-auto">
+    <h2 class="text-3xl text-slate-100 mt-4">Hello <%= user.name.split(' ')[0] %>,</h2>
+    <div class="inline-flex">
+      <h5 class="xs:text-2xl sm:text-3xl mt-4 text-slate-100">Today is&nbsp;</h5>
+      <h3 class="xs:text-2xl sm:text-3xl mt-4 text-slate-100 font-bold"> <%= date %></h3>
+    </div>
+    <span class="xs:text-lg sm:text-2xl mt-4 text-slate-300">Let's find an event that fits your schedule.</span>
 
-    <div class="overflow-hidden bg-base-300 shadow rounded-md my-5">
-        <h3 class="text-2xl font-semibold leading-6 text-slate-50 mt-5 sm:ml-7 mb-5">Upcoming Events</h3>
-      <ul role="list" class="divide-y divide-base-200">
+    <div class="overflow-hidden bg-base-300 shadow rounded-md mt-5">
+      <div class=" flex flex-wrap items-center justify-between sm:flex-nowrap bg-base-200 sm:px-2">
+        <div class="xs:ml-5 sm:ml-7 my-5">
+          <h3 class="xs:text-2xl md:text-3xl font-semibold leading-6 text-slate-100">Upcoming Events</h3>
+        </div>
+        <%if(user.role === 'Admin'){ %>
+        <div class="mx-4 my-5 flex-shrink-0 xs:hidden sm:block">
+          <a href="/admin" class="btn btn-primary tracking-wide relative inline-flex items-center rounded-md mx-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+            </svg>
+            </span>
+            New Event
+          </a>
+        </div>
+        <%}%>
+      </div>
+      <ul role="list" class="divide-y divide-slate-800">
         <% for(var i=0; i < upcomingEvents.length; i++) {%>
-        <li>
-          <a href="/events/<%= upcomingEvents[i]._id%>" class="block hover:text-primary hover:bg-base-200">
+        <li class="sm:px-2 md:px-0 lg:px-2">
+          <a href="/events/<%= upcomingEvents[i]._id%>" class="block hover:bg-base-200">
             <div class="px-4 py-4 sm:px-6">
               <div class="flex items-center">
                 <% if(upcomingEvents[i].waitstaffNeeded === 0 && upcomingEvents[i].bartenderNeeded === 0 && upcomingEvents[i].chefNeeded === 0) { %>
                   <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-red-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <circle cx="10" cy="10" r="8" fill="currentColor" />
-                  </svg>
+                  </svg>             
                 <% } else { %>
                   <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <circle cx="10" cy="10" r="8" fill="currentColor" />
                   </svg>
                 <% } %>
-                <p class="truncate text-2xl font-medium text-slate-50"><%= upcomingEvents[i].eventName %></p>
+                <p class="truncate text-2xl font-medium text-gray-400"><%= upcomingEvents[i].eventName %></p>
+                <% if(user.eventsReserved.includes(upcomingEvents[i]._id)) { %>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="#FBBE1F" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FBBE1F" class="xs:w-5 xs:h-5 sm:w-6 sm:h-6 ml-3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                  </svg>
+                                
+                  <% } %>
               </div>
-              <div class="mt-2 sm:flex sm:justify-between">
-                <div class="sm:flex">
-                  <p class="flex items-center text-sm text-gray-500 tracking-wide">
+              <div class="mt-2 md:flex md:justify-between">
+                <div class="md:flex">
+                  <p class="flex items-center text-sm text-slate-50 xs:tracking-tight sm:tracking-wide md:tracking-tighter lg:tracking-wide">
                     <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
                     </svg>
                     <%= upcomingEvents[i].date %> &#8226 <%= upcomingEvents[i].staffArrival%> - <%= upcomingEvents[i].estimatedEndTime%>
                   </p>
-                  <p class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
+                  <p class="mt-2 flex items-center text-sm text-gray-500 md:mt-0 md:ml-4 md:mr-2 md:tracking-tighter lg:tracking-normal">
                     <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
                     </svg>
                     <%= upcomingEvents[i].address %>
                   </p>
                 </div>
-                <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <div class="mt-2 flex items-center text-sm md:mt-0 text-gray-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                   </svg>
-                  <p class="sm:ml-2">Waitstaff: <%= upcomingEvents[i].waitstaffNeeded %></p>
-                  <p class="xs:mx-4 sm:mx-8">Bartenders: <%= upcomingEvents[i].bartenderNeeded %></p>
-                  <p class="">Chefs: <%= upcomingEvents[i].chefNeeded %></p>
-                  <!-- <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                  </svg> -->
+                  <p class="sm:ml-2 xs:tracking-wide sm:tracking-wider md:tracking-normal lg:tracking-wider">
+                    Waitstaff: <span class="text-slate-50"><%= upcomingEvents[i].waitstaffNeeded %></span>
+                  </p>
+                  <p class="xs:mx-3 sm:mx-6 md:mx-2 lg:mx-8 xs:tracking-wide sm:tracking-wider md:tracking-normal lg:tracking-wider">
+                    Bartenders: <span class="text-slate-50"><%= upcomingEvents[i].bartenderNeeded %></span>
+                  </p>
+                  <p class="sm:mr-2 md:mr-0 xs:tracking-wide sm:tracking-wider md:tracking-normal lg:tracking-wider">
+                    Chefs: <span class="text-slate-50"><%= upcomingEvents[i].chefNeeded %></span>
+                  </p>
                 </div>
+                
               </div>
             </div>
           </a>
@@ -56,123 +84,6 @@
         <% } %>
       </ul>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    <div class="grid xs:grid-cols-1 lg:grid-cols-2 gap-6  mx-10 my-5">
-      <% for(var i=0; i < upcomingEvents.length; i++) {%>
-        <a href="/events/<%= upcomingEvents[i]._id%>">
-          <div class="stats shadow border border-red-500 hover:text-primary w-full grid xs:grid-cols-12 sm:grid-cols-8">
-            <div class="stat xs:col-span-7 sm:col-span-5 md:col-span-6">
-              <div class="flex flex-col-reverse md:flex-row">
-                <div class="stat-title sm:mr-4"><%= upcomingEvents[i].date %></div>
-                <% if(upcomingEvents[i].waitstaffNeeded === 0 && upcomingEvents[i].bartenderNeeded === 0 && upcomingEvents[i].chefNeeded === 0) { %>
-                  <div class="badge badge-error gap-2 sm:mt-0">
-                    Event Full
-                  </div>
-                <% } %>
-              </div>
-              <div class="stat-title"><%= upcomingEvents[i].staffArrival%> - <%= upcomingEvents[i].estimatedEndTime%> </div>
-              <div class="md:stat-value truncate"><%= upcomingEvents[i].eventName %></div>
-              <div class="stat-title md:mt-2"><%= upcomingEvents[i].address %></div>
-            </div>
-            
-          
-            <div class="stat xs:col-span-5 sm:col-span-3 md:col-span-2">
-              <div class="staff stat-title text-white font-bold">
-                <span class="hidden sm:block">Staff Required</span>
-                <span class="block sm:hidden">Staff</span>
-              </div>
-              <div class="stat-title">Waitstaff: <%= upcomingEvents[i].waitstaffNeeded %></div>
-              <div class="stat-title">Bartender: <%= upcomingEvents[i].bartenderNeeded %></div>
-              <div class="stat-title">Chef: <%= upcomingEvents[i].chefNeeded %></div>
-            </div>
-          </div>
-        </a>
-      <% } %>
-    </div>
-    
-    
-    <!-- <div> -->
-
-      <!-- SNAP TO CENTER -->
-      <!-- <div class="border-red-500 border-3 flex justify-between mt-10">
-        <h1 class="xs:text-2xl sm:text-3xl font-bold">Upcoming Events</h1>
-        <h4 class="font-bold"><a href="/upcoming-events" class="btn btn-secondary btn-sm">See All</a></h4>
-      </div> -->
-
-      <!-- DECIDE ON BASE-200 VS Base-300 / W or W/O shadow -->
-      <!-- <div class="carousel carousel-center rounded-box shadow-2xl bg-base-200 -mx-4 my-5 sm:py-3">
-        <% for(var i=0; i < upcomingEvents.length; i++) {%>
-          <div class="card carousel-item xs:w-80 sm:w-96 glass m-5">
-            <figure><img src="<%= upcomingEvents[i].image%>" alt="Event Photo"/></figure>
-            <div class="card-body">
-              <% if(upcomingEvents[i].waitstaffNeeded === 0 && upcomingEvents[i].bartenderNeeded === 0 && upcomingEvents[i].chefNeeded === 0) { %>
-                <div class="badge badge-error gap-2">
-                  Event Full
-                </div>
-              <% } %>
-              <h2 class="card-title"><%= upcomingEvents[i].eventName %></h2>
-              <h3><%= upcomingEvents[i].date %></h3>
-              <div class="flex justify-between">
-                <h3><%= upcomingEvents[i].staffArrival%> - <%= upcomingEvents[i].estimatedEndTime%> </h3>
-                <div class="card-actions justify-end mt-2">
-                  <a href="/events/<%= upcomingEvents[i]._id%>" class="btn xs:btn-sm sm:btn xs:btn-primary sm:btn-primary xs:ml-8">Learn More</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-
-        <% } %>
-      </div>
-
-      <br> -->
-
-      <!-- SNAP TO CENTER -->
-      <div class="border-red-500 border-3 flex justify-between">
-        <h1 class="xs:text-2xl sm:text-3xl font-bold">Previous Events</h1>
-        <h4 class="font-bold"><a href="/previous-events" class="btn btn-secondary btn-sm">See All</a></h4>
-      </div>
-
-      <div class="carousel carousel-center rounded-box bg-base-300 shadow-2xl -mx-4 my-5 sm:py-3">
-        <% for(var i=0; i < previousEvents.length; i++) {%>
-          <div class="card carousel-item xs:w-80 sm:w-96 glass m-5">
-            <figure><img src="<%= previousEvents[i].image%>" alt="Event Photo"/></figure>
-            <div class="card-body">
-              <% if(previousEvents[i].waitstaffNeeded === 0 && previousEvents[i].bartenderNeeded === 0 && previousEvents[i].chefNeeded === 0) { %>
-                <div class="badge badge-error gap-2">
-                  Event Full
-                </div>
-              <% } %>
-              <h2 class="card-title"><%= previousEvents[i].eventName %></h2>
-              <h3><%= previousEvents[i].date %></h3>
-              <h3><%= previousEvents[i].staffArrival %> - <%= previousEvents[i].estimatedEndTime %> </h3>
-              <div class="card-actions justify-end mt-2">
-                <a href="/events/<%= previousEvents[i]._id%>" class="btn xs:btn-sm sm:btn xs:btn-primary sm:btn-primary xs:ml-8">Learn More</a>
-              </div>
-            </div>
-          </div>
-        <% } %>
-      </div>
-
-    </div> 
   </div>
 
 

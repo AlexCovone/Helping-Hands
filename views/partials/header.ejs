@@ -15,27 +15,26 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body class="">
-    <div class="navbar fixed bg-base-100 top-0 z-50 border border-red-500 border-3">
+    <div class="navbar bg-base-100 top-0 z-50 h-32 border border-red-500 border-3">
       <% if (typeof event === 'undefined') { %>
         <div class="flex-1">
       <% } else { %>
         <div class="flex-none">
       <% } %>
-          <a class="btn btn-ghost normal-case xs:text-3xl md:text-4xl" href="/events">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10.05 4.575a1.575 1.575 0 10-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 013.15 0v1.5m-3.15 0l.075 5.925m3.075.75V4.575m0 0a1.575 1.575 0 013.15 0V15M6.9 7.575a1.575 1.575 0 10-3.15 0v8.175a6.75 6.75 0 006.75 6.75h2.018a5.25 5.25 0 003.712-1.538l1.732-1.732a5.25 5.25 0 001.538-3.712l.003-2.024a.668.668 0 01.198-.471 1.575 1.575 0 10-2.228-2.228 3.818 3.818 0 00-1.12 2.687M6.9 7.575V12m6.27 4.318A4.49 4.49 0 0116.35 15m.002 0h-.002" />
-          </svg>
+          <a class="" href="/events">
+            <img src="/imgs/wideLogo.png" alt="Helping Hands Wide Logo" class="xs:hidden sm:block h-24 btn btn-ghost">
+            <img src="/imgs/doubleLogo.png" alt="Helping Hands Stacked Logo" class="xs:block sm:hidden h-24 btn btn-ghost">
           </a>
         </div>
 
       <% if (typeof event !== 'undefined') { %>
         <div class="flex-1 flex items-center justify-center eventName text-center text-2xl font-bold"><%= event.eventName %></div>
-      <% } %>
+        <% } %>
 
       <div class="flex-none gap-2">
         <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn btn-ghost btn-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M18 9.318v1.364c0 .245-.21.445-.47.445H2.47a.444.444 0 0 1-.47-.445v-1.364c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445zm0-4.318v1.363c0 .246-.21.446-.47.446H2.47a.444.444 0 0 1-.47-.446V5c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445zm0 8.635v1.363c0 .245-.21.445-.47.445H2.47a.444.444 0 0 1-.47-.445v-1.363c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445z" clip-rule="evenodd" />
             </svg>
           </label>
