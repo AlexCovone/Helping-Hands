@@ -40,7 +40,7 @@ module.exports = {
             chefNeeded: req.body.chefNeeded
           });
           console.log("Event has been added!");
-          res.redirect("/profile");
+          res.redirect("/events");
         } catch (err) {
           console.log(err);
         }

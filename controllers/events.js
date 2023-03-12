@@ -25,16 +25,13 @@ module.exports = {
     try {  
       // Using aggregation pipeline to filter events that have occurred vs events that have not occurred
       const upcomingEvents = await getUpcomingEvents()
-      const previousEvents = await getPreviousEvents()
-
       const upcomingEventDetails = getEventDetails(upcomingEvents)
-      const previousEventDetails = getEventDetails(previousEvents)
 
       const date = new Date(Date.now())
       const options = { month: 'long', day: 'numeric', year: 'numeric' }
       const formattedDate = date.toLocaleDateString('en-US', options)
 
-      res.render("feed.ejs", { user: req.user, date: formattedDate, upcomingEvents: upcomingEventDetails, previousEvents: previousEventDetails });
+      res.render("feed.ejs", { user: req.user, date: formattedDate, upcomingEvents: upcomingEventDetails});
     } catch (err) {
       console.log(err);
     }

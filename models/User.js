@@ -30,6 +30,11 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: []
   },
+  qsbAward: {
+    type: Number,
+    required: true,
+    default: 0
+  },
   password: String,
 })
 
