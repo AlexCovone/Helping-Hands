@@ -1,9 +1,9 @@
 <%- include('partials/header') -%>
 
-<div class="container mx-auto xs:mt-20 sm:mt-16 mb-5">
+<div class="container flex flex-col min-h-screen mt-36 mb-8 mx-auto">
 
     <!-- RESERVATION ERROR/SUCCESS MESSAGE -->
-    <div class="toast toast-end z-40">
+    <div class="toast toast-end z-50">
     <% if (message.error) { %>
       <div class="notification alert alert-error shadow-lg">
         <div class="flex items-center">
@@ -31,7 +31,7 @@
     </div>
     <!-- END RESERVATION ERROR/SUCCESS MESSAGE -->
     
-    <!-- The button to open modal -->
+    <!-- Button to open modal -->
     <%if(user.role === 'Admin'){ %>
     <div class="flex justify-end">
       <label for="my-modal-6" class="btn btn-sm mt-5 flex items-center justify-center">
@@ -67,27 +67,27 @@
             <!-- row 1 -->
             <tr>
               <td class="text-right tracking-wider">LOCATION</td>
-              <td class="xs:text-xl sm:text-2xl xl:text-3xl"><%= event.address %></td>
+              <td class="xs:text-xl sm:text-2xl xl:text-3xl text-slate-100"><%= event.address %></td>
             </tr>
             <!-- row 2 -->
             <tr>
               <td class="text-right tracking-wider">DATE</td>
-              <td class="xs:text-xl sm:text-2xl xl:text-3xl"><%= date %></td>
+              <td class="xs:text-xl sm:text-2xl xl:text-3xl text-slate-100"><%= date %></td>
             </tr>
             <!-- row 3 -->
             <tr>
               <td class="text-right tracking-wider">HOURS</td>
-              <td class="xs:text-xl sm:text-2xl xl:text-3xl"><%= staffArrival %> - <%= estimatedEndTime %></td>
+              <td class="xs:text-xl sm:text-2xl xl:text-3xl text-slate-100"><%= staffArrival %> - <%= estimatedEndTime %></td>
             </tr>
             <!-- Row 4 -->
             <tr>
               <td class="text-right tracking-wider">HOSTED BY</td>
-              <td class="xs:text-xl sm:text-2xl xl:text-3xl"><%= event.caterer %></td>
+              <td class="xs:text-xl sm:text-2xl xl:text-3xl text-slate-100"><%= event.caterer %></td>
             </tr>
             <!-- Row 5 -->
             <tr class="uniform">
               <td class="text-right tracking-wider">UNIFORM</td>
-              <td class="xs:text-sm md:text-xl lg:text-base xl:text-2xl whitespace-normal break-words"><%= event.uniform %></td>
+              <td class="xs:text-sm md:text-xl lg:text-base xl:text-2xl whitespace-normal break-words text-slate-100"><%= event.uniform %></td>
             </tr>
           </tbody>
         </table>
@@ -103,21 +103,21 @@
           </tr>
           <tr>
             <td class="text-right tracking-wider text-2xl">WAITSTAFF</td>
-            <td class="text-center xs:text-xl sm:text-2xl"><%= event.waitstaffNeeded %></td>
+            <td class="text-center xs:text-xl sm:text-2xl text-slate-100"><%= event.waitstaffNeeded %></td>
           </tr>
           <tr>
             <td class="text-right tracking-wider text-2xl">BARETENDER</td>
-            <td class="text-center xs:text-xl sm:text-2xl"><%= event.bartenderNeeded %></td>
+            <td class="text-center xs:text-xl sm:text-2xl text-slate-100"><%= event.bartenderNeeded %></td>
           </tr>
           <tr>
             <td class="text-right tracking-wider text-2xl">CHEF</td>
-            <td class="text-center xs:text-xl sm:text-2xl"><%= event.chefNeeded %></td>
+            <td class="text-center xs:text-xl sm:text-2xl text-slate-100"><%= event.chefNeeded %></td>
           </tr>
         </table>
         <div class="grid flex-grow h-20 sm:h-28 card bg-base-200 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch mb-3 mt-5">
           <form class="xs:my-auto sm:mt-3 sm:mb-5 mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
             <label class="xs:hidden sm:block xs:text-sm sm:text-xl lg:text-lg md:ml-1 lg:ml-2" for="occupationRole">Choose a Role </label>
-            <select class="select select-primary max-w-xs text-lg" name="occupationRole" id="occupationSelection">
+            <select class="select select-primary max-w-xs text-lg text-slate-100" name="occupationRole" id="occupationSelection">
               <%if(user.occupation.includes('Waitstaff')){ %>
               <option class="tracking-widest" value="Waitstaff">WAITSTAFF</option>
               <%}%>
