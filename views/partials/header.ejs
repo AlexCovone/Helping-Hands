@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body class="">
-    <!-- <div class="navbar bg-base-100 top-0 z-50 h-32 border border-red-500 border-3"> -->
     <% if (typeof event === 'undefined') { %>
     <div class="navbar bg-base-100 top-0 z-50 h-32 border border-red-500 border-3">
         <div class="flex-1">
@@ -32,11 +31,6 @@
           </a>
         </div>
     <% } %>
-          <!-- <a class="" href="/events">
-            <img src="/imgs/wideLogo.png" alt="Helping Hands Wide Logo" class="xs:hidden md:block h-24 btn btn-ghost">
-            <img src="/imgs/doubleLogo.png" alt="Helping Hands Stacked Logo" class="xs:block md:hidden h-24 btn btn-ghost">
-          </a>
-        </div> -->
 
       <% if (typeof event !== 'undefined') { %>
         <div class="flex-1 flex items-center justify-center eventName text-center xs:text-2xl sm:text-3xl font-bold text-slate-100 xs:ml-10 sm:mr-24"><%= event.eventName %></div>

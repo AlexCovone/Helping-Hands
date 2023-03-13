@@ -2131,13 +2131,6 @@ html {
   --tw-text-opacity: 0.2;
 }
 
-.label-text {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  --tw-text-opacity: 1;
-  color: hsl(var(--bc) / var(--tw-text-opacity));
-}
-
 .label-text-alt {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -3002,16 +2995,6 @@ html {
   margin-bottom: 1.5rem;
 }
 
-.mx-20 {
-  margin-left: 5rem;
-  margin-right: 5rem;
-}
-
-.mx-24 {
-  margin-left: 6rem;
-  margin-right: 6rem;
-}
-
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -3068,10 +3051,6 @@ html {
   margin-top: 0.5rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
-}
-
 .mt-28 {
   margin-top: 7rem;
 }
@@ -3098,34 +3077,6 @@ html {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mr-auto {
-  margin-right: auto;
-}
-
-.mr-10 {
-  margin-right: 2.5rem;
-}
-
-.mr-40 {
-  margin-right: 10rem;
-}
-
-.mr-60 {
-  margin-right: 15rem;
-}
-
-.mr-56 {
-  margin-right: 14rem;
-}
-
-.mr-52 {
-  margin-right: 13rem;
-}
-
-.ml-5 {
-  margin-left: 1.25rem;
 }
 
 .block {
@@ -3168,8 +3119,8 @@ html {
   height: 1.5rem;
 }
 
-.h-\[690px\] {
-  height: 690px;
+.h-\[500px\] {
+  height: 500px;
 }
 
 .h-auto {
@@ -3179,46 +3130,6 @@ html {
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
-}
-
-.h-\[590px\] {
-  height: 590px;
-}
-
-.h-\[490px\] {
-  height: 490px;
-}
-
-.h-\[450px\] {
-  height: 450px;
-}
-
-.h-\[475px\] {
-  height: 475px;
-}
-
-.h-\[480px\] {
-  height: 480px;
-}
-
-.h-\[470px\] {
-  height: 470px;
-}
-
-.h-\[500px\] {
-  height: 500px;
-}
-
-.h-\[550px\] {
-  height: 550px;
-}
-
-.h-\[520px\] {
-  height: 520px;
-}
-
-.h-40 {
-  height: 10rem;
 }
 
 .min-h-screen {
@@ -3237,12 +3148,12 @@ html {
   width: 1.5rem;
 }
 
-.w-auto {
-  width: auto;
+.w-80 {
+  width: 20rem;
 }
 
-.w-full {
-  width: 100%;
+.w-auto {
+  width: auto;
 }
 
 .w-fit {
@@ -3250,21 +3161,8 @@ html {
   width: fit-content;
 }
 
-.w-max {
-  width: -moz-max-content;
-  width: max-content;
-}
-
-.w-32 {
-  width: 8rem;
-}
-
-.w-72 {
-  width: 18rem;
-}
-
-.w-80 {
-  width: 20rem;
+.w-full {
+  width: 100%;
 }
 
 .max-w-full {
@@ -3403,24 +3301,14 @@ html {
   border-color: hsl(var(--b1) / var(--tw-border-opacity));
 }
 
-.border-gray-300 {
+.border-gray-600 {
   --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  border-color: rgb(75 85 99 / var(--tw-border-opacity));
 }
 
 .border-red-500 {
   --tw-border-opacity: 1;
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
-}
-
-.border-gray-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(107 114 128 / var(--tw-border-opacity));
-}
-
-.border-gray-600 {
-  --tw-border-opacity: 1;
-  border-color: rgb(75 85 99 / var(--tw-border-opacity));
 }
 
 .bg-base-100 {
@@ -3529,14 +3417,6 @@ html {
   font-weight: 600;
 }
 
-.font-light {
-  font-weight: 300;
-}
-
-.font-extralight {
-  font-weight: 200;
-}
-
 .leading-6 {
   line-height: 1.5rem;
 }
@@ -3623,11 +3503,6 @@ html {
   color: rgb(248 250 252 / var(--tw-text-opacity));
 }
 
-.text-\[\#7A818E\] {
-  --tw-text-opacity: 1;
-  color: rgb(122 129 142 / var(--tw-text-opacity));
-}
-
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -3656,15 +3531,6 @@ html {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.hover\:select-primary:hover {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--p) / var(--tw-border-opacity));
-}
-
-.hover\:select-primary:hover:focus {
-  outline: 2px solid hsl(var(--p));
 }
 
 .focus\:select-primary:focus {
@@ -3854,14 +3720,6 @@ html {
 
   .xs\:mt-3 {
     margin-top: 0.75rem;
-  }
-
-  .xs\:mt-5 {
-    margin-top: 1.25rem;
-  }
-
-  .xs\:mt-8 {
-    margin-top: 2rem;
   }
 
   .xs\:block {
@@ -4117,10 +3975,6 @@ html {
 
   .md\:flex {
     display: flex;
-  }
-
-  .md\:inline-flex {
-    display: inline-flex;
   }
 
   .md\:hidden {
