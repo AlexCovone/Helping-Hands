@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: []
   },
-  qsbAward: {
+  stbAward: {
     type: Number,
     required: true,
     default: 0

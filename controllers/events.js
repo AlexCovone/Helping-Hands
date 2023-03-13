@@ -9,7 +9,6 @@ module.exports = {
     try {
       // Arr of events sorted by eventReserved property on User model
       const allUserEvents = await filterEventsByUser(req.user.id)
-
       const upcomingUserEvents = await getUpcomingEvents(allUserEvents)
       const previousUserEvents = await getPreviousEvents(allUserEvents)
 
@@ -46,26 +45,6 @@ module.exports = {
       
       console.log(message)
       res.render("event.ejs", { event, user: req.user, message, staffArrival: time12StaffArrival, estimatedEndTime: time12EstimatedEndTime, date: dateConversion });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getAllUpcomingEvents: async (req, res) => {
-    try {
-      const allUpcomingEvents = await getUpcomingEvents()
-      const formattedUpcomingEvents = getEventDetails(allUpcomingEvents)
-
-      res.render("allUpcomingEvents.ejs", { user: req.user, upcomingEvents: formattedUpcomingEvents });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getAllPreviousEvents: async (req, res) => {
-    try {
-      const allPreviousEvents = await getPreviousEvents()
-      const formattedPreviousEvents = getEventDetails(allPreviousEvents)
-
-      res.render("allPreviousEvents.ejs", { user: req.user, previousEvents: formattedPreviousEvents });
     } catch (err) {
       console.log(err);
     }

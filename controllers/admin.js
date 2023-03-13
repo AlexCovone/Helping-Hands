@@ -14,7 +14,8 @@ module.exports = {
     getAdminDash: async (req, res) => {
         try {
         const allUsers = await User.find()
-        res.render("admin.ejs", {allUsers, user: req.user });
+        const message = req.flash()     
+        res.render("admin.ejs", {allUsers, user: req.user, message });
         } catch (err) {
         console.log(err);
         }
@@ -40,10 +41,25 @@ module.exports = {
             chefNeeded: req.body.chefNeeded
           });
           console.log("Event has been added!");
-          res.redirect("/events");
+          req.flash("success", `Event ${req.body.eventName} has been created.`)
+          res.redirect("/admin");
         } catch (err) {
           console.log(err);
         }
+    },
+    awardSimplyTheBest: async (req, res) => {
+      try {
+        const user = await User.findOneAndUpdate(
+          { _id: req.body.awardRecipient },
+          {
+            $inc: { stbAward: 1 },
+          }
+        );
+        req.flash("success", `${user.name} has been awarded the 'Simply the Best' award!`)
+        res.redirect("/admin")
+      } catch (err) {
+      console.log(err);
+      }
     },
     textUsers: async (req, res) => {
       try{
@@ -54,7 +70,7 @@ module.exports = {
         const numberNewEvents = req.body.numberNewEvents
 
         const client = require('twilio')(accountSid, authToken);
-        const messages = await Promise.all(validPhoneNumbers.map(number => {
+        await Promise.all(validPhoneNumbers.map(number => {
           return client.messages.create({
             body: `There are ${numberNewEvents} new events that have been posted. Please visit Helping-Hands to reserve your event.`,
             to: number, // Recipient
@@ -62,7 +78,7 @@ module.exports = {
           })
         }))
 
-        messages.forEach(message => console.log(message.sid))
+        req.flash("success", `Notified ${validPhoneNumbers.length} users of newly posted events.`)
         res.redirect("/admin")
       } catch (err) {
         console.log(err)
