@@ -102,18 +102,19 @@
             <th class="text-center xs:text-xl sm:text-2xl whitespace-normal break-words tracking-wider">STAFF REQUIRED</th>
           </tr>
           <tr>
-            <td class="text-right tracking-wider text-2xl">WAITSTAFF</td>
+            <td class="text-right tracking-wider text-2xl text-slate-100">WAITSTAFF</td>
             <td class="text-center xs:text-xl sm:text-2xl text-slate-100"><%= event.waitstaffNeeded %></td>
           </tr>
           <tr>
-            <td class="text-right tracking-wider text-2xl">BARETENDER</td>
+            <td class="text-right tracking-wider text-2xl text-slate-100">BARETENDER</td>
             <td class="text-center xs:text-xl sm:text-2xl text-slate-100"><%= event.bartenderNeeded %></td>
           </tr>
           <tr>
-            <td class="text-right tracking-wider text-2xl">CHEF</td>
+            <td class="text-right tracking-wider text-2xl text-slate-100">CHEF</td>
             <td class="text-center xs:text-xl sm:text-2xl text-slate-100"><%= event.chefNeeded %></td>
           </tr>
         </table>
+        
         <div class="grid flex-grow h-20 sm:h-28 card bg-base-200 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch mb-3 mt-5">
           <form class="xs:my-auto sm:mt-3 sm:mb-5 mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
             <label class="xs:hidden sm:block xs:text-sm sm:text-xl lg:text-lg md:ml-1 lg:ml-2" for="occupationRole">Choose a Role </label>
@@ -145,7 +146,7 @@
       
     </div>
    <%if(user.role === 'Admin'){ %>
-    <div class="overflow-auto">
+    <div class="overflow-auto my-3">
       <table class="table table-striped table-bordered mx-auto">
         <tr>
           <th>Name</th>
@@ -154,9 +155,9 @@
         </tr>
        <% for(var i = 0; i < event.staffReserved.length; i++) {%>
             <tr>
-              <td><%= event.staffReserved[i][1] %></td>
-              <td><%= event.staffReserved[i][2] %></td>
-              <td><%= event.staffReserved[i][3] %></td>
+              <td class="text-slate-100"><%= event.staffReserved[i][1] %></td>
+              <td class="text-slate-100"><%= event.staffReserved[i][2] %></td>
+              <td class="text-slate-100"><%= event.staffReserved[i][3] %></td>
             </tr>
        <% } %>
      <%}%>

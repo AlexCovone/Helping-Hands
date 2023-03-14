@@ -49,6 +49,12 @@ module.exports = {
     },
     awardSimplyTheBest: async (req, res) => {
       try {
+        if(req.body.awardRecipient === undefined){
+          req.flash("error", `Please select valid staff member.`)
+          console.log('Please select valid staff member')
+          return res.redirect(`/admin`)
+        }
+
         const user = await User.findOneAndUpdate(
           { _id: req.body.awardRecipient },
           {

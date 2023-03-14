@@ -26,11 +26,17 @@ module.exports = {
       const upcomingEvents = await getUpcomingEvents()
       const upcomingEventDetails = getEventDetails(upcomingEvents)
 
+
+
       const date = new Date(Date.now())
       const options = { month: 'long', day: 'numeric', year: 'numeric' }
       const formattedDate = date.toLocaleDateString('en-US', options)
 
-      res.render("feed.ejs", { user: req.user, date: formattedDate, upcomingEvents: upcomingEventDetails});
+      // Time of day
+      const time = date.getHours()
+      console.log(time)
+
+      res.render("feed.ejs", { user: req.user, date: formattedDate, upcomingEvents: upcomingEventDetails, time});
     } catch (err) {
       console.log(err);
     }
@@ -101,9 +107,9 @@ module.exports = {
         // Delete post from db
         await Event.deleteOne({ _id: req.params.id });
         console.log("Deleted Event");
-        res.redirect("/profile");
+        res.redirect("/events");
       } catch (err) {
-        res.redirect("/profile");
+        res.redirect("/events");
       }
     }
 }

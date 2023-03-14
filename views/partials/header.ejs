@@ -16,7 +16,7 @@
   </head>
   <body class="">
     <% if (typeof event === 'undefined') { %>
-    <div class="navbar bg-base-100 top-0 z-50 h-32 border border-red-500 border-3">
+    <div class="navbar bg-base-100 top-0 z-50 h-32">
         <div class="flex-1">
           <a class="" href="/events">
             <img src="/imgs/wideLogo.png" alt="Helping Hands Wide Logo" class="xs:hidden sm:block h-24 btn btn-ghost">
@@ -24,7 +24,7 @@
           </a>
         </div>
     <% } else { %>
-    <div class="navbar fixed bg-base-100 mb-10 top-0 z-50 h-32 border border-red-500 border-3">  
+    <div class="navbar fixed bg-base-100 mb-10 top-0 z-50 h-32">  
         <div class="flex-none">
           <a class="" href="/events">
             <img src="/imgs/doubleLogo.png" alt="Helping Hands Stacked Logo" class="xs:hidden sm:block sm:h-24 btn btn-ghost">
@@ -39,7 +39,7 @@
 
       <div class="flex-none gap-2">
         <div class="dropdown dropdown-end">
-          <label tabindex="0" class="btn btn-ghost btn-circle">
+          <label tabindex="0" class="btn btn-ghost btn-circle text-slate-100">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M18 9.318v1.364c0 .245-.21.445-.47.445H2.47a.444.444 0 0 1-.47-.445v-1.364c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445zm0-4.318v1.363c0 .246-.21.446-.47.446H2.47a.444.444 0 0 1-.47-.446V5c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445zm0 8.635v1.363c0 .245-.21.445-.47.445H2.47a.444.444 0 0 1-.47-.445v-1.363c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445z" clip-rule="evenodd" />
             </svg>
