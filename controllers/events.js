@@ -27,8 +27,8 @@ module.exports = {
       const upcomingEventDetails = getEventDetails(upcomingEvents)
 
       const date = new Date(Date.now())
-      const options = { month: 'long', day: 'numeric', year: 'numeric' }
-      const formattedDate = date.toLocaleDateString('en-US', options)
+      const format = { month: 'long', day: 'numeric', year: 'numeric' }
+      const formattedDate = date.toLocaleDateString('en-US', format)
 
       // Time of Day
       const time = date.getHours()
