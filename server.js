@@ -48,6 +48,7 @@ app.use(
   })
 );
 
+
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -59,6 +60,19 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use('/events', eventRoutes);
 app.use('/admin', adminRoute);
+
+// 404 Error Handling
+app.get('*', function(req, res) {
+  res.status(404);
+
+  if (req.user) {
+    // Button redirects user to /events
+    return res.render("404", { user: req.user });
+  } else {
+    // Button redirects user to /
+    return res.render("404");
+  }
+});
 
 //Server Running
 app.listen(process.env.PORT, () => {

@@ -26,15 +26,12 @@ module.exports = {
       const upcomingEvents = await getUpcomingEvents()
       const upcomingEventDetails = getEventDetails(upcomingEvents)
 
-
-
       const date = new Date(Date.now())
       const options = { month: 'long', day: 'numeric', year: 'numeric' }
       const formattedDate = date.toLocaleDateString('en-US', options)
 
-      // Time of day
+      // Time of Day
       const time = date.getHours()
-      console.log(time)
 
       res.render("feed.ejs", { user: req.user, date: formattedDate, upcomingEvents: upcomingEventDetails, time});
     } catch (err) {
