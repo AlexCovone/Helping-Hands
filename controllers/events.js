@@ -2,7 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
 const { getUpcomingEvents, getPreviousEvents, getEventDetails, getRoleNeeded, decreaseSpotsLeft, addStaffReserved } = require("../controllers/services/event.service");
 const { addEventToUser, filterEventsByUser } = require("../controllers/services/user.service")
-const { convertDateToEnUs, convertTo12HourFormat } = require("../controllers/services/helperFunctions")
+const { convertUTCToEnUs, convertTo12HourFormat, getFormattedCurrentDate } = require("../controllers/services/helperFunctions")
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -26,12 +26,11 @@ module.exports = {
       const upcomingEvents = await getUpcomingEvents()
       const upcomingEventDetails = getEventDetails(upcomingEvents)
 
-      const date = new Date(Date.now())
-      const format = { month: 'long', day: 'numeric', year: 'numeric' }
-      const formattedDate = date.toLocaleDateString('en-US', format)
-
-      // Time of Day
-      const time = date.getHours()
+      // Current Date
+      const formattedDate = getFormattedCurrentDate()
+      
+      // Current Time
+      const time = new Date(Date.now()).getHours()
 
       res.render("feed.ejs", { user: req.user, date: formattedDate, upcomingEvents: upcomingEventDetails, time});
     } catch (err) {
@@ -44,7 +43,7 @@ module.exports = {
       const message = req.flash()
       const time12StaffArrival = convertTo12HourFormat(event.staffArrival);
       const time12EstimatedEndTime = convertTo12HourFormat(event.estimatedEndTime);
-      const dateConversion = convertDateToEnUs(event.date)
+      const dateConversion = convertUTCToEnUs(event.date)
       
       console.log(message)
       res.render("event.ejs", { event, user: req.user, message, staffArrival: time12StaffArrival, estimatedEndTime: time12EstimatedEndTime, date: dateConversion });
@@ -55,10 +54,10 @@ module.exports = {
   reserveEvent: async (req, res) => {
     try {
       const event = await Event.findOne({ _id: req.params.id })
+
+      // Date Conflict Check
       const allUserEvents = await filterEventsByUser(req.user.id)
       const upcomingUserEvents = await getUpcomingEvents(allUserEvents)
-
-      // Create set of all dates (in ms) on upcoming User events
       const userEventDates = new Set(upcomingUserEvents.map(event => event.date.getTime()))
 
       if(userEventDates.has(event.date.getTime())){

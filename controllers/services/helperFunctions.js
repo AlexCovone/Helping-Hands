@@ -1,6 +1,6 @@
 module.exports = {
     // Need to convert from UTC to EST 
-    convertDateToEnUs: (date) => {
+    convertUTCToEnUs: (date) => {
         const utcDate = new Date(date);
         const estOffset = -5; // EST is 5 hours behind UTC
         const estDate = new Date(utcDate.getTime() - (estOffset * 60 * 60 * 1000));
@@ -14,4 +14,11 @@ module.exports = {
         const time12 = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
         return time12
     },
+
+    getFormattedCurrentDate: () => {
+      const date = new Date(Date.now())
+      const format = { month: 'long', day: 'numeric', year: 'numeric' }
+      return date.toLocaleDateString('en-US', format)
+    }
+
 }

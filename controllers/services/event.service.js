@@ -1,5 +1,5 @@
 const Event = require("../../models/Event");
-const { convertDateToEnUs, convertTo12HourFormat } = require("../services/helperFunctions")
+const { convertUTCToEnUs, convertTo12HourFormat } = require("../services/helperFunctions")
 
 module.exports = {
     getUpcomingEvents: async (events) => {
@@ -37,7 +37,7 @@ module.exports = {
         return events.map(event => {
             const staffArrival = convertTo12HourFormat(event.staffArrival)
             const estimatedEndTime = convertTo12HourFormat(event.estimatedEndTime)
-            const date = convertDateToEnUs(event.date)
+            const date = convertUTCToEnUs(event.date)
             return {...event, staffArrival, estimatedEndTime, date}
         })
     },

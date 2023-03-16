@@ -66,7 +66,7 @@ exports.getSignup = (req, res) => {
 };
 
 exports.postSignup = (req, res, next) => {
-  // 3 digits, hypen 3 digits, hyphen 4 digits
+  // 3 digits, hypen, 3 digits, hyphen, 4 digits
   const phone_number_pattern = /^\d{3}-\d{3}-\d{4}$/;
   const validationErrors = [];
   
@@ -74,14 +74,14 @@ exports.postSignup = (req, res, next) => {
     validationErrors.push({ msg: "Please enter a valid email address." });
   if (!validator.isLength(req.body.password, { min: 8 }))
     validationErrors.push({
-      msg: "Password must be at least 8 characters long",
+      msg: "Password must be at least 8 characters long.",
     });
   if (req.body.password !== req.body.confirmPassword)
-    validationErrors.push({ msg: "Passwords do not match" });
+    validationErrors.push({ msg: "Passwords do not match." });
   
   // Test method returns boolean value if string matches regular expression.
   if (req.body.phoneNumber && !phone_number_pattern.test(req.body.phoneNumber))
-    validationErrors.push({ msg: "Please enter a valid phone number in the format ###-###-####" });
+    validationErrors.push({ msg: "Please enter a valid phone number." });
 
   if (validationErrors.length) {
     req.flash("errors", validationErrors);

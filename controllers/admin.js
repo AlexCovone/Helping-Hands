@@ -50,9 +50,9 @@ module.exports = {
     awardSimplyTheBest: async (req, res) => {
       try {
         if(req.body.awardRecipient === undefined){
-          req.flash("error", `Please select valid staff member.`)
-          console.log('Please select valid staff member')
-          return res.redirect(`/admin`)
+          req.flash("error", 'Please select valid staff member.')
+          console.log('Please select valid staff member.')
+          return res.redirect('/admin')
         }
 
         const user = await User.findOneAndUpdate(
@@ -69,16 +69,16 @@ module.exports = {
     },
     textUsers: async (req, res) => {
       try{
-        const users = await User.find({})
+        const users = await User.find()
         const phoneNumbers = users.map(user => user.phoneNumber)
+        // E.164 Format
         const validPhoneNumbers = formatPhoneNumber(phoneNumbers)
-
         const numberNewEvents = req.body.numberNewEvents
 
         const client = require('twilio')(accountSid, authToken);
         await Promise.all(validPhoneNumbers.map(number => {
           return client.messages.create({
-            body: `There are ${numberNewEvents} new events that have been posted. Please visit Helping-Hands to reserve your event.`,
+            body: `There are ${numberNewEvents} new events that have been posted. Visit Helping-Hands.io to reserve your event.`,
             to: number, // Recipient
             from: twilioPhoneNumber, // From a valid Twilio number
           })

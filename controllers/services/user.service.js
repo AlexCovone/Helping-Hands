@@ -11,6 +11,8 @@ module.exports = {
     },
     filterEventsByUser: async (userId) => {
         const user = await User.findById(userId);
+
+        // _id of each Event must be in user.eventsReserved array
         const userEvents = await Event.find({
             _id: { $in: user.eventsReserved }
         });

@@ -15,7 +15,6 @@ const adminRoute = require("./routes/admin")
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
 
-
 // Passport config
 require("./config/passport")(passport);
 

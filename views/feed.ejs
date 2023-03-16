@@ -1,11 +1,11 @@
 <%- include('partials/header') -%>
   <div class="container flex flex-col min-h-screen mt-5 mb-10 mx-auto">
     <%if(time < 12){ %>
-        <h2 class="text-3xl text-slate-100 mt-4">Good morning <span class="font-bold"><%= user.name.split(' ')[0] %></span>,</h2>
+        <h2 class="text-3xl text-slate-100 mt-4">Good morning <%= user.name.split(' ')[0] %>,</h2>
       <% } else if(time >= 12 && time < 18) { %>
-        <h2 class="text-3xl text-slate-100 mt-4">Good afternoon <span class="font-bold"><%= user.name.split(' ')[0] %></span>,</h2>
+        <h2 class="text-3xl text-slate-100 mt-4">Good afternoon <%= user.name.split(' ')[0] %>,</h2>
       <% } else { %>
-        <h2 class="text-3xl text-slate-100 mt-4">Good evening <span class="font-bold"><%= user.name.split(' ')[0] %></span>,</h2>
+        <h2 class="text-3xl text-slate-100 mt-4">Good evening <%= user.name.split(' ')[0] %>,</h2>
       <% } %>
     <div class="inline-flex">
       <h5 class="xs:text-2xl sm:text-3xl mt-4 text-slate-100">Today is&nbsp;</h5>
