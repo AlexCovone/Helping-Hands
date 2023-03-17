@@ -26,10 +26,10 @@ All upcoming events are presented in a list-view with key-information in the dat
 
 Detailed event descriptions are accessible from the feed page. Additional details (e.g. uniform, caterer, map image) are displayed on the event's page. Users can identify if the respective event aligns with their schedule and attempt to reserve their desire occupation for the event. Upon a reservation request, the application will take several factors into consideration:
 
-* Desired occupation role availability (e.g. Waitstaff Requested: 0)
-* Existing reservation by the user for the same event
-* Date/time conflict among other reserved events
-* User's only being permitted to reserve the occupation role that applies to them
+* Desired occupation role availability (e.g. Waitstaff Requested: 0).
+* Existing reservation by the user for the same event.
+* Date/time conflict among other reserved events.
+* User's only being permitted to reserve the occupation role that applies to them.
 
 If all the relevant conditions are satisfied, the user's reservation request will be approved, and the event will populate appropriately in their profile for future reference. Data is stored in both the User (eventsReserved property) and Event (staffReserved property) models in the MongoDB database.
 
@@ -47,7 +47,7 @@ As time permits, there are additional optimizations, improvements, and additiona
 Additional features and optimizations include:
 
 * Application will be migrated to a React-based framework to enable dynamic reloading.
-* Future UI will incorporate a monthly calendar view populated all user's events, both previous and upcoming.
+* Future UI will incorporate a monthly calendar view populated with all user's events, both previous and upcoming.
 * Users will be able to unreserve an event 7 days prior to the event's date.
 * When an event has met the requested staff quantity, users who remain interested will be able to be put on a waitlist that will automatically reserve the event on a first-come-first-serve basis should a spot be unreserved.
 * Upcoming events will be able to be sorted by selected occupation role and availability.
