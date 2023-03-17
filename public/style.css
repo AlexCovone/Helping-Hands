@@ -3859,11 +3859,6 @@ html {
     margin-right: 0.75rem;
   }
 
-  .xs\:my-5 {
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
-  }
-
   .xs\:my-auto {
     margin-top: auto;
     margin-bottom: auto;
@@ -3887,6 +3882,10 @@ html {
 
   .xs\:mt-3 {
     margin-top: 0.75rem;
+  }
+
+  .xs\:mt-5 {
+    margin-top: 1.25rem;
   }
 
   .xs\:block {
