@@ -26,11 +26,16 @@ module.exports = {
       const upcomingEvents = await getUpcomingEvents()
       const upcomingEventDetails = getEventDetails(upcomingEvents)
 
-      // Current Date
+      // Current Date taking UTC/server time into account
       const formattedDate = getFormattedCurrentDate()
       
-      // Current Time
-      const time = new Date(Date.now()).getHours()
+      // Current Time taking UTC/server time into account
+
+      const date = new Date(Date.now())
+      const options = { timeZone: 'America/New_York', hour: 'numeric', minute: 'numeric', hour12: false }
+      const formattedTime = date.toLocaleTimeString('en-US', options)
+      const time = parseInt(formattedTime)
+      
 
       res.render("feed.ejs", { user: req.user, date: formattedDate, upcomingEvents: upcomingEventDetails, time});
     } catch (err) {
