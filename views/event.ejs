@@ -1,5 +1,28 @@
 <%- include('partials/header') -%>
 
+<%if(user.name === 'DemoAccount'){ %>
+  <input type="checkbox" id="my-modal-4" class="modal-toggle" checked/>
+  <label for="my-modal-4" class="modal cursor-pointer">
+    <label class="modal-box relative" for="">
+      <h3 class="font-bold text-slate-100 xs:text-lg sm:text-xl lg:text-2xl">Helping Hands Demo</h3>
+      <h4 class="text-slate-100 text-xl mt-4">Event</h4>
+      <p class="py-2">Event listings deliver all the essential details to decide whether this event aligns with your schedule and preference.</p>
+      <p class="py-4">Our reservation feature takes several factors into consideration in order for the reservation request to be approved:</p>
+      <ul class="list-disc pl-4">
+        <li>Desired occupation role availability.</li>
+        <li>Existing reservation by the user for the same event.</li>
+        <li>Date/time conflict among other reserved events.</li>
+        <li>User's only permitted to reserve the occupation role that applies to them.</li>
+      </ul>
+      <p class="py-4">Our admins are able to select and work events as well!</p>
+      <p class="py-2">Admins can view a comprehensive table that displays key information about the contract workers who have successfully reserved a spot for this event.</p>
+      <div class="modal-action">
+        <label for="my-modal-4" class="btn tracking-wide text-slate-100">Close</label>
+      </div>
+    </label>
+  </label>
+<%}%>
+
 <div class="container flex flex-col min-h-screen mt-36 mb-8 mx-auto">
 
     <!-- RESERVATION ERROR/SUCCESS MESSAGE -->

@@ -44,6 +44,12 @@ exports.postLogin = (req, res, next) => {
   })(req, res, next);
 };
 
+exports.postDemoLogin = (req, res) => {
+  req.body.email = process.env.DEMO_EMAIL
+  req.body.password = process.env.DEMO_PASSWORD
+  exports.postLogin(req, res)
+}
+
 exports.logout = (req, res) => {
   req.logout(() => {
     console.log('User has logged out.')

@@ -46,6 +46,11 @@
                     <a href="/signup" class="btn btn-accent tracking-wide">Register</a>
                   </div>
             </form>
+            <form action="/demoLogin" method="POST">
+              <div class="form-control mt-3">
+                <button type="submit" class="btn btn-secondary tracking-wide">Demo</button>
+              </div>
+            </form>
         </div>
       </div>
     </div>
@@ -53,7 +58,7 @@
     <div class="hidden lg:block">
       <button id="to-bottom-button" onclick="goToBottom()" title="Go To Bottom"
         class="fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-base-300 text-primary text-3xl font-bold btn btn-outline">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" style="margin: auto">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 animate-bounce" style="margin: auto">
           <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z" clip-rule="evenodd" />
         </svg>
       </button>
@@ -63,7 +68,7 @@
     <div class="hidden lg:block">
       <button id="to-top-button" onclick="goToTop()" title="Go To Top"
       class="fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-base-300 text-primary text-3xl font-bold btn btn-p hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" style="margin: auto">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 animate-bounce" style="margin: auto">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
       </svg>    
       </button>

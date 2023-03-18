@@ -1,4 +1,22 @@
 <%- include('partials/header') -%>
+
+<%if(user.name === 'DemoAccount'){ %>
+  <input type="checkbox" id="my-modal-4" class="modal-toggle" checked/>
+  <label for="my-modal-4" class="modal cursor-pointer">
+    <label class="modal-box relative" for="">
+      <h3 class="font-bold text-slate-100 xs:text-lg sm:text-xl lg:text-2xl">Welcome to the Helping Hands Demo!</h3>
+      <p class="py-4">Please feel free to take a look around and explore the various features our application offers.</p>
+      <h4 class="text-slate-100 text-xl">Events Dashboard</h4>
+      <p class="py-2">Here, you can view all upcoming events in a list view, with important details in the date, hours, location, and the requested staff quantity.<p>
+      <p class="py-2">Open events are noted with a green icon, and those that meet the requested staff quantity are marked with a red icon. Any events you've reserved will be showcased with a star icon.</p>
+      <p class="py-2">You can access detailed event descriptions from the events dashboard, and additional details such as uniform requirements, caterers, and maps are available on the event's page.</p>
+      <div class="modal-action">
+        <label for="my-modal-4" class="btn tracking-wide text-slate-100">Close</label>
+      </div>
+    </label>
+  </label>
+<%}%>
+
   <div class="container flex flex-col min-h-screen mt-5 mb-10 mx-auto">
         <h2 class="text-3xl text-slate-100 mt-4">Welcome back <%= user.name.split(' ')[0] %>,</h2>
     <div class="inline-flex">

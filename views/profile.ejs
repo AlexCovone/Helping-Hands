@@ -1,4 +1,20 @@
 <%- include('partials/header') -%>
+
+<%if(user.name === 'DemoAccount'){ %>
+  <input type="checkbox" id="my-modal-4" class="modal-toggle" checked/>
+  <label for="my-modal-4" class="modal cursor-pointer">
+    <label class="modal-box relative" for="">
+      <h3 class="font-bold text-slate-100 xs:text-lg sm:text-xl lg:text-2xl">Helping Hands Demo</h3>
+      <h4 class="text-slate-100 text-xl mt-4">Profile</h4>
+      <p class="pt-4 pb-2">Effortlessly monitor all your events on your profile page, as they will automatically populate once you have successfully made a reservation.</p>
+      <p class="pt-4 pb-2">Monitor all the events you have completed and work towards accumulating as many 'Simply the Best' awards as possible!</p>
+      <div class="modal-action">
+        <label for="my-modal-4" class="btn tracking-wide text-slate-100">Close</label>
+      </div>
+    </label>
+  </label>
+<%}%>
+
 <div class="container flex flex-col min-h-screen mt-10 mb-10 mx-auto">
   <div class="flex flex-col">
     <h2 class="xs:text-2xl md:text-3xl font-bold ml-3 text-slate-200">Here's a Look at Your Schedule</h2>

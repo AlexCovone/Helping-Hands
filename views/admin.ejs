@@ -1,4 +1,25 @@
 <%- include('partials/header') -%>
+
+<%if(user.name === 'DemoAccount'){ %>
+  <input type="checkbox" id="my-modal-4" class="modal-toggle" checked/>
+  <label for="my-modal-4" class="modal cursor-pointer">
+    <label class="modal-box relative" for="">
+      <h3 class="font-bold text-slate-100 xs:text-lg sm:text-xl lg:text-2xl">Helping Hands Demo</h3>
+      <h4 class="text-slate-100 text-xl mt-4">Admin Dashboard</h4>
+      <p class="pt-4 pb-2">Admins are able to perform various functions:</p>
+      <ul class="list-disc pl-4 py-2">
+        <li>Create new job postings.</li>
+        <li>Notifying SMS alert opted-in users of new events.</li>
+        <li>Award the 'Simply the Best' award to a select contract worker.</li>
+        <li>Access a comprehensive list of all contract workers and their contact information for easy communication.</li>
+      </ul>
+      <div class="modal-action">
+        <label for="my-modal-4" class="btn tracking-wide text-slate-100">Close</label>
+      </div>
+    </label>
+  </label>
+<%}%>
+
 <!-- DIV CONTAINING ALL CONTENT -->
 <div class="container flex flex-col min-h-screen mt-5 mb-10 mx-auto">
   <h1 class="text-3xl text-slate-100 font-bold ml-3 mb-4">Admin Dashboard</h1>
