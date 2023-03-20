@@ -1,6 +1,6 @@
 # Helping Hands - Work that Works for You
 
-Helping Hands is a full-stack web application that allows contract workers to seamlessly integrate work into their unique schedules and lifestyle. 
+Helping Hands is a full stack web application that allows contract workers to seamlessly integrate work into their unique schedules and lifestyle. 
 
 The platform allows workers to conveniently access job opportunities and reserve work that fits their availability, making it easier to maintain a work-life balance. Helping Hands simplifies the job searching process by presenting contract workers with tailored job opportunities that align with their occupation, skillset, and availability. 
 
