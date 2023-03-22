@@ -28,14 +28,6 @@ module.exports = {
 
       // Current Date taking UTC/server time into account
       const formattedDate = getFormattedCurrentDate()
-      
-      // Current Time taking UTC/server time into account
-      // const date = new Date(Date.now())
-      // const options = { hour: 'numeric', minute: 'numeric', hour12: false }
-      // const formattedTime = date.toLocaleTimeString('en-US', options)
-      // const time = parseInt(formattedTime)
-      // console.log(time)
-      
 
       res.render("feed.ejs", { user: req.user, date: formattedDate, upcomingEvents: upcomingEventDetails});
     } catch (err) {
