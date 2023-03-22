@@ -46,7 +46,7 @@ As time permits, there are additional optimizations, improvements, and additiona
 
 Additional features and optimizations include:
 
-* Application will be migrated to a React-based framework to enable dynamic reloading.
+* Application will be migrated to a React-based framework.
 * Future UI will incorporate a monthly calendar view populated with all user's events, both previous and upcoming.
 * Users will be able to unreserve an event 7 days prior to the event's date.
 * When an event has met the requested staff quantity, users who remain interested will be able to be put on a waitlist that will automatically reserve the event on a first-come-first-serve basis should a spot be unreserved.
