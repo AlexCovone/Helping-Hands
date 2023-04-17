@@ -1,6 +1,5 @@
 <%- include('partials/indexHeader') -%>
 
-<!-- NEED TO EDIT ERROR MESSAGE SPACING WITH HERO CLASS -->
 
 <div class="toast toast-end z-40">
   <% if (locals.messages.errors) { %>
@@ -17,14 +16,20 @@
   <% } %>
 </div>
 
-<div class="hero min-h-screen xs:mt-5">
+<div class="hero min-h-screen xs:mt-5 relative isolate">
+
+    <!-- Background Gradient -->
+    <div class="mt-64 absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl" aria-hidden="true">
+      <div class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff9b38] to-[#3644e4] opacity-25" style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"></div>
+    </div>
+
     <div class="hero-content flex-col lg:flex-row-reverse">
       <div class="lg:ml-10 text-center lg:text-left">
         <h1 class="text-4xl xs:tracking-wide lg:tracking-wider text-primary font-bold">HELPING HANDS</h1>
         <h2 class="text-5xl font-bold text-slate-200 mt-5">Work that Revolves Around <span class="text-primary">You</span></h2>
         <p class="py-6 text-lg text-gray-400">Seamlessly integrate work into your life with Helping Hands – the platform that allows contract workers to reserve events that align with their lifestyle.</p>
       </div>
-      <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-200">
         <div class="card-body">
             <form action="/login" method="POST">
                 <div class="form-control">
@@ -79,6 +84,12 @@
   <!-- FEATURE -->
 
   <div class="overflow-hidden py-24 sm:py-32 bg-base-200">
+
+    <!-- Background Gradient -->
+    <div class="absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl" aria-hidden="true">
+      <div class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff9b38] to-[#3644e4] opacity-25" style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"></div>
+    </div>
+
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
         <div class="lg:pr-8 lg:pt-4">
@@ -125,7 +136,7 @@
             </dl>
           </div>
         </div>
-        <img src="/imgs/profileExample.png" alt="Product screenshot" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" width="2432" height="1442">
+        <img src="/imgs/profileExample1.png" alt="Product screenshot" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" width="2432" height="1442">
       </div>
     </div>
   </div>

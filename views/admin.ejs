@@ -21,7 +21,13 @@
 <%}%>
 
 <!-- DIV CONTAINING ALL CONTENT -->
-<div class="container flex flex-col min-h-screen mt-10 mb-10 mx-auto">
+<div class="container flex flex-col min-h-screen mt-10 mb-10 mx-auto relative isolate">
+
+  <!-- Background Gradient -->
+  <div class="absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl" aria-hidden="true">
+    <div class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff9b38] to-[#3644e4] opacity-25" style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"></div>
+  </div>
+
   <h1 class="text-3xl text-slate-100 font-bold ml-3 mb-4">Admin Dashboard</h1>
   <div class="container flex xs:flex-wrap xl:flex-nowrap mx-auto mb-5">
 
@@ -65,7 +71,7 @@
     
               <div class="form-control mb-2">
                 <label for="imgUpload" class="form-label mb-2">Image</label>
-                <input type="file" id="imgUpload" class="form-control file-input input-bordered focus:outline-primary" name="imgUpload" required/>
+                <input type="file" id="imgUpload" class="form-control file-input input-bordered focus:outline-primary" name="file" required/>
               </div>
     
               <div class="form-control mb-2">
@@ -93,7 +99,6 @@
                   <label for="estimatedEndTime" class="form-label mb-2">Estimated End Time</label>
                   <input type="time" class="form-control input input-bordered focus:outline-primary" id="estimatedEndTime" name="estimatedEndTime" step="300" required>
                 </div>
-      
       
                 <div class="form-control xs:order-none sm:order-2 mb-2">
                   <label for="waitstaffNeeded" class="form-label mb-2">Waitstaff Needed</label>
