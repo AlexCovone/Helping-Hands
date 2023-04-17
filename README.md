@@ -8,7 +8,7 @@ This application is designed with Simply Serving LLC in mind and caters to the r
 
 **Live Website:** [Helping-Hands.io](https://www.helping-hands.io/)
 
-![Feature Section for Helping-Hands.io](https://user-images.githubusercontent.com/98838825/226022146-09263eeb-66a0-4c1d-ba9f-e9b02a399cd2.png)
+![Feature Section for Helping Hands](https://user-images.githubusercontent.com/98838825/232606962-a94066b6-c7e1-4ec9-8847-c1a15aad8eb7.png)
 
 ## How It's Made
 
@@ -35,7 +35,7 @@ If all the relevant conditions are satisfied, the user's reservation request wil
 
 ### **Administrators**
 
-![adminDashboard](https://user-images.githubusercontent.com/98838825/226037778-8a308084-1179-4789-8340-282cc2052bcf.png)
+![Admin Dashboard](https://user-images.githubusercontent.com/98838825/232607283-b7921f1e-a8cd-4d96-887c-29764059c383.png)
 
 The Administrator dashboard is accessible only to assigned administrators who have been granted access via the created authRole middleware. Once granted access, administrators are able to perform various functions, including creating new job postings, notifying SMS alert opted-in users of new events, awarding the 'Simply the Best' award to contract workers, and accessing the names, email addresses, and phone numbers (if opted in) of all contract workers for easy communication.
 
