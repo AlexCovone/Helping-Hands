@@ -3105,6 +3105,10 @@ html {
   margin-top: 1rem;
 }
 
+.mt-40 {
+  margin-top: 10rem;
+}
+
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -3123,10 +3127,6 @@ html {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mt-40 {
-  margin-top: 10rem;
 }
 
 .block {
