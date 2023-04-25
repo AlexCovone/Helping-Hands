@@ -1,175 +1,353 @@
 <%- include('partials/indexHeader') -%>
 
-
-<div class="toast toast-end z-40">
-  <% if (locals.messages.errors) { %>
-    <% messages.errors.forEach( el => { %>
-      <div class="flex">
-        <div class="alert alert-warning shadow-lg w-full">
-          <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-            <span><%= el.msg %></span>
-          </div>
-        </div>
+<div class="toast-end toast z-40">
+  <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+  <div class="flex">
+    <div class="alert alert-warning w-full shadow-lg">
+      <div class="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 flex-shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+          />
+        </svg>
+        <span><%= el.msg %></span>
       </div>
-    <% }) %>    
-  <% } %>
+    </div>
+  </div>
+  <% }) %> <% } %>
 </div>
 
-<div class="hero min-h-screen xs:mt-5 relative isolate">
+<div class="hero relative isolate min-h-screen xs:mt-5">
+  <!-- Background Gradient -->
+  <div
+    class="absolute inset-x-0 top-4 -z-10 mt-64 flex transform-gpu justify-center overflow-hidden blur-3xl"
+    aria-hidden="true"
+  >
+    <div
+      class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff9b38] to-[#3644e4] opacity-25"
+      style="
+        clip-path: polygon(
+          73.6% 51.7%,
+          91.7% 11.8%,
+          100% 46.4%,
+          97.4% 82.2%,
+          92.5% 84.9%,
+          75.7% 64%,
+          55.3% 47.5%,
+          46.5% 49.4%,
+          45% 62.9%,
+          50.3% 87.2%,
+          21.3% 64.1%,
+          0.1% 100%,
+          5.4% 51.1%,
+          21.4% 63.9%,
+          58.9% 0.2%,
+          73.6% 51.7%
+        );
+      "
+    ></div>
+  </div>
 
-    <!-- Background Gradient -->
-    <div class="mt-64 absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl" aria-hidden="true">
-      <div class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff9b38] to-[#3644e4] opacity-25" style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"></div>
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="text-center lg:ml-10 lg:text-left">
+      <h1
+        class="text-4xl font-bold text-primary xs:tracking-wide lg:tracking-wider"
+      >
+        HELPING HANDS
+      </h1>
+      <h2 class="mt-5 text-5xl font-bold text-slate-200">
+        Work that Revolves Around <span class="text-primary">You</span>
+      </h2>
+      <p class="py-6 text-lg text-gray-400">
+        Seamlessly integrate work into your life with Helping Hands – the
+        platform that allows contract workers to reserve events that align with
+        their lifestyle.
+      </p>
     </div>
-
-    <div class="hero-content flex-col lg:flex-row-reverse">
-      <div class="lg:ml-10 text-center lg:text-left">
-        <h1 class="text-4xl xs:tracking-wide lg:tracking-wider text-primary font-bold">HELPING HANDS</h1>
-        <h2 class="text-5xl font-bold text-slate-200 mt-5">Work that Revolves Around <span class="text-primary">You</span></h2>
-        <p class="py-6 text-lg text-gray-400">Seamlessly integrate work into your life with Helping Hands – the platform that allows contract workers to reserve events that align with their lifestyle.</p>
-      </div>
-      <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-200">
-        <div class="card-body">
-            <form action="/login" method="POST">
-                <div class="form-control">
-                    <label for="exampleInputEmail1" class="form-label mb-2">Email Address</label>
-                    <input type="email" class="form-control input input-bordered focus:outline-primary" id="exampleInputEmail1" placeholder="Email" aria-describedby="emailHelp" name="email"/>
-                  </div>
-                  <div class="mt-3 form-control">
-                    <label for="exampleInputPassword1" class="form-label mb-2">Password</label>
-                    <input type="password" class="form-control input input-bordered focus:outline-primary" id="exampleInputPassword1" placeholder="Password" name="password"/>
-                    <!-- <label class="label">
+    <div class="card w-full max-w-sm flex-shrink-0 bg-base-200 shadow-2xl">
+      <div class="card-body">
+        <form action="/login" method="POST">
+          <div class="form-control">
+            <label for="exampleInputEmail1" class="form-label mb-2"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              class="form-control input-bordered input focus:outline-primary"
+              id="exampleInputEmail1"
+              placeholder="Email"
+              aria-describedby="emailHelp"
+              name="email"
+            />
+          </div>
+          <div class="form-control mt-3">
+            <label for="exampleInputPassword1" class="form-label mb-2"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control input-bordered input focus:outline-primary"
+              id="exampleInputPassword1"
+              placeholder="Password"
+              name="password"
+            />
+            <!-- <label class="label">
                       <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
                     </label> -->
-                  </div>
-                  <div class="form-control mt-6">
-                    <button type="submit" class="btn btn-primary tracking-wide">Login</button>
-                  </div>
-                  <hr class="border-b border-gray-600 my-6">
-                  <div class="form-control mt-6">
-                    <a href="/signup" class="btn btn-accent tracking-wide">Register</a>
-                  </div>
-            </form>
-            <form action="/demoLogin" method="POST">
-              <div class="form-control mt-3">
-                <button type="submit" class="btn btn-secondary tracking-wide">Demo</button>
-              </div>
-            </form>
-        </div>
-      </div>
-    </div>
-    <!-- Bottom Button -->
-    <div class="hidden lg:block">
-      <button id="to-bottom-button" onclick="goToBottom()" title="Go To Bottom"
-        class="fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-base-300 text-primary text-3xl font-bold btn btn-outline">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 animate-bounce" style="margin: auto">
-          <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z" clip-rule="evenodd" />
-        </svg>
-      </button>
-    </div>
-
-    <!-- Top Button -->
-    <div class="hidden lg:block">
-      <button id="to-top-button" onclick="goToTop()" title="Go To Top"
-      class="fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-base-300 text-primary text-3xl font-bold btn btn-p hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 animate-bounce" style="margin: auto">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
-      </svg>    
-      </button>
-    </div>
-  </div>
-
-
-  <!-- FEATURE -->
-
-  <div class="overflow-hidden py-24 sm:py-32 bg-base-200">
-
-    <!-- Background Gradient -->
-    <div class="absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl" aria-hidden="true">
-      <div class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff9b38] to-[#3644e4] opacity-25" style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"></div>
-    </div>
-
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-        <div class="lg:pr-8 lg:pt-4">
-          <div class="lg:max-w-lg">
-            <h2 class="text-base font-semibold leading-7 text-primary">Simplified for You</h2>
-            <p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl text-slate-200">A Tailored Schedule</p>
-            <p class="mt-6 text-lg leading-8 text-gray-400">Finding work that works for you and your schedule. </p>
-            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-400 lg:max-w-none">
-              <div class="relative pl-9">
-                <dt class="inline font-semibold text-slate-200">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute top-1 left-1 h-5 w-5 text-primary">
-                    <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
-                  </svg>
-                  
-                  
-                  Reserve events directly.
-                </dt>
-                <dd class="inline">Customize your event selection based on the date, location, and applicable occupations.</dd>
-              </div>
-  
-              <div class="relative pl-9">
-                <dt class="inline font-semibold text-slate-200">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute top-1 left-1 h-5 w-5 text-primary">
-                    <path d="M12.75 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM7.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM8.25 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM9.75 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM10.5 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12.75 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM14.25 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 13.5a.75.75 0 100-1.5.75.75 0 000 1.5z" />
-                    <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 017.5 3v1.5h9V3A.75.75 0 0118 3v1.5h.75a3 3 0 013 3v11.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V7.5a3 3 0 013-3H6V3a.75.75 0 01.75-.75zm13.5 9a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5z" clip-rule="evenodd" />
-                  </svg>
-
-                  Track all past and upcoming events.
-                </dt>
-                <dd class="inline">Streamline your event tracking with easy access to past and upcoming events.</dd>
-              </div>
-  
-              <div class="relative pl-9">
-                <dt class="inline font-semibold text-slate-200">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute top-1 left-1 h-5 w-5 text-primary">
-                    <path d="M10.5 18.75a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z" />
-                    <path fill-rule="evenodd" d="M8.625.75A3.375 3.375 0 005.25 4.125v15.75a3.375 3.375 0 003.375 3.375h6.75a3.375 3.375 0 003.375-3.375V4.125A3.375 3.375 0 0015.375.75h-6.75zM7.5 4.125C7.5 3.504 8.004 3 8.625 3H9.75v.375c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V3h1.125c.621 0 1.125.504 1.125 1.125v15.75c0 .621-.504 1.125-1.125 1.125h-6.75A1.125 1.125 0 017.5 19.875V4.125z" clip-rule="evenodd" />
-                  </svg>
-
-                  Receive alerts for new job availability.
-                </dt>
-                <dd class="inline">Opt-in to receive SMS alerts when new jobs are made available.</dd>
-              </div>
-            </dl>
           </div>
-        </div>
-        <img src="/imgs/profileExample1.png" alt="Product screenshot" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" width="2432" height="1442">
+          <div class="form-control mt-6">
+            <button type="submit" class="btn-primary btn tracking-wide">
+              Login
+            </button>
+          </div>
+          <hr class="my-6 border-b border-gray-600" />
+          <div class="form-control mt-6">
+            <a href="/signup" class="btn-accent btn tracking-wide">Register</a>
+          </div>
+        </form>
+        <form action="/demoLogin" method="POST">
+          <div class="form-control mt-3">
+            <button type="submit" class="btn-secondary btn tracking-wide">
+              Demo
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
-  <script>
-    setTimeout(() => {
-      const toast = document.querySelector('.toast');
-      if (toast) {
-        toast.remove();
-      }
-    }, 5000); 
+  <!-- Bottom Button -->
+  <div class="hidden lg:block">
+    <button
+      id="to-bottom-button"
+      onclick="goToBottom()"
+      title="Go To Bottom"
+      class="z-90 btn-outline btn fixed bottom-8 right-8 h-16 w-16 rounded-full border-0 bg-base-300 text-3xl font-bold text-primary drop-shadow-md"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="h-6 w-6 animate-bounce"
+        style="margin: auto"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </button>
+  </div>
 
-    var toBottomButton = document.getElementById("to-bottom-button");
-    var toTopButton = document.getElementById("to-top-button");
+  <!-- Top Button -->
+  <div class="hidden lg:block">
+    <button
+      id="to-top-button"
+      onclick="goToTop()"
+      title="Go To Top"
+      class="z-90 btn-p btn fixed bottom-8 right-8 hidden h-16 w-16 rounded-full border-0 bg-base-300 text-3xl font-bold text-primary drop-shadow-md"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-6 w-6 animate-bounce"
+        style="margin: auto"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
 
-    // When the user scrolls down 200px from the top of the document, show the button
-    window.onscroll = function () {
-        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-          toBottomButton.classList.add("hidden");
-          toTopButton.classList.remove("hidden");
-        } else {
-          toBottomButton.classList.remove("hidden");
-          toTopButton.classList.add("hidden");
-        }
-    }
-    function goToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
-    }
+<!-- FEATURE -->
 
-    function goToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+<div class="overflow-hidden bg-base-200 py-24 sm:py-32">
+  <!-- Background Gradient -->
+  <div
+    class="absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
+    aria-hidden="true"
+  >
+    <div
+      class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff9b38] to-[#3644e4] opacity-25"
+      style="
+        clip-path: polygon(
+          73.6% 51.7%,
+          91.7% 11.8%,
+          100% 46.4%,
+          97.4% 82.2%,
+          92.5% 84.9%,
+          75.7% 64%,
+          55.3% 47.5%,
+          46.5% 49.4%,
+          45% 62.9%,
+          50.3% 87.2%,
+          21.3% 64.1%,
+          0.1% 100%,
+          5.4% 51.1%,
+          21.4% 63.9%,
+          58.9% 0.2%,
+          73.6% 51.7%
+        );
+      "
+    ></div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div
+      class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
+    >
+      <div class="lg:pr-8 lg:pt-4">
+        <div class="lg:max-w-lg">
+          <h2 class="text-base font-semibold leading-7 text-primary">
+            Simplified for You
+          </h2>
+          <p
+            class="mt-2 text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl"
+          >
+            A Tailored Schedule
+          </p>
+          <p class="mt-6 text-lg leading-8 text-gray-400">
+            Finding work that works for you and your schedule.
+          </p>
+          <dl
+            class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-400 lg:max-w-none"
+          >
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-slate-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="absolute left-1 top-1 h-5 w-5 text-primary"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+
+                Reserve events directly.
+              </dt>
+              <dd class="inline">
+                Customize your event selection based on the date, location, and
+                applicable occupations.
+              </dd>
+            </div>
+
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-slate-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="absolute left-1 top-1 h-5 w-5 text-primary"
+                >
+                  <path
+                    d="M12.75 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM7.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM8.25 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM9.75 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM10.5 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12.75 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM14.25 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 13.5a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M6.75 2.25A.75.75 0 017.5 3v1.5h9V3A.75.75 0 0118 3v1.5h.75a3 3 0 013 3v11.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V7.5a3 3 0 013-3H6V3a.75.75 0 01.75-.75zm13.5 9a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+
+                Track all past and upcoming events.
+              </dt>
+              <dd class="inline">
+                Streamline your event tracking with easy access to past and
+                upcoming events.
+              </dd>
+            </div>
+
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-slate-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="absolute left-1 top-1 h-5 w-5 text-primary"
+                >
+                  <path
+                    d="M10.5 18.75a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.625.75A3.375 3.375 0 005.25 4.125v15.75a3.375 3.375 0 003.375 3.375h6.75a3.375 3.375 0 003.375-3.375V4.125A3.375 3.375 0 0015.375.75h-6.75zM7.5 4.125C7.5 3.504 8.004 3 8.625 3H9.75v.375c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V3h1.125c.621 0 1.125.504 1.125 1.125v15.75c0 .621-.504 1.125-1.125 1.125h-6.75A1.125 1.125 0 017.5 19.875V4.125z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+
+                Receive alerts for new job availability.
+              </dt>
+              <dd class="inline">
+                Opt-in to receive SMS alerts when new jobs are made available.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      <img
+        src="/imgs/profileExample1.png"
+        alt="Product screenshot"
+        class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
+        width="2432"
+        height="1442"
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  setTimeout(() => {
+    const toast = document.querySelector(".toast");
+    if (toast) {
+      toast.remove();
     }
-  
-  </script>
+  }, 5000);
+
+  var toBottomButton = document.getElementById("to-bottom-button");
+  var toTopButton = document.getElementById("to-top-button");
+
+  // When the user scrolls down 200px from the top of the document, show the button
+  window.onscroll = function () {
+    if (
+      document.body.scrollTop > 200 ||
+      document.documentElement.scrollTop > 200
+    ) {
+      toBottomButton.classList.add("hidden");
+      toTopButton.classList.remove("hidden");
+    } else {
+      toBottomButton.classList.remove("hidden");
+      toTopButton.classList.add("hidden");
+    }
+  };
+  function goToBottom() {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  }
+
+  function goToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>
 
 <%- include('partials/indexFooter') -%>

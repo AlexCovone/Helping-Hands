@@ -1,204 +1,368 @@
-<%- include('partials/header') -%>
-
-<%if(user.name === 'DemoAccount'){ %>
-  <input type="checkbox" id="my-modal-4" class="modal-toggle" checked/>
-  <label for="my-modal-4" class="modal cursor-pointer">
-    <label class="modal-box relative" for="">
-      <h3 class="font-bold text-slate-100 xs:text-lg sm:text-xl lg:text-2xl">Helping Hands Demo</h3>
-      <h4 class="text-slate-100 text-xl mt-4">Event</h4>
-      <p class="py-2">Event listings deliver all the essential details to decide whether this event aligns with your schedule and preference.</p>
-      <p class="py-4">Our reservation feature takes several factors into consideration in order for the reservation request to be approved:</p>
-      <ul class="list-disc pl-4">
-        <li>Desired occupation role availability.</li>
-        <li>Existing reservation by the user for the same event.</li>
-        <li>Date/time conflict among other reserved events.</li>
-        <li>User's only permitted to reserve the occupation role that applies to them.</li>
-      </ul>
-      <p class="py-4">Our admins are able to select and work events as well!</p>
-      <p class="py-2">Admins can view a comprehensive table that displays key information about the contract workers who have successfully reserved a spot for this event.</p>
-      <div class="modal-action">
-        <label for="my-modal-4" class="btn tracking-wide text-slate-100">Close</label>
-      </div>
-    </label>
+<%- include('partials/header') -%> <%if(user.name === 'DemoAccount'){ %>
+<input type="checkbox" id="my-modal-4" class="modal-toggle" checked />
+<label for="my-modal-4" class="modal cursor-pointer">
+  <label class="modal-box relative" for="">
+    <h3 class="font-bold text-slate-100 xs:text-lg sm:text-xl lg:text-2xl">
+      Helping Hands Demo
+    </h3>
+    <h4 class="mt-4 text-xl text-slate-100">Event</h4>
+    <p class="py-2">
+      Event listings deliver all the essential details to decide whether this
+      event aligns with your schedule and preference.
+    </p>
+    <p class="py-4">
+      Our reservation feature takes several factors into consideration in order
+      for the reservation request to be approved:
+    </p>
+    <ul class="list-disc pl-4">
+      <li>Desired occupation role availability.</li>
+      <li>Existing reservation by the user for the same event.</li>
+      <li>Date/time conflict among other reserved events.</li>
+      <li>
+        User's only permitted to reserve the occupation role that applies to
+        them.
+      </li>
+    </ul>
+    <p class="py-4">Our admins are able to select and work events as well!</p>
+    <p class="py-2">
+      Admins can view a comprehensive table that displays key information about
+      the contract workers who have successfully reserved a spot for this event.
+    </p>
+    <div class="modal-action">
+      <label for="my-modal-4" class="btn tracking-wide text-slate-100"
+        >Close</label
+      >
+    </div>
   </label>
+</label>
 <%}%>
 
-<div class="container flex flex-col min-h-screen mt-5 mb-8 mx-auto">
-
+<div class="container mx-auto mb-8 mt-5 flex min-h-screen flex-col">
   <!-- Background Gradient -->
-  <div class="mt-40 absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl" aria-hidden="true">
-    <div class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff9b38] to-[#3644e4] opacity-25" style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"></div>
+  <div
+    class="absolute inset-x-0 top-4 -z-10 mt-40 flex transform-gpu justify-center overflow-hidden blur-3xl"
+    aria-hidden="true"
+  >
+    <div
+      class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff9b38] to-[#3644e4] opacity-25"
+      style="
+        clip-path: polygon(
+          73.6% 51.7%,
+          91.7% 11.8%,
+          100% 46.4%,
+          97.4% 82.2%,
+          92.5% 84.9%,
+          75.7% 64%,
+          55.3% 47.5%,
+          46.5% 49.4%,
+          45% 62.9%,
+          50.3% 87.2%,
+          21.3% 64.1%,
+          0.1% 100%,
+          5.4% 51.1%,
+          21.4% 63.9%,
+          58.9% 0.2%,
+          73.6% 51.7%
+        );
+      "
+    ></div>
   </div>
 
-    <!-- RESERVATION ERROR/SUCCESS MESSAGE -->
-    <div class="toast toast-end z-50">
+  <!-- RESERVATION ERROR/SUCCESS MESSAGE -->
+  <div class="toast-end toast z-50">
     <% if (message.error) { %>
-      <div class="notification alert alert-error shadow-lg">
-        <div class="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span><%= message.error %></span>
-        </div>
+    <div class="notification alert alert-error shadow-lg">
+      <div class="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 flex-shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span><%= message.error %></span>
       </div>
-    <% } else if(message.success) { %>
-      <div class="notification alert alert-success shadow-lg">
-        <div class="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span><%= message.success %></span>
-        </div>
-      </div>
-    <% } %>
-
-    <% if (event.bartenderNeeded === 0 && event.waitstaffNeeded === 0 && event.chefNeeded === 0) { %>
-      <div class="alert alert-info shadow-lg mt-2">
-        <div class="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <h2 class="">All required reservations for this event have been filled.</h2>
-        </div>
-      </div>
-    <% } %>
     </div>
-    <!-- END RESERVATION ERROR/SUCCESS MESSAGE -->
-    
-    <!-- Button to open modal -->
-    <%if(user.role === 'Admin'){ %>
-    <div class="flex justify-end">
-      <label for="my-modal-6" class="btn btn-sm mt-5 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-      </button>
-      </label>
-      <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-          <h3 class="font-bold text-slate-100 xs:text-lg sm:text-xl lg:text-2xl xl:text-3xl">Delete Event</h3>
-          <p class="py-2">By clicking 'Delete Event', all associated data for this event will be permanently lost and cannot be recovered.</p>
-          <div class="modal-action">
-            <label for="my-modal-6" class="btn tracking-wider">Close</label>
-            <form
+    <% } else if(message.success) { %>
+    <div class="notification alert alert-success shadow-lg">
+      <div class="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 flex-shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span><%= message.success %></span>
+      </div>
+    </div>
+    <% } %> <% if (event.bartenderNeeded === 0 && event.waitstaffNeeded === 0 &&
+    event.chefNeeded === 0) { %>
+    <div class="alert alert-info mt-2 shadow-lg">
+      <div class="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          class="h-6 w-6 flex-shrink-0 stroke-current"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <h2 class="">
+          All required reservations for this event have been filled.
+        </h2>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <!-- END RESERVATION ERROR/SUCCESS MESSAGE -->
+
+  <!-- Button to open modal -->
+  <%if(user.role === 'Admin'){ %>
+  <div class="flex justify-end">
+    <label
+      for="my-modal-6"
+      class="btn-sm btn mt-5 flex items-center justify-center"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </label>
+    <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+    <div class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <h3
+          class="font-bold text-slate-100 xs:text-lg sm:text-xl lg:text-2xl xl:text-3xl"
+        >
+          Delete Event
+        </h3>
+        <p class="py-2">
+          By clicking 'Delete Event', all associated data for this event will be
+          permanently lost and cannot be recovered.
+        </p>
+        <div class="modal-action">
+          <label for="my-modal-6" class="btn tracking-wider">Close</label>
+          <form
             action="/events/deleteEvent/<%= event.id %>?_method=DELETE"
             method="POST"
-            class="">
-              <button class="btn btn-error tracking-wider hover:bg-red-500" type="submit">Delete Event</button>
-            </form>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <%}%>
-    
-    <img class="img-fluid w-auto h-auto mt-5 mx-auto" src="<%= event.image%>" alt="Event Map Image"/>
-
-    <div class="flex flex-col w-full lg:flex-row mt-5 z-40">
-      <div class="grid flex-grow h-fit lg:w-6/12 xl:w-8/12">
-        <table class="table max-w-full border-collapse">
-          <tbody>
-            <!-- row 1 -->
-            <tr>
-              <td class="text-right tracking-wider">LOCATION</td>
-              <td class="xs:text-lg sm:text-2xl xl:text-3xl text-slate-100"><%= event.address %></td>
-            </tr>
-            <!-- row 2 -->
-            <tr>
-              <td class="text-right tracking-wider">DATE</td>
-              <td class="xs:text-lg sm:text-2xl xl:text-3xl text-slate-100"><%= date %></td>
-            </tr>
-            <!-- row 3 -->
-            <tr>
-              <td class="text-right tracking-wider">HOURS</td>
-              <td class="xs:text-lg sm:text-2xl xl:text-3xl text-slate-100"><%= staffArrival %> - <%= estimatedEndTime %></td>
-            </tr>
-            <!-- Row 4 -->
-            <tr>
-              <td class="text-right tracking-wider">HOSTED BY</td>
-              <td class="xs:text-lg sm:text-2xl xl:text-3xl text-slate-100"><%= event.caterer %></td>
-            </tr>
-            <!-- Row 5 -->
-            <tr class="uniform">
-              <td class="text-right tracking-wider">UNIFORM</td>
-              <td class="xs:text-sm md:text-xl lg:text-base xl:text-2xl whitespace-normal break-words text-slate-100"><%= event.uniform %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div> 
-    
-      <div class="divider lg:divider-horizontal"></div>
-    
-      <div class="flex xs:flex-col sm:flex-col lg:flex-col xl:flex-col md:w-full lg:w-6/12 xl:w-4/12">
-        <table class="table table-zebra table-bordered">
-          <tr>
-            <th class="xs:text-center sm:text-right tracking-wider xs:text-xl sm:text-2xl">ROLE</th>
-            <th class="text-center xs:text-xl sm:text-2xl whitespace-normal break-words tracking-wider">STAFF REQUIRED</th>
-          </tr>
-          <tr>
-            <td class="text-right tracking-wider text-2xl text-slate-100">WAITSTAFF</td>
-            <td class="text-center xs:text-xl sm:text-2xl text-slate-100"><%= event.waitstaffNeeded %></td>
-          </tr>
-          <tr>
-            <td class="text-right tracking-wider text-2xl text-slate-100">BARETENDER</td>
-            <td class="text-center xs:text-xl sm:text-2xl text-slate-100"><%= event.bartenderNeeded %></td>
-          </tr>
-          <tr>
-            <td class="text-right tracking-wider text-2xl text-slate-100">CHEF</td>
-            <td class="text-center xs:text-xl sm:text-2xl text-slate-100"><%= event.chefNeeded %></td>
-          </tr>
-        </table>
-        
-        <div class="grid flex-grow h-20 sm:h-28 card bg-base-200 rounded-box xs:flex-col sm:place-items-stretch lg:place-items-stretch mb-3 mt-5">
-          <form class="xs:my-auto sm:mt-3 sm:mb-5 mx-auto" action="/events/reserveEvent/<%= event.id %>?_method=PUT" method="POST">
-            <label class="xs:hidden sm:block xs:text-sm sm:text-xl lg:text-lg md:ml-1 lg:ml-2" for="occupationRole">Choose a Role </label>
-            <select class="select select-primary max-w-xs text-lg text-slate-100" name="occupationRole" id="occupationSelection">
-              <%if(user.occupation.includes('Waitstaff')){ %>
-              <option class="tracking-widest" value="Waitstaff">WAITSTAFF</option>
-              <%}%>
-              <%if(user.occupation.includes('Bartender')){ %>
-              <option class="tracking-widest" value="Bartender">BARTENDER</option>
-              <%}%>
-              <%if(user.occupation.includes('Chef')){ %>
-              <option class="tracking-widest" value="Chef">CHEF</option>
-              <%}%>
-            </select>
-            <% if (Date.now() > event.date) { %>
-              <div class="tooltip" data-tip="Event is Closed">
-                <button class="btn btn-primary cursor-not-allowed" disabled="disabled" type="submit">Reserve Role</button>
-              </div>
-            <% } else if(user.eventsReserved.includes(event.id)) { %>
-                <div class="tooltip" data-tip="You have reserved this event.">
-                  <button class="btn btn-primary cursor-not-allowed" disabled="disabled" type="submit">Reserve Role</button>
-                </div>
-            <% } else { %>
-              <button class="btn btn-primary tracking-wider" type="submit">Reserve Role</button>
-            <% } %>
+            class=""
+          >
+            <button
+              class="btn-error btn tracking-wider hover:bg-red-500"
+              type="submit"
+            >
+              Delete Event
+            </button>
           </form>
         </div>
       </div>
-      
-    </div>
-   <%if(user.role === 'Admin'){ %>
-    <div class="overflow-auto my-3">
-      <table class="table table-striped table-bordered mx-auto">
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Role Reserved</th>
-        </tr>
-       <% for(var i = 0; i < event.staffReserved.length; i++) {%>
-            <tr>
-              <td class="text-slate-100"><%= event.staffReserved[i][1] %></td>
-              <td class="text-slate-100"><%= event.staffReserved[i][2] %></td>
-              <td class="text-slate-100"><%= event.staffReserved[i][3] %></td>
-            </tr>
-       <% } %>
-     <%}%>
-      </table>
     </div>
   </div>
+  <%}%>
+
+  <img
+    class="img-fluid mx-auto mt-5 h-auto w-auto"
+    src="<%= event.image%>"
+    alt="Event Map Image"
+  />
+
+  <div class="z-40 mt-5 flex w-full flex-col lg:flex-row">
+    <div class="grid h-fit flex-grow lg:w-6/12 xl:w-8/12">
+      <table class="table max-w-full border-collapse">
+        <tbody>
+          <!-- row 1 -->
+          <tr>
+            <td class="text-right tracking-wider">LOCATION</td>
+            <td class="text-slate-100 xs:text-lg sm:text-2xl xl:text-3xl">
+              <%= event.address %>
+            </td>
+          </tr>
+          <!-- row 2 -->
+          <tr>
+            <td class="text-right tracking-wider">DATE</td>
+            <td class="text-slate-100 xs:text-lg sm:text-2xl xl:text-3xl">
+              <%= date %>
+            </td>
+          </tr>
+          <!-- row 3 -->
+          <tr>
+            <td class="text-right tracking-wider">HOURS</td>
+            <td class="text-slate-100 xs:text-lg sm:text-2xl xl:text-3xl">
+              <%= staffArrival %> - <%= estimatedEndTime %>
+            </td>
+          </tr>
+          <!-- Row 4 -->
+          <tr>
+            <td class="text-right tracking-wider">HOSTED BY</td>
+            <td class="text-slate-100 xs:text-lg sm:text-2xl xl:text-3xl">
+              <%= event.caterer %>
+            </td>
+          </tr>
+          <!-- Row 5 -->
+          <tr class="uniform">
+            <td class="text-right tracking-wider">UNIFORM</td>
+            <td
+              class="whitespace-normal break-words text-slate-100 xs:text-sm md:text-xl lg:text-base xl:text-2xl"
+            >
+              <%= event.uniform %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider lg:divider-horizontal"></div>
+
+    <div
+      class="flex xs:flex-col sm:flex-col md:w-full lg:w-6/12 lg:flex-col xl:w-4/12 xl:flex-col"
+    >
+      <table class="table-bordered table-zebra table">
+        <tr>
+          <th
+            class="tracking-wider xs:text-center xs:text-xl sm:text-right sm:text-2xl"
+          >
+            ROLE
+          </th>
+          <th
+            class="whitespace-normal break-words text-center tracking-wider xs:text-xl sm:text-2xl"
+          >
+            STAFF REQUIRED
+          </th>
+        </tr>
+        <tr>
+          <td class="text-right text-2xl tracking-wider text-slate-100">
+            WAITSTAFF
+          </td>
+          <td class="text-center text-slate-100 xs:text-xl sm:text-2xl">
+            <%= event.waitstaffNeeded %>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-right text-2xl tracking-wider text-slate-100">
+            BARETENDER
+          </td>
+          <td class="text-center text-slate-100 xs:text-xl sm:text-2xl">
+            <%= event.bartenderNeeded %>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-right text-2xl tracking-wider text-slate-100">
+            CHEF
+          </td>
+          <td class="text-center text-slate-100 xs:text-xl sm:text-2xl">
+            <%= event.chefNeeded %>
+          </td>
+        </tr>
+      </table>
+
+      <div
+        class="card rounded-box mb-3 mt-5 grid h-20 flex-grow bg-base-200 xs:flex-col sm:h-28 sm:place-items-stretch lg:place-items-stretch"
+      >
+        <form
+          class="mx-auto xs:my-auto sm:mb-5 sm:mt-3"
+          action="/events/reserveEvent/<%= event.id %>?_method=PUT"
+          method="POST"
+        >
+          <label
+            class="xs:hidden xs:text-sm sm:block sm:text-xl md:ml-1 lg:ml-2 lg:text-lg"
+            for="occupationRole"
+            >Choose a Role
+          </label>
+          <select
+            class="select-primary select max-w-xs text-lg text-slate-100"
+            name="occupationRole"
+            id="occupationSelection"
+          >
+            <%if(user.occupation.includes('Waitstaff')){ %>
+            <option class="tracking-widest" value="Waitstaff">WAITSTAFF</option>
+            <%}%> <%if(user.occupation.includes('Bartender')){ %>
+            <option class="tracking-widest" value="Bartender">BARTENDER</option>
+            <%}%> <%if(user.occupation.includes('Chef')){ %>
+            <option class="tracking-widest" value="Chef">CHEF</option>
+            <%}%>
+          </select>
+          <% if (Date.now() > event.date) { %>
+          <div class="tooltip" data-tip="Event is Closed">
+            <button
+              class="btn-primary btn cursor-not-allowed"
+              disabled="disabled"
+              type="submit"
+            >
+              Reserve Role
+            </button>
+          </div>
+          <% } else if(user.eventsReserved.includes(event.id)) { %>
+          <div class="tooltip" data-tip="You have reserved this event.">
+            <button
+              class="btn-primary btn cursor-not-allowed"
+              disabled="disabled"
+              type="submit"
+            >
+              Reserve Role
+            </button>
+          </div>
+          <% } else { %>
+          <button class="btn-primary btn tracking-wider" type="submit">
+            Reserve Role
+          </button>
+          <% } %>
+        </form>
+      </div>
+    </div>
+  </div>
+  <%if(user.role === 'Admin'){ %>
+  <div class="my-3 overflow-auto">
+    <table class="table-striped table-bordered mx-auto table">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role Reserved</th>
+      </tr>
+      <% for(var i = 0; i < event.staffReserved.length; i++) {%>
+      <tr>
+        <td class="text-slate-100"><%= event.staffReserved[i][1] %></td>
+        <td class="text-slate-100"><%= event.staffReserved[i][2] %></td>
+        <td class="text-slate-100"><%= event.staffReserved[i][3] %></td>
+      </tr>
+      <% } %> <%}%>
+    </table>
+  </div>
 </div>
+
 <script>
   setTimeout(() => {
-    const notification = document.querySelector('.notification');
+    const notification = document.querySelector(".notification");
     if (notification) {
       notification.remove();
     }
-  }, 5000); 
+  }, 5000);
 </script>
 <%- include('partials/footer') -%>

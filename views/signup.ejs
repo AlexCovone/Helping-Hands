@@ -1,107 +1,207 @@
 <%- include('partials/indexHeader') -%>
-  <div class="mt-28">
-    <div class="toast toast-end z-40">
-      <% if (locals.messages.errors) { %>
-        <% messages.errors.forEach( el => { %>
-          <div class="flex">
-            <div class="alert alert-warning shadow-lg w-full">
-              <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                <span><%= el.msg %></span>
-              </div>
-            </div>
-          </div>
-        <% }) %>    
-      <% } %>
-    </div>
-
-    <main class="flex justify-center my-10">
-      <div class="card flex-shrink-0 w-full max-w-screen-xs sm:max-w-screen-sm md:max-w-screen-md shadow-2xl bg-base-200">
-        <a href="/" class="mt-5">
-          <img src="/imgs/wideLogo.png" alt="Helping Hands Wide Logo" class="xs:hidden sm:block w-80 h-24 ml-3 btn btn-ghost">
-          <img src="/imgs/doubleLogo.png" alt="Helping Hands Stacked Logo" class="xs:block sm:hidden h-24 ml-3 btn btn-ghost">
-        </a>
-        
-        <div class="card-body">
-          <h1 class="text-2xl text-slate-100 font-bold mb-3">Create your Helping Hands Account</h1>
-            <form action="/signup" method="POST">
-              <div class="form-control mb-2">
-                <label for="name" class="form-label mb-2">Full Name</label>
-                <input type="text" class="form-control input input-bordered focus:outline-primary" id="name" placeholder="Name" aria-describedby="name" name="name"/>
-              </div>
-              <div class="form-control mb-2">
-                <label for="exampleInputEmail1" class="form-label mb-2">Email Address</label>
-                <input type="email" class="form-control input input-bordered focus:outline-primary" id="exampleInputEmail1" placeholder="Email" aria-describedby="emailHelp" name="email"/>
-                <div id="privateEmail" class="form-text text-sm text-gray-500 mt-1">We'll never share your email with anyone.</div> 
-                <!-- Make #privateEmail smaller font, lighter text? -->
-              </div>
-              <div class="form-control mb-2">
-                <label for="password" class="form-label mb-2">Password</label>
-                <input type="password" class="form-control input input-bordered focus:outline-primary" id="password" placeholder="Password" name="password"/>
-              </div>
-
-              <div class="form-control mb-3">
-                <label for="confirmPassword" class="form-label mb-2">Confirm Password</label>
-                <input type="password" class="form-control input input-bordered focus:outline-primary" id="confirmPassword" placeholder="Confirm" name="confirmPassword">
-              </div>
-
-              <div class="form-control mb-3">
-                <label for="phoneNumber" class="form-label">Phone Number</label>
-                <p class="text-sm text-gray-500 mb-2">Optional</p>
-                <input type="tel" class="form-control input input-bordered focus:outline-primary" id="phoneNumber" name="phoneNumber" placeholder="" pattern="\d{3}-\d{3}-\d{4}" title="###-###-####" maxlength="10" onblur="addDashes(this)">
-                <div id="phoneNumberHelp" class="form-text text-sm text-gray-500 mt-1">Please fill this out if you would like to receive SMS updates when new jobs are made available.</div>
-              </div>
-
-              <hr class="border-b border-gray-600 mt-6 mb-5">
-
-              <!-- Checkbox Roles -->
-              <label for="occupation" class="form-label text-lg text-slate-100">Occupation</label>
-              <p id="occupationHelp" class="form-text">Please select the role(s) that apply to you.</p>
-              <div class="flex space-x-4">
-                <div class="form-check mt-2">
-                  <input class="form-check-input checkbox checkbox-sm checkbox-primary" type="checkbox" id="inlineCheckbox1" name="occupation" value="Waitstaff">
-                  <label class="form-check-label" for="inlineCheckbox1">Waitstaff</label>
-                </div>
-
-                <div class="form-check mt-2">
-                  <input class="form-check-input checkbox checkbox-sm checkbox-primary" type="checkbox" id="inlineCheckbox2" name="occupation" value="Bartender">
-                  <label class="form-check-label" for="inlineCheckbox2">Bartender</label>
-                </div>
-
-                <div class="form-check mt-2">
-                  <input class="form-check-input checkbox checkbox-sm checkbox-primary" type="checkbox" id="inlineCheckbox3" name="occupation" value="Chef">
-                  <label class="form-check-label" for="inlineCheckbox3">Chef</label>
-                </div>
-              </div>
-
-              <div class="form-control mt-6">
-                <button type="submit" class="btn btn-primary tracking-wide">Register</button>
-              </div>
-            </form>
+<div class="mt-28">
+  <div class="toast-end toast z-40">
+    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+    <div class="flex">
+      <div class="alert alert-warning w-full shadow-lg">
+        <div class="flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 flex-shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+            />
+          </svg>
+          <span><%= el.msg %></span>
         </div>
       </div>
-    </main>
+    </div>
+    <% }) %> <% } %>
   </div>
 
-    
+  <main class="my-10 flex justify-center">
+    <div
+      class="card w-full max-w-screen-xs flex-shrink-0 bg-base-200 shadow-2xl sm:max-w-screen-sm md:max-w-screen-md"
+    >
+      <a href="/" class="mt-5">
+        <img
+          src="/imgs/wideLogo.png"
+          alt="Helping Hands Wide Logo"
+          class="btn-ghost btn ml-3 h-24 w-80 xs:hidden sm:block"
+        />
+        <img
+          src="/imgs/doubleLogo.png"
+          alt="Helping Hands Stacked Logo"
+          class="btn-ghost btn ml-3 h-24 xs:block sm:hidden"
+        />
+      </a>
+
+      <div class="card-body">
+        <h1 class="mb-3 text-2xl font-bold text-slate-100">
+          Create your Helping Hands Account
+        </h1>
+        <form action="/signup" method="POST">
+          <div class="form-control mb-2">
+            <label for="name" class="form-label mb-2">Full Name</label>
+            <input
+              type="text"
+              class="form-control input-bordered input focus:outline-primary"
+              id="name"
+              placeholder="Name"
+              aria-describedby="name"
+              name="name"
+            />
+          </div>
+          <div class="form-control mb-2">
+            <label for="exampleInputEmail1" class="form-label mb-2"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              class="form-control input-bordered input focus:outline-primary"
+              id="exampleInputEmail1"
+              placeholder="Email"
+              aria-describedby="emailHelp"
+              name="email"
+            />
+            <div id="privateEmail" class="form-text mt-1 text-sm text-gray-500">
+              We'll never share your email with anyone.
+            </div>
+            <!-- Make #privateEmail smaller font, lighter text? -->
+          </div>
+          <div class="form-control mb-2">
+            <label for="password" class="form-label mb-2">Password</label>
+            <input
+              type="password"
+              class="form-control input-bordered input focus:outline-primary"
+              id="password"
+              placeholder="Password"
+              name="password"
+            />
+          </div>
+
+          <div class="form-control mb-3">
+            <label for="confirmPassword" class="form-label mb-2"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              class="form-control input-bordered input focus:outline-primary"
+              id="confirmPassword"
+              placeholder="Confirm"
+              name="confirmPassword"
+            />
+          </div>
+
+          <div class="form-control mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <p class="mb-2 text-sm text-gray-500">Optional</p>
+            <input
+              type="tel"
+              class="form-control input-bordered input focus:outline-primary"
+              id="phoneNumber"
+              name="phoneNumber"
+              placeholder=""
+              pattern="\d{3}-\d{3}-\d{4}"
+              title="###-###-####"
+              maxlength="10"
+              onblur="addDashes(this)"
+            />
+            <div
+              id="phoneNumberHelp"
+              class="form-text mt-1 text-sm text-gray-500"
+            >
+              Please fill this out if you would like to receive SMS updates when
+              new jobs are made available.
+            </div>
+          </div>
+
+          <hr class="mb-5 mt-6 border-b border-gray-600" />
+
+          <!-- Checkbox Roles -->
+          <label for="occupation" class="form-label text-lg text-slate-100">
+            Occupation
+          </label>
+          <p id="occupationHelp" class="form-text">
+            Please select the role(s) that apply to you.
+          </p>
+          <div class="flex space-x-4">
+            <div class="form-check mt-2">
+              <input
+                class="form-check-input checkbox-primary checkbox checkbox-sm"
+                type="checkbox"
+                id="inlineCheckbox1"
+                name="occupation"
+                value="Waitstaff"
+              />
+              <label class="form-check-label" for="inlineCheckbox1"
+                >Waitstaff</label
+              >
+            </div>
+
+            <div class="form-check mt-2">
+              <input
+                class="form-check-input checkbox-primary checkbox checkbox-sm"
+                type="checkbox"
+                id="inlineCheckbox2"
+                name="occupation"
+                value="Bartender"
+              />
+              <label class="form-check-label" for="inlineCheckbox2"
+                >Bartender</label
+              >
+            </div>
+
+            <div class="form-check mt-2">
+              <input
+                class="form-check-input checkbox-primary checkbox checkbox-sm"
+                type="checkbox"
+                id="inlineCheckbox3"
+                name="occupation"
+                value="Chef"
+              />
+              <label class="form-check-label" for="inlineCheckbox3">Chef</label>
+            </div>
+          </div>
+
+          <div class="form-control mt-6">
+            <button type="submit" class="btn-primary btn tracking-wide">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
 
 <script>
   function addDashes(f) {
-    if (f.value === '') {
+    if (f.value === "") {
       return; // Exit the function if the input is empty
     }
 
-    f.value = f.value.replace(/\D/g, '');
-    f.value = f.value.slice(0,3)+"-"+f.value.slice(3,6)+"-"+f.value.slice(6,15);
+    f.value = f.value.replace(/\D/g, "");
+    f.value =
+      f.value.slice(0, 3) +
+      "-" +
+      f.value.slice(3, 6) +
+      "-" +
+      f.value.slice(6, 15);
   }
 
   setTimeout(() => {
-    const toast = document.querySelector('.toast');
+    const toast = document.querySelector(".toast");
     if (toast) {
       toast.remove();
     }
-  }, 5000); 
-
+  }, 5000);
 </script>
 
 <%- include('partials/footer') -%>
