@@ -5,13 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Helping Hands</title>
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/imgs/favicon-32x32.png"
-    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/imgs/favicon-32x32.png" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body class="h-full">
@@ -19,34 +15,16 @@
       <% if (typeof event === 'undefined') { %>
       <div class="flex-1">
         <a class="" href="/events">
-          <img
-            src="/imgs/wideLogo.png"
-            alt="Helping Hands Wide Logo"
-            class="btn-ghost btn h-24 xs:hidden sm:block"
-          />
-          <img
-            src="/imgs/doubleLogo.png"
-            alt="Helping Hands Stacked Logo"
-            class="btn-ghost btn h-24 xs:block sm:hidden"
-          />
+          <img src="/imgs/wideLogo.png" alt="Helping Hands Wide Logo" class="btn-ghost btn h-24 xs:hidden sm:block" />
+          <img src="/imgs/doubleLogo.png" alt="Helping Hands Stacked Logo" class="btn-ghost btn h-24 xs:block sm:hidden" />
         </a>
       </div>
 
       <!-- Desktop Navbar -->
       <div class="hidden lg:flex lg:gap-x-12">
         <span class="flex items-center">
-          <a
-            href="/events"
-            class="btn-ghost btn flex items-center text-lg font-semibold leading-6 text-slate-50"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-6 w-6"
-            >
+          <a href="/events" class="btn-ghost btn flex items-center text-lg font-semibold leading-6 text-slate-50">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -59,18 +37,8 @@
         </span>
 
         <span class="flex items-center">
-          <a
-            href="/profile"
-            class="btn-ghost btn flex items-center text-lg font-semibold leading-6 text-slate-50"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-6 w-6"
-            >
+          <a href="/profile" class="btn-ghost btn flex items-center text-lg font-semibold leading-6 text-slate-50">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -83,18 +51,8 @@
         </span>
         <%if(user.role === 'Admin'){ %>
         <span class="flex items-center">
-          <a
-            href="/admin"
-            class="btn-ghost btn flex items-center text-lg font-semibold leading-6 text-slate-50"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-6 w-6"
-            >
+          <a href="/admin" class="btn-ghost btn flex items-center text-lg font-semibold leading-6 text-slate-50">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -108,18 +66,8 @@
         <% } %>
 
         <span class="flex items-center">
-          <a
-            href="/logout"
-            class="btn-ghost btn flex items-center text-lg font-semibold leading-6 text-slate-50"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-6 w-6"
-            >
+          <a href="/logout" class="btn-ghost btn flex items-center text-lg font-semibold leading-6 text-slate-50">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -135,12 +83,7 @@
       <div class="flex-none gap-2 xs:flex lg:hidden">
         <div class="dropdown-end dropdown">
           <label tabindex="0" class="btn-ghost btn-circle btn text-slate-100">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
               <path
                 fill-rule="evenodd"
                 d="M18 9.318v1.364c0 .245-.21.445-.47.445H2.47a.444.444 0 0 1-.47-.445v-1.364c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445zm0-4.318v1.363c0 .246-.21.446-.47.446H2.47a.444.444 0 0 1-.47-.446V5c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445zm0 8.635v1.363c0 .245-.21.445-.47.445H2.47a.444.444 0 0 1-.47-.445v-1.363c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445z"
@@ -148,20 +91,10 @@
               />
             </svg>
           </label>
-          <ul
-            tabindex="0"
-            class="dropdown-content menu rounded-box menu-compact mt-3 w-52 border-base-100 bg-base-300 p-2 shadow"
-          >
+          <ul tabindex="0" class="dropdown-content menu rounded-box menu-compact mt-3 w-52 border-base-100 bg-base-300 p-2 shadow">
             <li>
               <a href="/events" class="text-xl text-slate-100">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -172,14 +105,7 @@
             </li>
             <li>
               <a href="/profile" class="text-xl text-slate-100">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -192,14 +118,7 @@
             <%if(user.role === 'Admin'){ %>
             <li>
               <a href="/admin" class="text-xl text-slate-100"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6"
-                >
+                ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -211,14 +130,7 @@
             <%}%>
             <li>
               <a href="/logout" class="text-xl text-slate-100"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6"
-                >
+                ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -233,29 +145,16 @@
       <% } %> <% if (typeof event !== 'undefined') { %>
       <div class="flex-none">
         <a class="" href="/events">
-          <img
-            src="/imgs/doubleLogo.png"
-            alt="Helping Hands Stacked Logo"
-            class="btn-ghost btn xs:hidden sm:block sm:h-24"
-          />
+          <img src="/imgs/doubleLogo.png" alt="Helping Hands Stacked Logo" class="btn-ghost btn xs:hidden sm:block sm:h-24" />
         </a>
       </div>
-      <div
-        class="eventName flex flex-1 items-center justify-center text-center font-bold text-slate-100 xs:ml-10 xs:text-2xl sm:mr-24 sm:text-3xl"
-      >
-        <%= event.eventName %>
-      </div>
+      <div class="eventName flex flex-1 items-center justify-center text-center font-bold text-slate-100 xs:ml-10 xs:text-2xl sm:mr-24 sm:text-3xl"><%= event.eventName %></div>
 
       <!-- Mobile Screen Dropdown -->
       <div class="flex-none gap-2">
         <div class="dropdown-end dropdown">
           <label tabindex="0" class="btn-ghost btn-circle btn text-slate-100">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
               <path
                 fill-rule="evenodd"
                 d="M18 9.318v1.364c0 .245-.21.445-.47.445H2.47a.444.444 0 0 1-.47-.445v-1.364c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445zm0-4.318v1.363c0 .246-.21.446-.47.446H2.47a.444.444 0 0 1-.47-.446V5c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445zm0 8.635v1.363c0 .245-.21.445-.47.445H2.47a.444.444 0 0 1-.47-.445v-1.363c0-.245.21-.445.47-.445h15.06c.26 0 .47.2.47.445z"
@@ -263,20 +162,10 @@
               />
             </svg>
           </label>
-          <ul
-            tabindex="0"
-            class="dropdown-content menu rounded-box menu-compact mt-3 w-52 border-base-100 bg-base-300 p-2 shadow"
-          >
+          <ul tabindex="0" class="dropdown-content menu rounded-box menu-compact mt-3 w-52 border-base-100 bg-base-300 p-2 shadow">
             <li>
               <a href="/events" class="text-xl text-slate-100">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -287,14 +176,7 @@
             </li>
             <li>
               <a href="/profile" class="text-xl text-slate-100">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -307,14 +189,7 @@
             <%if(user.role === 'Admin'){ %>
             <li>
               <a href="/admin" class="text-xl text-slate-100"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6"
-                >
+                ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -326,14 +201,7 @@
             <%}%>
             <li>
               <a href="/logout" class="text-xl text-slate-100"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6"
-                >
+                ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -347,5 +215,7 @@
       </div>
       <% } %>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/datepicker.min.js"></script>
   </body>
 </html>

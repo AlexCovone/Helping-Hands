@@ -2,38 +2,26 @@
 <input type="checkbox" id="my-modal-4" class="modal-toggle" checked />
 <label for="my-modal-4" class="modal cursor-pointer">
   <label class="modal-box relative" for="">
-    <h3 class="font-bold text-slate-100 xs:text-lg sm:text-xl lg:text-2xl">
-      Helping Hands Demo
-    </h3>
+    <h3 class="font-bold text-slate-100 xs:text-lg sm:text-xl lg:text-2xl">Helping Hands Demo</h3>
     <h4 class="mt-4 text-xl text-slate-100">Admin Dashboard</h4>
     <p class="pb-2 pt-4">Admins are able to perform various functions:</p>
     <ul class="list-disc py-2 pl-4">
       <li>Create new job postings.</li>
       <li>Notifying SMS alert opted-in users of new events.</li>
       <li>Award the 'Simply the Best' award to a select contract worker.</li>
-      <li>
-        Access a comprehensive list of all contract workers and their contact
-        information for easy communication.
-      </li>
+      <li>Access a comprehensive list of all contract workers and their contact information for easy communication.</li>
     </ul>
     <div class="modal-action">
-      <label for="my-modal-4" class="btn tracking-wide text-slate-100"
-        >Close</label
-      >
+      <label for="my-modal-4" class="btn tracking-wide text-slate-100">Close</label>
     </div>
   </label>
 </label>
 <%}%>
 
 <!-- DIV CONTAINING ALL CONTENT -->
-<div
-  class="container relative isolate mx-auto mb-10 mt-10 flex min-h-screen flex-col"
->
+<div class="container relative isolate mx-auto mb-10 mt-10 flex min-h-screen flex-col">
   <!-- Background Gradient -->
-  <div
-    class="absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
-    aria-hidden="true"
-  >
+  <div class="absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl" aria-hidden="true">
     <div
       class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff9b38] to-[#3644e4] opacity-25"
       style="
@@ -65,18 +53,8 @@
       <% if (message.success) { %>
       <div class="notification alert alert-success shadow-lg">
         <div class="flex items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 flex-shrink-0 stroke-current"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span><%= message.success %></span>
         </div>
@@ -84,12 +62,7 @@
       <% } %> <% if (message.error) { %>
       <div class="notification alert alert-warning shadow-lg">
         <div class="flex items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 flex-shrink-0 stroke-current"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -105,129 +78,55 @@
 
     <!-- CREATE AN EVENT FORM -->
     <main class="mx-auto flex justify-center lg:w-full">
-      <div
-        class="card max-w-screen-xs flex-shrink-0 bg-base-100 shadow-2xl sm:max-w-screen-sm md:max-w-screen-md xl:w-full"
-      >
+      <div class="card max-w-screen-xs flex-shrink-0 bg-base-100 shadow-2xl sm:max-w-screen-sm md:max-w-screen-md xl:w-full">
         <!-- <img src="" alt=""> ADD LOGO HERE -->
         <div class="card-body">
-          <h1 class="mb-3 text-2xl font-bold text-slate-100">
-            Create a New Event
-          </h1>
-          <form
-            action="/admin/createEvent"
-            enctype="multipart/form-data"
-            method="POST"
-          >
+          <h1 class="mb-3 text-2xl font-bold text-slate-100">Create a New Event</h1>
+          <form action="/admin/createEvent" enctype="multipart/form-data" method="POST">
             <div class="form-control mb-2">
               <label for="eventName" class="form-label mb-2">Event Name</label>
-              <input
-                type="text"
-                class="form-control input-bordered input focus:outline-primary"
-                id="eventName"
-                aria-describedby="eventName"
-                name="eventName"
-                required
-              />
+              <input type="text" class="form-control input-bordered input focus:outline-primary" id="eventName" aria-describedby="eventName" name="eventName" required />
             </div>
 
             <div class="form-control mb-2">
               <label for="address" class="form-label mb-2">Location</label>
-              <input
-                type="text"
-                class="form-control input-bordered input focus:outline-primary"
-                id="address"
-                placeholder=""
-                aria-describedby="address"
-                name="address"
-                required
-              />
-              <div
-                id="privateEmail"
-                class="form-text mt-1 text-sm text-gray-500"
-              >
-                City, State
-              </div>
+              <input type="text" class="form-control input-bordered input focus:outline-primary" id="address" placeholder="" aria-describedby="address" name="address" required />
+              <div id="privateEmail" class="form-text mt-1 text-sm text-gray-500">City, State</div>
             </div>
 
             <div class="form-control mb-2">
               <label for="imgUpload" class="form-label mb-2">Image</label>
-              <input
-                type="file"
-                id="imgUpload"
-                class="form-control file-input input-bordered focus:outline-primary"
-                name="file"
-                required
-              />
+              <input type="file" id="imgUpload" class="form-control file-input input-bordered focus:outline-primary" name="file" required />
             </div>
 
             <div class="form-control mb-2">
               <label for="caterer" class="form-label mb-2">Caterer</label>
-              <input
-                type="text"
-                class="form-control input-bordered input focus:outline-primary"
-                id="caterer"
-                aria-describedby="caterer"
-                name="caterer"
-                required
-              />
+              <input type="text" class="form-control input-bordered input focus:outline-primary" id="caterer" aria-describedby="caterer" name="caterer" required />
             </div>
 
             <div class="form-control mb-2">
               <label for="uniform" class="form-label mb-2">Uniform</label>
-              <textarea
-                type="text"
-                class="form-control input-bordered input focus:outline-primary"
-                id="uniform"
-                aria-describedby="uniform"
-                name="uniform"
-                required
-              ></textarea>
+              <textarea type="text" class="form-control input-bordered input focus:outline-primary" id="uniform" aria-describedby="uniform" name="uniform" required></textarea>
             </div>
 
             <div class="sm:grid sm:grid-cols-2 sm:gap-4">
               <div class="form-control mb-3 xs:order-1 xs:w-full sm:order-1">
                 <label for="date" class="form-label mb-2">Date</label>
-                <input
-                  type="date"
-                  class="form-control input-bordered input focus:outline-primary"
-                  id="date"
-                  name="date"
-                  required
-                />
+                <input datepicker type="text" class="form-control input-bordered input focus:outline-primary" placeholder="Event Date" name="date">
               </div>
 
               <div class="form-control mb-3 xs:order-none sm:order-3">
-                <label for="staffArrival" class="form-label mb-2"
-                  >Staff Arrival</label
-                >
-                <input
-                  type="time"
-                  class="form-control input-bordered input focus:outline-primary"
-                  id="staffArrival"
-                  name="staffArrival"
-                  step="300"
-                  required
-                />
+                <label for="staffArrival" class="form-label mb-2">Staff Arrival</label>
+                <input type="time" class="form-control input-bordered input focus:outline-primary" id="staffArrival" name="staffArrival" step="300" required />
               </div>
 
               <div class="form-control mb-3 xs:order-none sm:order-5">
-                <label for="estimatedEndTime" class="form-label mb-2"
-                  >Estimated End Time</label
-                >
-                <input
-                  type="time"
-                  class="form-control input-bordered input focus:outline-primary"
-                  id="estimatedEndTime"
-                  name="estimatedEndTime"
-                  step="300"
-                  required
-                />
+                <label for="estimatedEndTime" class="form-label mb-2">Estimated End Time</label>
+                <input type="time" class="form-control input-bordered input focus:outline-primary" id="estimatedEndTime" name="estimatedEndTime" step="300" required />
               </div>
 
               <div class="form-control mb-2 xs:order-none sm:order-2">
-                <label for="waitstaffNeeded" class="form-label mb-2"
-                  >Waitstaff Needed</label
-                >
+                <label for="waitstaffNeeded" class="form-label mb-2">Waitstaff Needed</label>
                 <input
                   type="number"
                   class="form-control input-bordered input focus:outline-primary"
@@ -241,9 +140,7 @@
               </div>
 
               <div class="form-control mb-2 xs:order-none sm:order-4">
-                <label for="bartenderNeeded" class="form-label mb-2"
-                  >Bartenders Needed</label
-                >
+                <label for="bartenderNeeded" class="form-label mb-2">Bartenders Needed</label>
                 <input
                   type="number"
                   class="form-control input-bordered input focus:outline-primary"
@@ -257,9 +154,7 @@
               </div>
 
               <div class="form-control mb-2 xs:order-none sm:order-6">
-                <label for="chefNeeded" class="form-label mb-2"
-                  >Chefs Needed</label
-                >
+                <label for="chefNeeded" class="form-label mb-2">Chefs Needed</label>
                 <input
                   type="number"
                   class="form-control input-bordered input focus:outline-primary"
@@ -272,11 +167,9 @@
                 />
               </div>
             </div>
-
+            
             <div class="form-control mt-6">
-              <button type="submit" class="btn-primary btn tracking-wide">
-                Create Event
-              </button>
+              <button type="submit" class="btn-primary btn tracking-wide">Create Event</button>
             </div>
           </form>
         </div>
@@ -288,13 +181,9 @@
     <div class="mx-auto flex w-full flex-col justify-center">
       <!-- NOTIFY STAFF DIV -->
       <div class="mx-auto w-fit">
-        <div
-          class="card mx-auto bg-base-300 text-neutral-content shadow-xl xs:mt-10 xl:-mt-5"
-        >
+        <div class="card mx-auto bg-base-300 text-neutral-content shadow-xl xs:mt-10 xl:-mt-5">
           <div class="card-body items-center text-center">
-            <h2 class="card-title text-2xl font-bold text-slate-50">
-              Notify Staff of New Events
-            </h2>
+            <h2 class="card-title text-2xl font-bold text-slate-50">Notify Staff of New Events</h2>
             <form action="/admin/textUsers" method="POST">
               <div class="mt-5 sm:inline-flex">
                 <input
@@ -306,13 +195,7 @@
                   min="1"
                   required
                 />
-                <button
-                  type="submit"
-                  class="btn-primary btn tracking-wide xs:mt-3 sm:ml-2 sm:mt-0"
-                  value="Upload"
-                >
-                  Send Text
-                </button>
+                <button type="submit" class="btn-primary btn tracking-wide xs:mt-3 sm:ml-2 sm:mt-0" value="Upload">Send Text</button>
               </div>
             </form>
             <div class="card-actions justify-end"></div>
@@ -320,42 +203,20 @@
         </div>
 
         <!-- SIMPLY THE BEST AWARD -->
-        <div
-          class="card mx-auto mt-10 bg-base-300 text-neutral-content shadow-xl"
-        >
+        <div class="card mx-auto mt-10 bg-base-300 text-neutral-content shadow-xl">
           <div class="card-body items-center text-center">
-            <h2 class="card-title text-2xl font-bold text-slate-50">
-              'Simply the Best' Award
-            </h2>
+            <h2 class="card-title text-2xl font-bold text-slate-50">'Simply the Best' Award</h2>
             <% for(var i=0; i < allUsers.length; i++) {%>
-            <form
-              class="mx-auto xs:my-auto sm:mt-3"
-              action="/admin/stbAward/<%= allUsers[i]._id %>?_method=PUT"
-              method="POST"
-            >
+            <form class="mx-auto xs:my-auto sm:mt-3" action="/admin/stbAward/<%= allUsers[i]._id %>?_method=PUT" method="POST">
               <% } %>
-              <label
-                class="xs:hidden xs:text-sm sm:block sm:text-xl md:ml-1 lg:ml-2 lg:text-lg"
-                for="stbAward"
-              ></label>
-              <select
-                class="select mt-1 max-w-xs text-lg focus:select-primary"
-                name="awardRecipient"
-                id="stbAward"
-              >
+              <label class="xs:hidden xs:text-sm sm:block sm:text-xl md:ml-1 lg:ml-2 lg:text-lg" for="stbAward"></label>
+              <select class="select mt-1 max-w-xs text-lg focus:select-primary" name="awardRecipient" id="stbAward">
                 <option disabled selected>Select Staff</option>
                 <% for(var i=0; i < allUsers.length; i++) {%>
-                <option class="tracking-widest" value="<%= allUsers[i]._id %>">
-                  <%= allUsers[i].name %>
-                </option>
+                <option class="tracking-widest" value="<%= allUsers[i]._id %>"><%= allUsers[i].name %></option>
                 <% } %>
               </select>
-              <button
-                class="btn-primary btn tracking-wide xs:mt-3 sm:ml-2 sm:mt-0"
-                type="submit"
-              >
-                SUBMIT
-              </button>
+              <button class="btn-primary btn tracking-wide xs:mt-3 sm:ml-2 sm:mt-0" type="submit">SUBMIT</button>
             </form>
             <div class="card-actions justify-end"></div>
           </div>
@@ -364,9 +225,7 @@
 
       <!-- TABLE DIV -->
 
-      <div
-        class="mx-auto mb-5 h-[500px] w-full overflow-x-auto xs:mt-10 xl:mt-12"
-      >
+      <div class="mx-auto mb-5 h-[500px] w-full overflow-x-auto xs:mt-10 xl:mt-12">
         <table class="table-zebra table-compact mx-auto table shadow-2xl">
           <thead class="sticky top-0 bg-gray-100">
             <tr>
@@ -382,9 +241,7 @@
               <th class="px-4 text-slate-100"><%= [i + 1] %></th>
               <td class="px-4 text-slate-100"><%= allUsers[i].name %></td>
               <td class="px-4 text-slate-100"><%= allUsers[i].email %></td>
-              <td class="px-4 text-slate-100">
-                <%= allUsers[i].phoneNumber %>
-              </td>
+              <td class="px-4 text-slate-100"><%= allUsers[i].phoneNumber %></td>
             </tr>
             <% } %>
           </tbody>
@@ -399,7 +256,7 @@
 
 <script>
   setTimeout(() => {
-    const notification = document.querySelector(".notification");
+    const notification = document.querySelector('.notification');
     if (notification) {
       notification.remove();
     }
