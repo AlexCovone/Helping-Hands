@@ -81,55 +81,84 @@
       <div class="card max-w-screen-xs flex-shrink-0 bg-base-100 shadow-2xl sm:max-w-screen-sm md:max-w-screen-md xl:w-full">
         <!-- <img src="" alt=""> ADD LOGO HERE -->
         <div class="card-body">
-          <h1 class="mb-3 text-2xl font-bold text-slate-100">Create a New Event</h1>
+          <h1 class="mb-3 text-2xl font-semibold text-slate-100">Create a New Event</h1>
           <form action="/admin/createEvent" enctype="multipart/form-data" method="POST">
             <div class="form-control mb-2">
               <label for="eventName" class="form-label mb-2">Event Name</label>
-              <input type="text" class="form-control input-bordered input focus:outline-primary" id="eventName" aria-describedby="eventName" name="eventName" required />
+              <input
+                type="text"
+                class="form-control input-bordered input text-slate-50 focus:outline-primary"
+                id="eventName"
+                aria-describedby="eventName"
+                name="eventName"
+                required
+              />
             </div>
 
             <div class="form-control mb-2">
               <label for="address" class="form-label mb-2">Location</label>
-              <input type="text" class="form-control input-bordered input focus:outline-primary" id="address" placeholder="" aria-describedby="address" name="address" required />
+              <input
+                type="text"
+                class="form-control input-bordered input text-slate-50 focus:outline-primary"
+                id="address"
+                placeholder=""
+                aria-describedby="address"
+                name="address"
+                required
+              />
               <div id="privateEmail" class="form-text mt-1 text-sm text-gray-500">City, State</div>
             </div>
 
             <div class="form-control mb-2">
               <label for="imgUpload" class="form-label mb-2">Image</label>
-              <input type="file" id="imgUpload" class="form-control file-input input-bordered focus:outline-primary" name="file" required />
+              <input type="file" id="imgUpload" class="form-control file-input input-bordered text-slate-50 focus:outline-primary" name="file" required />
             </div>
 
             <div class="form-control mb-2">
               <label for="caterer" class="form-label mb-2">Caterer</label>
-              <input type="text" class="form-control input-bordered input focus:outline-primary" id="caterer" aria-describedby="caterer" name="caterer" required />
+              <input type="text" class="form-control input-bordered input text-slate-50 focus:outline-primary" id="caterer" aria-describedby="caterer" name="caterer" required />
             </div>
 
             <div class="form-control mb-2">
               <label for="uniform" class="form-label mb-2">Uniform</label>
-              <textarea type="text" class="form-control input-bordered input focus:outline-primary" id="uniform" aria-describedby="uniform" name="uniform" required></textarea>
+              <textarea
+                type="text"
+                class="form-control input-bordered input text-slate-50 focus:outline-primary"
+                id="uniform"
+                aria-describedby="uniform"
+                name="uniform"
+                required
+              ></textarea>
             </div>
 
             <div class="sm:grid sm:grid-cols-2 sm:gap-4">
               <div class="form-control mb-3 xs:order-1 xs:w-full sm:order-1">
                 <label for="date" class="form-label mb-2">Date</label>
-                <input datepicker type="text" class="form-control input-bordered input focus:outline-primary" placeholder="Event Date" name="date" required>
+                <input datepicker type="text" class="form-control input-bordered input input-lg text-slate-50 focus:outline-primary" placeholder="mm/dd/yyyy" name="date" required />
               </div>
 
               <div class="form-control mb-3 xs:order-none sm:order-3">
                 <label for="staffArrival" class="form-label mb-2">Staff Arrival</label>
-                <input type="time" class="form-control input-bordered input focus:outline-primary" id="staffArrival" name="staffArrival" step="300" required />
+                <input type="time" class="form-control input-bordered input input-lg text-slate-50 focus:outline-primary" id="staffArrival" name="staffArrival" step="300" required />
               </div>
 
               <div class="form-control mb-3 xs:order-none sm:order-5">
                 <label for="estimatedEndTime" class="form-label mb-2">Estimated End Time</label>
-                <input type="time" class="form-control input-bordered input focus:outline-primary" id="estimatedEndTime" name="estimatedEndTime" step="300" required />
+                <input
+                  type="time"
+                  class="form-control input-bordered input input-lg text-slate-50 focus:outline-primary"
+                  id="estimatedEndTime"
+                  name="estimatedEndTime"
+                  step="300"
+                  required
+                />
               </div>
 
               <div class="form-control mb-2 xs:order-none sm:order-2">
                 <label for="waitstaffNeeded" class="form-label mb-2">Waitstaff Needed</label>
                 <input
                   type="number"
-                  class="form-control input-bordered input focus:outline-primary"
+                  class="form-control input-bordered input input-lg text-slate-50 focus:outline-primary"
                   id="waitstaffNeeded"
                   placeholder="# of Waitstaff"
                   aria-describedby="waitstaffNeeded"
@@ -143,7 +172,7 @@
                 <label for="bartenderNeeded" class="form-label mb-2">Bartenders Needed</label>
                 <input
                   type="number"
-                  class="form-control input-bordered input focus:outline-primary"
+                  class="form-control input-bordered input input-lg text-slate-50 focus:outline-primary"
                   id="bartenderNeeded"
                   placeholder="# of Bartenders"
                   aria-describedby="bartenderNeeded"
@@ -157,7 +186,7 @@
                 <label for="chefNeeded" class="form-label mb-2">Chefs Needed</label>
                 <input
                   type="number"
-                  class="form-control input-bordered input focus:outline-primary"
+                  class="form-control input-bordered input input-lg text-slate-50 focus:outline-primary"
                   id="chefNeeded"
                   placeholder="# of Chefs"
                   aria-describedby="chefNeeded"
@@ -167,7 +196,7 @@
                 />
               </div>
             </div>
-            
+
             <div class="form-control mt-6">
               <button type="submit" class="btn-primary btn tracking-wide">Create Event</button>
             </div>
@@ -181,14 +210,14 @@
     <div class="mx-auto flex w-full flex-col justify-center">
       <!-- NOTIFY STAFF DIV -->
       <div class="mx-auto w-fit">
-        <div class="card mx-auto bg-base-300 text-neutral-content shadow-xl xs:mt-10 xl:-mt-5">
+        <div class="card mx-auto bg-base-100 text-neutral-content shadow-xl xs:mt-10 xl:-mt-5">
           <div class="card-body items-center text-center">
-            <h2 class="card-title text-2xl font-bold text-slate-50">Notify Staff of New Events</h2>
+            <h2 class="card-title text-2xl font-semibold text-slate-50">Notify Staff of New Events</h2>
             <form action="/admin/textUsers" method="POST">
               <div class="mt-5 sm:inline-flex">
                 <input
                   type="number"
-                  class="form-control input-bordered input focus:outline-primary xs:w-52 sm:w-56 md:w-auto"
+                  class="form-control input-bordered input text-slate-50 focus:outline-primary xs:w-52 sm:w-56 md:w-auto"
                   placeholder="Number of New Events"
                   id="numberNewEvents"
                   name="numberNewEvents"
@@ -203,14 +232,14 @@
         </div>
 
         <!-- SIMPLY THE BEST AWARD -->
-        <div class="card mx-auto mt-10 bg-base-300 text-neutral-content shadow-xl">
+        <div class="card mx-auto mt-10 bg-base-100 text-neutral-content shadow-xl">
           <div class="card-body items-center text-center">
-            <h2 class="card-title text-2xl font-bold text-slate-50">'Simply the Best' Award</h2>
+            <h2 class="card-title text-2xl font-semibold text-slate-50">'Simply the Best' Award</h2>
             <% for(var i=0; i < allUsers.length; i++) {%>
             <form class="mx-auto xs:my-auto sm:mt-3" action="/admin/stbAward/<%= allUsers[i]._id %>?_method=PUT" method="POST">
               <% } %>
               <label class="xs:hidden xs:text-sm sm:block sm:text-xl md:ml-1 lg:ml-2 lg:text-lg" for="stbAward"></label>
-              <select class="select mt-1 max-w-xs text-lg focus:select-primary" name="awardRecipient" id="stbAward">
+              <select class="select mt-1 max-w-xs bg-base-300 text-lg font-normal text-slate-50 focus:select-primary" name="awardRecipient" id="stbAward">
                 <option disabled selected>Select Staff</option>
                 <% for(var i=0; i < allUsers.length; i++) {%>
                 <option class="tracking-widest" value="<%= allUsers[i]._id %>"><%= allUsers[i].name %></option>
@@ -224,9 +253,9 @@
       </div>
 
       <!-- TABLE DIV -->
-
+      <h2 class="-mb-5 mt-10 text-2xl font-semibold text-slate-50 sm:ml-4 md:ml-28 lg:ml-52 xl:ml-20">Staff Directory</h2>
       <div class="mx-auto mb-5 h-[500px] w-full overflow-x-auto xs:mt-10 xl:mt-12">
-        <table class="table-zebra table-compact mx-auto table shadow-2xl">
+        <table class="table-zebra table-compact mx-auto table shadow-xl">
           <thead class="sticky top-0 bg-gray-100">
             <tr>
               <th class="px-4"></th>

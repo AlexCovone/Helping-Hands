@@ -310,7 +310,7 @@
             <%}%>
           </select>
           <% if (Date.now() > event.date) { %>
-          <div class="tooltip" data-tip="Event is Closed">
+          <div class="tooltip tooltip-primary text-white" data-tip="Event is Closed">
             <button
               class="btn-primary btn cursor-not-allowed"
               disabled="disabled"
@@ -320,7 +320,7 @@
             </button>
           </div>
           <% } else if(user.eventsReserved.includes(event.id)) { %>
-          <div class="tooltip" data-tip="You have reserved this event.">
+          <div class="tooltip tooltip-primary" data-tip="You have reserved this event.">
             <button
               class="btn-primary btn cursor-not-allowed"
               disabled="disabled"
@@ -338,9 +338,9 @@
       </div>
     </div>
   </div>
-  <%if(user.role === 'Admin'){ %>
+  <%if(user.role === 'Admin' && event.staffReserved.length > 0){ %>
   <div class="my-3 overflow-auto">
-    <table class="table-striped table-bordered mx-auto table">
+    <table class="table-zebra mx-auto table">
       <tr>
         <th>Name</th>
         <th>Email</th>
