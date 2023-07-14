@@ -176,15 +176,15 @@
             <%}%>
           </select>
           <% if (Date.now() > event.date) { %>
-          <div class="tooltip tooltip-primary text-white" data-tip="Event is Closed">
+          <div class="tooltip tooltip-primary text-white ml-5" data-tip="Event is Closed">
             <button class="btn-primary btn cursor-not-allowed" disabled="disabled" type="submit">Reserve Role</button>
           </div>
           <% } else if(user.eventsReserved.includes(event.id)) { %>
-          <div class="tooltip tooltip-primary" data-tip="You have reserved this event.">
+          <div class="tooltip tooltip-primary ml-5" data-tip="You have reserved this event.">
             <button class="btn-primary btn cursor-not-allowed" disabled="disabled" type="submit">Reserve Role</button>
           </div>
           <% } else { %>
-          <button class="btn-primary btn tracking-wider" type="submit">Reserve Role</button>
+          <button class="btn-primary btn tracking-wider ml-5" type="submit">Reserve Role</button>
           <% } %>
         </form>
       </div>
