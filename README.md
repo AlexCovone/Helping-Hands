@@ -22,9 +22,9 @@ Users are able to securely register and log in using Passport.js' local strategy
 
 ### **Reservation**
 
-All upcoming events are presented in a list view with notable information in the date, hours, location, and quantity of requested staff being displayed. Open events are noted with a green icon, while events that meet the requested staff quantity are noted with a red icon. Events noted with a star icon are events that have been reserved by the logged-in user.
+All upcoming events are presented in a list view with notable information on the date, hours, location, and quantity of requested staff being displayed. Open events are noted with a green icon, while events that meet the requested staff quantity are noted with a red icon. Events noted with a star icon are events that have been reserved by the logged-in user.
 
-Detailed event descriptions are accessible from the feed page. Additional details (e.g. uniform, caterer, map image) are displayed on the event's page. Users can identify if the respective event aligns with their schedule and attempt to reserve their desire occupation for the event. Upon a reservation request, the application will take several factors into consideration:
+Detailed event descriptions are accessible from the feed page. Additional details (e.g. uniform, caterer, map image) are displayed on the event's page. Users can identify if the respective event aligns with their schedule and attempt to reserve their desired occupation for the event. Upon a reservation request, the application will take several factors into consideration:
 
 * Desired occupation role availability (e.g. Waitstaff Requested: 0).
 * Existing reservation by the user for the same event.
@@ -49,19 +49,20 @@ Additional features and optimizations include:
 * Application will be migrated to a React-based framework.
 * Future UI will incorporate a monthly calendar view populated with all user's events, both previous and upcoming.
 * Users will be able to unreserve an event 7 days prior to the event's date.
+* Administrators will be able to manually assign a user to an event if need be.
 * When an event has met the requested staff quantity, users who remain interested will be able to be put on a waitlist that will automatically reserve the event on a first-come-first-serve basis should a spot be unreserved.
 * Upcoming events will be able to be sorted by selected occupation role and availability.
-* Utilizing Google Calendar API for users to seamlessly add event's date and time to their calendars.
+* Utilizing Google Calendar API for users to seamlessly add event dates and times to their calendars.
 * Users will be given a staff tier property assigned by the administrator. Certain events will require a user to be a specific tier to be able to view and reserve the event.
 * Administrators will be given a tier (e.g. Head Administrator). Certain permissions will be granted to higher-tier administrators, such as promoting other users to an administrator.
 * Users will be able to report their arrival and departure hours to an administrator following the conclusion of an event.
 * Reminders via SMS and/or email 24 hours prior to an event.
-* Employers will have the ability to create 'Employer Accounts' that will enable their companies to post event information and request staff.
+* Employers will be able to create 'Employer Accounts' that will enable their companies to post event information and request staff.
 
 ## Lessons Learned
 * Developed the ability to create reusable and abstracted code to improve the overall usability and readability of the codebase.
-* Placed significant emphasis on application's responsiveness among all screen sizes.
-* Familiarized with Tailwind CSS to create a unique, straightforward aesthetic that fit the desired request from Simply Serving.
+* Placed significant emphasis on the application's responsiveness among all screen sizes.
+* Familiarized with Tailwind CSS to create a unique, straightforward aesthetic that fits the desired request from Simply Serving.
 * Practiced user authentication and validation through Passport.js.
 * Learned how to send opted-in users SMS updates via Twilio.
 * Learned how to integrate map images seamlessly using Cloudinary.
