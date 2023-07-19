@@ -20,7 +20,11 @@ Helping Hands' codebase is structured using the Model-View-Controller architectu
 
 Users are able to securely register and log in using Passport.js' local strategy. When creating an account, users are able to opt-in to the SMS job availability feature by providing their phone number; this feature, utilizing Twilio, allows administrators to notify opted-in users of newly posted job opportunities open for reservation. Furthermore, upon creation of a user's account, they are requested to select the applicable occupation that correctly depicts their role (e.g. Waitstaff, Bartender, Chef).
 
+![text-dark-min](https://github.com/AlexCovone/Helping-Hands/assets/98838825/d302ee77-6a45-45a5-935d-669745b7da69)
+
 ### **Reservation**
+
+![event](https://github.com/AlexCovone/Helping-Hands/assets/98838825/3fd745b9-b91c-4fd0-8fc8-42ef249725f9)
 
 All upcoming events are presented in a list view with notable information on the date, hours, location, and quantity of requested staff being displayed. Open events are noted with a green icon, while events that meet the requested staff quantity are noted with a red icon. Events noted with a star icon are events that have been reserved by the logged-in user.
 
@@ -35,11 +39,11 @@ If all the relevant conditions are satisfied, the user's reservation request wil
 
 ### **Administrators**
 
-![Admin Dashboard](https://user-images.githubusercontent.com/98838825/232607283-b7921f1e-a8cd-4d96-887c-29764059c383.png)
+![Admin Dashboard](https://github.com/AlexCovone/Helping-Hands/assets/98838825/e863f36a-15cb-46c0-83ce-0b15a099af38)
 
 The Administrator dashboard is accessible only to assigned administrators who have been granted access via the created authRole middleware. Once granted access, administrators are able to perform various functions, including creating new job postings, notifying SMS alert opted-in users of new events, awarding the 'Simply the Best' award to contract workers, and accessing the names, email addresses, and phone numbers (if opted in) of all contract workers for easy communication.
 
-On specific event listings, administrators are displayed a table of successfully reserved contract workers that includes the worker's name, email, and reserved occupation. Additionally, administrators are able to delete job postings if deemed necessary. 
+On specific event listings, administrators have displayed a table of successfully reserved contract workers that includes the worker's name, email, and reserved occupation. Additionally, administrators are able to delete job postings if deemed necessary. 
 
 ## Optimizations
 As time permits, there are additional optimizations, improvements, and additional features that will be added to Helping Hands. 
