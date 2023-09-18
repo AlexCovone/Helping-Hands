@@ -1,5 +1,7 @@
 # Helping Hands - Work that Works for You
 
+![Feature Section for Helping Hands](https://user-images.githubusercontent.com/98838825/232606962-a94066b6-c7e1-4ec9-8847-c1a15aad8eb7.png)
+
 Helping Hands is a full stack web application that allows contract workers to seamlessly integrate work into their unique schedules and lifestyle. 
 
 The platform allows workers to conveniently access job opportunities and reserve work that fits their availability, making it easier to maintain a work-life balance. Helping Hands simplifies the job searching process by presenting contract workers with tailored job opportunities that align with their occupation, skillset, and availability. 
@@ -8,7 +10,7 @@ This application is designed with Simply Serving LLC in mind and caters to the r
 
 **Live Website:** [Helping-Hands.io](https://www.helping-hands.io/)
 
-![Feature Section for Helping Hands](https://user-images.githubusercontent.com/98838825/232606962-a94066b6-c7e1-4ec9-8847-c1a15aad8eb7.png)
+https://github.com/AlexCovone/Helping-Hands/assets/98838825/7e5592fe-6c3e-497f-8ce7-98de1cbc06e8
 
 ## How It's Made
 
