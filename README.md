@@ -20,7 +20,7 @@ Helping Hands' codebase is structured using the Model-View-Controller architectu
 
 ### **Registration** 
 
-Users are able to securely register and log in using Passport.js' local strategy. When creating an account, users are able to opt-in to the SMS job availability feature by providing their phone number; this feature, utilizing Twilio, allows administrators to notify opted-in users of newly posted job opportunities open for reservation. Furthermore, upon creation of a user's account, they are requested to select the applicable occupation that correctly depicts their role (e.g. Waitstaff, Bartender, Chef).
+Users are able to securely register and log in using Passport.js' local strategy. When creating an account, users are able to opt-in to the SMS job availability feature by providing their phone number; this feature, utilizing Twilio's Programmable Messaging API, allows administrators to notify opted-in users of newly posted job opportunities open for reservation. Furthermore, upon creation of a user's account, they are requested to select the applicable occupation that correctly depicts their role (e.g. Waitstaff, Bartender, Chef).
 
 ![text-dark-min](https://github.com/AlexCovone/Helping-Hands/assets/98838825/d302ee77-6a45-45a5-935d-669745b7da69)
 
@@ -70,6 +70,6 @@ Additional features and optimizations include:
 * Placed significant emphasis on the application's responsiveness among all screen sizes.
 * Familiarized with Tailwind CSS to create a unique, straightforward aesthetic that fits the desired request from Simply Serving.
 * Practiced user authentication and validation through Passport.js.
-* Learned how to send opted-in users SMS updates via Twilio.
+* Learned how to send opted-in users SMS updates via Twilio's Programmable Messaging API.
 * Learned how to integrate map images seamlessly using Cloudinary.
 * Consistently sought feedback from other developers in both front-end and back-end development, while actively searching for best practices.
