@@ -6,7 +6,7 @@ Helping Hands is a full stack web application that allows contract workers to se
 
 The platform allows workers to conveniently access job opportunities and reserve work that fits their availability, making it easier to maintain a work-life balance. Helping Hands simplifies the job searching process by presenting contract workers with tailored job opportunities that align with their occupation, skillset, and availability. 
 
-This application is designed with Simply Serving LLC in mind and caters to the requested features that may be unique to them. Helping Hands is constructed with the intention that this application can be scalable and molded to each company's unique needs.
+This application is designed and developed for the founder of Simply Serving and Simply Serving LLC and caters to the requested features that may be unique to them. Helping Hands is constructed with the intention that this application can be scalable and molded to each company's unique needs.
 
 **Live Website:** [Helping-Hands.io](https://www.helping-hands.io/)
 
@@ -20,7 +20,7 @@ Helping Hands' codebase is structured using the Model-View-Controller architectu
 
 ### **Registration** 
 
-Users are able to securely register and log in using Passport.js' local strategy. When creating an account, users are able to opt-in to the SMS job availability feature by providing their phone number; this feature, utilizing Twilio, allows administrators to notify opted-in users of newly posted job opportunities open for reservation. Furthermore, upon creation of a user's account, they are requested to select the applicable occupation that correctly depicts their role (e.g. Waitstaff, Bartender, Chef).
+Users are able to securely register and log in using Passport.js' local strategy. When creating an account, users can opt-in to the SMS job availability feature by providing their phone number; this feature, utilizing Twilio, allows administrators to notify opted-in users of newly posted job opportunities open for reservation. Furthermore, upon creation of a user's account, they are requested to select the applicable occupation that correctly depicts their role (e.g. Waitstaff, Bartender, Chef).
 
 ![text-dark-min](https://github.com/AlexCovone/Helping-Hands/assets/98838825/d302ee77-6a45-45a5-935d-669745b7da69)
 
@@ -30,7 +30,7 @@ Users are able to securely register and log in using Passport.js' local strategy
 
 All upcoming events are presented in a list view with notable information on the date, hours, location, and quantity of requested staff being displayed. Open events are noted with a green icon, while events that meet the requested staff quantity are noted with a red icon. Events noted with a star icon are events that have been reserved by the logged-in user.
 
-Detailed event descriptions are accessible from the feed page. Additional details (e.g. uniform, caterer, map image) are displayed on the event's page. Users can identify if the respective event aligns with their schedule and attempt to reserve their desired occupation for the event. Upon a reservation request, the application will take several factors into consideration:
+Detailed event descriptions are accessible from the feed page. Additional details (e.g. uniform, caterer, map image) are displayed on the event's page. Users can identify if the respective event aligns with their schedule and attempt to reserve their desired occupation for the event. Upon a reservation request, the application will consider several factors:
 
 * Desired occupation role availability (e.g. Waitstaff Requested: 0).
 * Existing reservation by the user for the same event.
@@ -43,26 +43,26 @@ If all the relevant conditions are satisfied, the user's reservation request wil
 
 ![Admin Dashboard](https://github.com/AlexCovone/Helping-Hands/assets/98838825/e863f36a-15cb-46c0-83ce-0b15a099af38)
 
-The Administrator dashboard is accessible only to assigned administrators who have been granted access via the created authRole middleware. Once granted access, administrators are able to perform various functions, including creating new job postings, notifying SMS alert opted-in users of new events, awarding the 'Simply the Best' award to contract workers, and accessing the names, email addresses, and phone numbers (if opted in) of all contract workers for easy communication.
+The Administrator dashboard is accessible only to assigned administrators who have been granted access via the created authRole middleware. Once granted access, administrators can perform various functions, including creating new job postings, notifying SMS alert opted-in users of new events, awarding the 'Simply the Best' award to contract workers, and accessing the names, email addresses, and phone numbers (if opted in) of all contract workers for easy communication.
 
-On specific event listings, administrators have displayed a table of successfully reserved contract workers that includes the worker's name, email, and reserved occupation. Additionally, administrators are able to delete job postings if deemed necessary. 
+On specific event listings, administrators have displayed a table of successfully reserved contract workers that includes the worker's name, email, and reserved occupation. Additionally, administrators can delete job postings if deemed necessary. 
 
 ## Optimizations
 As time permits, there are additional optimizations, improvements, and additional features that will be added to Helping Hands. 
 
 Additional features and optimizations include:
 
-* Application will be migrated to a React-based framework.
-* Future UI will incorporate a monthly calendar view populated with all user's events, both previous and upcoming.
-* Users will be able to unreserve an event 7 days prior to the event's date.
+* The application will be migrated to a React-based framework.
+* Future UI will incorporate a monthly calendar view populated with all user events, both previous and upcoming.
+* Users will be able to unreserve an event 7 days before the event's date.
 * Administrators will be able to manually assign a user to an event if need be.
 * When an event has met the requested staff quantity, users who remain interested will be able to be put on a waitlist that will automatically reserve the event on a first-come-first-serve basis should a spot be unreserved.
 * Upcoming events will be able to be sorted by selected occupation role and availability.
 * Utilizing Google Calendar API for users to seamlessly add event dates and times to their calendars.
-* Users will be given a staff tier property assigned by the administrator. Certain events will require a user to be a specific tier to be able to view and reserve the event.
+* Users will be given a staff tier property assigned by the administrator. Certain events will require a user to be in a specific tier to be able to view and reserve the event.
 * Administrators will be given a tier (e.g. Head Administrator). Certain permissions will be granted to higher-tier administrators, such as promoting other users to an administrator.
 * Users will be able to report their arrival and departure hours to an administrator following the conclusion of an event.
-* Reminders via SMS and/or email 24 hours prior to an event.
+* Reminders via SMS and/or email 24 hours before an event.
 * Employers will be able to create 'Employer Accounts' that will enable their companies to post event information and request staff.
 
 ## Lessons Learned
