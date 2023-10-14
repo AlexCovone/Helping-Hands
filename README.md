@@ -67,9 +67,9 @@ Additional features and optimizations include:
 
 ## Lessons Learned
 * Developed the ability to create reusable and abstracted code to improve the overall usability and readability of the codebase.
-* Placed significant emphasis on the application's responsiveness among all screen sizes.
-* Familiarized with Tailwind CSS to create a unique, straightforward aesthetic that fits the desired request from Simply Serving.
-* Practiced user authentication and validation through Passport.js.
-* Learned how to send opted-in users SMS updates via Twilio.
-* Learned how to integrate map images seamlessly using Cloudinary.
-* Consistently sought feedback from other developers in both front-end and back-end development, while actively searching for best practices.
+* Prioritized cross-screen responsiveness for the application's user interface.
+* Leveraged Tailwind CSS for a clean and tailored aesthetic as per Simply Serving's request.
+* Implemented secure user authentication and validation with Passport.js.
+* Implemented real-time SMS updates for opted-in users using Twilio's Programmable Messaging API.
+* Seamlessly integrated map images via Cloudinary.
+* Actively sought feedback from peers in both front-end and back-end development to adopt best practices.
