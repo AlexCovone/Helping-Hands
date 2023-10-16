@@ -2,9 +2,9 @@
 
 ![Feature Section for Helping Hands](https://user-images.githubusercontent.com/98838825/232606962-a94066b6-c7e1-4ec9-8847-c1a15aad8eb7.png)
 
-Helping Hands is a full stack web application that allows contract workers to seamlessly integrate work into their unique schedules and lifestyle. 
+Helping Hands is a full stack web application that allows employees to seamlessly integrate work into their unique schedules and lifestyle. 
 
-The platform allows workers to conveniently access job opportunities and reserve work that fits their availability, making it easier to maintain a work-life balance. Helping Hands simplifies the job searching process by presenting contract workers with tailored job opportunities that align with their occupation, skillset, and availability. 
+The platform allows workers to conveniently access job opportunities and reserve work that fits their availability, making it easier to maintain a work-life balance. Helping Hands simplifies the job searching process by presenting employees with tailored job opportunities that align with their occupation, skillset, and availability. 
 
 This application is designed and developed for the founder of Simply Serving and Simply Serving LLC and caters to the requested features that may be unique to them. Helping Hands is constructed with the intention that this application can be scalable and molded to each company's unique needs.
 
@@ -43,9 +43,9 @@ If all the relevant conditions are satisfied, the user's reservation request wil
 
 ![Admin Dashboard](https://github.com/AlexCovone/Helping-Hands/assets/98838825/e863f36a-15cb-46c0-83ce-0b15a099af38)
 
-The Administrator dashboard is accessible only to assigned administrators who have been granted access via the created authRole middleware. Once granted access, administrators can perform various functions, including creating new job postings, notifying SMS alert opted-in users of new events, awarding the 'Simply the Best' award to contract workers, and accessing the names, email addresses, and phone numbers (if opted in) of all contract workers for easy communication.
+The Administrator dashboard is accessible only to assigned administrators who have been granted access via the created authRole middleware. Once granted access, administrators can perform various functions, including creating new job postings, notifying SMS alert opted-in users of new events, awarding the 'Simply the Best' award to employees, and accessing the names, email addresses, and phone numbers (if opted in) of all employees for easy communication.
 
-On specific event listings, administrators have displayed a table of successfully reserved contract workers that includes the worker's name, email, and reserved occupation. Additionally, administrators can delete job postings if deemed necessary. 
+On specific event listings, administrators have displayed a table of successfully reserved employees that includes the worker's name, email, and reserved occupation. Additionally, administrators can delete job postings if deemed necessary. 
 
 ## Optimizations
 As time permits, there are additional optimizations, improvements, and additional features that will be added to Helping Hands. 
