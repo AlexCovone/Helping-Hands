@@ -14,7 +14,7 @@ https://github.com/AlexCovone/Helping-Hands/assets/98838825/7e5592fe-6c3e-497f-8
 
 ## How It's Made
 
-**Tech Used:** JavaScript, Node.js, Express, MongoDB, EJS, TailwindCSS, Passport.js, Twilio, Cloudinary.
+**Tech Used:** JavaScript, Node.js, Express, MongoDB, EJS, TailwindCSS, Passport.js, Twilio, Cloudinary
 
 Helping Hands' codebase is structured using the Model-View-Controller architecture paradigm. 
 
